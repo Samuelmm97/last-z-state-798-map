@@ -1,0 +1,284 @@
+const canvas = document.getElementById('map');
+const ctx = canvas.getContext('2d');
+const shell = document.querySelector('.map-shell');
+const list = document.getElementById('hqList');
+const search = document.getElementById('search');
+const alliance = document.getElementById('alliance');
+const sort = document.getElementById('sort');
+const card = document.getElementById('hqCard');
+const sidebar = document.getElementById('sidebar');
+const cache = new Map();
+let metadata, hqs = [], filtered = [], selected = null;
+let activeZone = 'outside';
+let centerX = 8000, centerY = 5250, scale = .08, fitted = false;
+let width = 1, height = 1, framePending = false, dragging = null, displayLimit = 150;
+
+const clamp = (value, low, high) => Math.min(high, Math.max(low, value));
+const mapX = x => x * metadata.scaleX;
+const mapY = y => y * metadata.scaleY;
+const screenX = x => (x - centerX) * scale + width / 2;
+const screenY = y => (y - centerY) * scale + height / 2;
+const worldAt = (sx, sy) => ({
+  x: clamp(Math.round((centerX + (sx - width / 2) / scale) / metadata.scaleX), 0, 999),
+  y: clamp(Math.round((centerY + (sy - height / 2) / scale) / metadata.scaleY), 0, 999)
+});
+
+function scheduleDraw() {
+  if (!framePending) {
+    framePending = true;
+    requestAnimationFrame(() => { framePending = false; draw(); });
+  }
+}
+
+function tile(level, x, y) {
+  const key = `${level}/${x}/${y}`;
+  if (cache.has(key)) {
+    const result = cache.get(key);
+    cache.delete(key); cache.set(key, result);
+    return result;
+  }
+  const image = new Image();
+  const result = { image, ready: false };
+  image.onload = () => { result.ready = true; scheduleDraw(); };
+  image.onerror = () => { result.failed = true; };
+  image.src = `tiles/${key}.webp`;
+  cache.set(key, result);
+  while (cache.size > 320) cache.delete(cache.keys().next().value);
+  return result;
+}
+
+function drawMap() {
+  const level = clamp(Math.round(metadata.maxZoom + Math.log2(scale)), 0, metadata.maxZoom);
+  const factor = 2 ** (metadata.maxZoom - level);
+  const span = 256 * factor;
+  const left = centerX - width / (2 * scale);
+  const top = centerY - height / (2 * scale);
+  const right = centerX + width / (2 * scale);
+  const bottom = centerY + height / (2 * scale);
+  const x0 = clamp(Math.floor(left / span), 0, Math.ceil(metadata.width / span) - 1);
+  const x1 = clamp(Math.floor(right / span), 0, Math.ceil(metadata.width / span) - 1);
+  const y0 = clamp(Math.floor(top / span), 0, Math.ceil(metadata.height / span) - 1);
+  const y1 = clamp(Math.floor(bottom / span), 0, Math.ceil(metadata.height / span) - 1);
+  for (let y = y0; y <= y1; y++) {
+    for (let x = x0; x <= x1; x++) {
+      const entry = tile(level, x, y);
+      if (!entry.ready) continue;
+      const tileWidth = Math.min(256, Math.ceil(metadata.width / factor) - x * 256);
+      const tileHeight = Math.min(256, Math.ceil(metadata.height / factor) - y * 256);
+      ctx.drawImage(entry.image, screenX(x * span), screenY(y * span),
+                    tileWidth * factor * scale + .5, tileHeight * factor * scale + .5);
+    }
+  }
+}
+
+function drawOverlays() {
+  if (document.getElementById('showGrid').checked) {
+    ctx.strokeStyle = 'rgba(244,236,201,.32)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    for (let n = 0; n <= 1000; n += 100) {
+      const x = screenX(mapX(n)), y = screenY(mapY(n));
+      ctx.moveTo(x, screenY(0)); ctx.lineTo(x, screenY(metadata.height));
+      ctx.moveTo(screenX(0), y); ctx.lineTo(screenX(metadata.width), y);
+    }
+    ctx.stroke();
+    ctx.strokeStyle = 'rgba(217,151,88,.9)';
+    ctx.lineWidth = 1.5;
+    ctx.setLineDash([6, 5]);
+    ctx.beginPath();
+    ctx.ellipse(screenX(mapX(500)), screenY(mapY(500)),
+                100 * metadata.scaleX * scale, 100 * metadata.scaleY * scale, 0, 0, Math.PI * 2);
+    ctx.stroke(); ctx.setLineDash([]);
+  }
+  if (document.getElementById('showPins').checked) {
+    const radius = scale < .25 ? 1.4 : scale < .7 ? 2.3 : 3.1;
+    for (const hq of hqs) {
+      const x = screenX(mapX(hq.x)), y = screenY(mapY(hq.y));
+      if (x < -10 || x > width + 10 || y < -10 || y > height + 10) continue;
+      ctx.fillStyle = hq.zone === 'capital' ? 'rgba(130,222,211,.9)' : 'rgba(255,223,149,.84)';
+      ctx.beginPath(); ctx.arc(x, y, radius, 0, Math.PI * 2); ctx.fill();
+    }
+  }
+  if (selected) {
+    const x = screenX(mapX(selected.x)), y = screenY(mapY(selected.y));
+    ctx.fillStyle = '#2a2117'; ctx.strokeStyle = '#ffe5a0'; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.arc(x, y, 10, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#ffe5a0'; ctx.beginPath(); ctx.arc(x, y, 3, 0, Math.PI * 2); ctx.fill();
+  }
+}
+
+function draw() {
+  if (!metadata) return;
+  const ratio = window.devicePixelRatio || 1;
+  ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+  ctx.fillStyle = '#877f5b'; ctx.fillRect(0, 0, width, height);
+  drawMap(); drawOverlays();
+}
+
+function resize() {
+  width = shell.clientWidth; height = shell.clientHeight;
+  const ratio = window.devicePixelRatio || 1;
+  canvas.width = Math.ceil(width * ratio); canvas.height = Math.ceil(height * ratio);
+  if (metadata && !fitted) fitMap(); else scheduleDraw();
+}
+
+function fitMap() {
+  if (!metadata) return;
+  centerX = metadata.width / 2; centerY = metadata.height / 2;
+  scale = .94 * Math.min(width / metadata.width, height / metadata.height);
+  fitted = true; scheduleDraw();
+}
+
+function zoomTo(next, sx = width / 2, sy = height / 2) {
+  const beforeX = centerX + (sx - width / 2) / scale;
+  const beforeY = centerY + (sy - height / 2) / scale;
+  scale = clamp(next, .028, 2);
+  centerX = beforeX - (sx - width / 2) / scale;
+  centerY = beforeY - (sy - height / 2) / scale;
+  scheduleDraw();
+}
+
+function selectHQ(hq, jump = true) {
+  selected = hq;
+  if ((hq.zone || 'outside') !== activeZone) setZone(hq.zone || 'outside');
+  if (jump) { centerX = mapX(hq.x); centerY = mapY(hq.y); scale = Math.max(scale, .9); }
+  document.getElementById('cardTag').textContent = hq.tag ? `[${hq.tag}]` : 'No detected tag';
+  document.getElementById('cardLevel').textContent = hq.hq ? `HQ ${hq.hq}` : 'HQ level unreadable';
+  document.getElementById('cardName').textContent = hq.name;
+  document.getElementById('cardLocation').textContent = `X ${hq.x} · Y ${hq.y}`;
+  const image = document.getElementById('cardImage');
+  image.src = hq.photo; image.alt = `In-game screenshot of ${hq.name}, HQ ${hq.hq}`;
+  document.getElementById('cardImageLink').href = hq.photo;
+  document.getElementById('cardSource').textContent = hq.source;
+  card.hidden = false;
+  sidebar.classList.remove('open');
+  document.querySelectorAll('.hq-row.active').forEach(element => element.classList.remove('active'));
+  const row = document.querySelector(`.hq-row[data-id="${hq.id}"]`);
+  if (row) row.classList.add('active');
+  history.replaceState(null, '', `#hq-${hq.id}`);
+  scheduleDraw();
+}
+
+function refreshList() {
+  const query = search.value.trim().toLocaleLowerCase();
+  const allianceValue = alliance.value;
+  filtered = hqs.filter(hq => {
+    if ((hq.zone || 'outside') !== activeZone) return false;
+    if (allianceValue === '__blank__' ? hq.tag : allianceValue && hq.tag !== allianceValue) return false;
+    return !query || `${hq.name} ${hq.tag} ${hq.x},${hq.y}`.toLocaleLowerCase().includes(query);
+  });
+  if (sort.value === 'name') filtered.sort((a, b) => a.name.localeCompare(b.name));
+  else if (sort.value === 'alliance') filtered.sort((a, b) => a.tag.localeCompare(b.tag) || a.name.localeCompare(b.name));
+  else filtered.sort((a, b) => (b.hq || 0) - (a.hq || 0) || a.name.localeCompare(b.name));
+  displayLimit = 150;
+  renderList();
+}
+
+function renderList() {
+  const fragment = document.createDocumentFragment();
+  for (const hq of filtered.slice(list.childElementCount, displayLimit)) {
+    const button = document.createElement('button');
+    button.className = `hq-row${selected && selected.id === hq.id ? ' active' : ''}`;
+    button.type = 'button'; button.dataset.id = hq.id;
+    const badge = document.createElement('span'); badge.className = 'pin'; badge.textContent = hq.hq ? String(hq.hq) : '?';
+    const copy = document.createElement('span'); copy.className = 'copy';
+    const name = document.createElement('span'); name.className = 'name'; name.textContent = hq.name;
+    const sub = document.createElement('span'); sub.className = 'sub';
+    sub.textContent = `${hq.tag ? `[${hq.tag}] · ` : ''}X ${hq.x} · Y ${hq.y}`;
+    copy.append(name, sub); button.append(badge, copy);
+    button.addEventListener('click', () => selectHQ(hq));
+    fragment.append(button);
+  }
+  if (list.childElementCount === 0) list.replaceChildren(fragment); else list.append(fragment);
+  document.getElementById('listCount').textContent = `${filtered.length.toLocaleString()} shown`;
+  document.getElementById('loadMore').hidden = list.childElementCount >= filtered.length;
+}
+
+function resetList() { list.replaceChildren(); refreshList(); }
+
+function setZone(zone) {
+  if (zone !== activeZone) { search.value = ''; alliance.value = ''; }
+  activeZone = zone;
+  for (const [name, id] of [['outside', 'outsideTab'], ['capital', 'capitalTab']]) {
+    const tab = document.getElementById(id);
+    tab.classList.toggle('active', name === zone);
+    tab.setAttribute('aria-selected', String(name === zone));
+  }
+  document.getElementById('listHeading').textContent = zone === 'capital' ? 'CAPITAL HEADQUARTERS' : 'OUTSIDE HEADQUARTERS';
+  resetList();
+}
+
+canvas.addEventListener('pointerdown', event => {
+  canvas.setPointerCapture(event.pointerId);
+  dragging = { x: event.clientX, y: event.clientY, moved: false };
+  canvas.classList.add('dragging');
+});
+canvas.addEventListener('pointermove', event => {
+  const rect = canvas.getBoundingClientRect();
+  if (metadata) {
+    const world = worldAt(event.clientX - rect.left, event.clientY - rect.top);
+    document.getElementById('mapCoords').textContent = `X: ${world.x} · Y: ${world.y}`;
+  }
+  if (!dragging) return;
+  const dx = event.clientX - dragging.x, dy = event.clientY - dragging.y;
+  if (Math.abs(dx) + Math.abs(dy) > 2) dragging.moved = true;
+  centerX -= dx / scale; centerY -= dy / scale;
+  dragging.x = event.clientX; dragging.y = event.clientY;
+  scheduleDraw();
+});
+canvas.addEventListener('pointerup', event => {
+  if (dragging && !dragging.moved && metadata) {
+    const rect = canvas.getBoundingClientRect();
+    const px = event.clientX - rect.left, py = event.clientY - rect.top;
+    let closest = null, distance = 18 * 18;
+    for (const hq of hqs) {
+      const dx = screenX(mapX(hq.x)) - px, dy = screenY(mapY(hq.y)) - py;
+      const d = dx * dx + dy * dy;
+      if (d < distance) { distance = d; closest = hq; }
+    }
+    if (closest) selectHQ(closest, false);
+  }
+  dragging = null; canvas.classList.remove('dragging');
+});
+canvas.addEventListener('pointercancel', () => { dragging = null; canvas.classList.remove('dragging'); });
+canvas.addEventListener('wheel', event => {
+  event.preventDefault();
+  const rect = canvas.getBoundingClientRect();
+  zoomTo(scale * (event.deltaY < 0 ? 1.24 : 1 / 1.24), event.clientX - rect.left, event.clientY - rect.top);
+}, { passive: false });
+document.getElementById('zoomIn').addEventListener('click', () => zoomTo(scale * 1.5));
+document.getElementById('zoomOut').addEventListener('click', () => zoomTo(scale / 1.5));
+document.getElementById('fitMap').addEventListener('click', fitMap);
+document.getElementById('showPins').addEventListener('change', scheduleDraw);
+document.getElementById('showGrid').addEventListener('change', scheduleDraw);
+document.getElementById('closeCard').addEventListener('click', () => { card.hidden = true; selected = null; scheduleDraw(); });
+document.getElementById('menuButton').addEventListener('click', () => sidebar.classList.toggle('open'));
+document.getElementById('loadMore').addEventListener('click', () => { displayLimit += 150; renderList(); });
+document.getElementById('outsideTab').addEventListener('click', () => setZone('outside'));
+document.getElementById('capitalTab').addEventListener('click', () => setZone('capital'));
+search.addEventListener('input', resetList);
+alliance.addEventListener('change', resetList);
+sort.addEventListener('change', resetList);
+window.addEventListener('resize', resize);
+
+async function start() {
+  try {
+    const [mapResponse, hqResponse] = await Promise.all([fetch('data/map.json'), fetch('data/hqs.json')]);
+    if (!mapResponse.ok || !hqResponse.ok) throw new Error('Map data could not be loaded');
+    metadata = await mapResponse.json(); hqs = await hqResponse.json();
+    document.getElementById('visibleCount').textContent = `${hqs.length.toLocaleString()} HQ candidates`;
+    document.getElementById('outsideCount').textContent = hqs.filter(hq => hq.zone !== 'capital').length.toLocaleString();
+    document.getElementById('capitalCount').textContent = hqs.filter(hq => hq.zone === 'capital').length.toLocaleString();
+    const tags = [...new Set(hqs.map(hq => hq.tag).filter(Boolean))].sort((a,b) => a.localeCompare(b));
+    const blank = document.createElement('option'); blank.value = '__blank__'; blank.textContent = 'No detected tag';
+    alliance.append(blank);
+    for (const tag of tags) { const option = document.createElement('option'); option.value = tag; option.textContent = `[${tag}]`; alliance.append(option); }
+    resetList(); resize();
+    document.getElementById('loading').hidden = true;
+    const deepLink = /^#hq-(\d+)$/.exec(location.hash);
+    if (deepLink && hqs[Number(deepLink[1])]) selectHQ(hqs[Number(deepLink[1])]);
+  } catch (error) {
+    document.getElementById('loading').textContent = `Unable to load the atlas: ${error.message}`;
+  }
+}
+start();
