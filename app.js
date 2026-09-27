@@ -4,6 +4,9 @@ const shell = document.querySelector('.map-shell');
 const list = document.getElementById('hqList');
 const search = document.getElementById('search');
 const alliance = document.getElementById('alliance');
+const shield = document.getElementById('shield');
+const terrain = document.getElementById('terrain');
+const minHq = document.getElementById('minHq');
 const sort = document.getElementById('sort');
 const card = document.getElementById('hqCard');
 const sidebar = document.getElementById('sidebar');
@@ -12,6 +15,15 @@ let metadata, hqs = [], filtered = [], selected = null;
 let activeZone = 'outside';
 let centerX = 8000, centerY = 5250, scale = .08, fitted = false;
 let width = 1, height = 1, framePending = false, dragging = null, displayLimit = 150;
+
+const shieldLabels = {
+  shielded: 'Shielded', unshielded: 'Unshielded', review: 'Needs review',
+  not_applicable: 'Mud · N/A', unscanned: 'Not scanned'
+};
+const shieldStatus = hq => hq.shield?.status || 'unscanned';
+const terrainStatus = hq => hq.shield?.terrain || 'unscanned';
+const filtersActive = () => Boolean(search.value.trim() || alliance.value || shield.value || terrain.value || Number(minHq.value));
+const visiblePins = () => filtersActive() ? filtered : hqs;
 
 const clamp = (value, low, high) => Math.min(high, Math.max(low, value));
 const mapX = x => x * metadata.scaleX;
@@ -92,7 +104,7 @@ function drawOverlays() {
   }
   if (document.getElementById('showPins').checked) {
     const radius = scale < .25 ? 1.4 : scale < .7 ? 2.3 : 3.1;
-    for (const hq of hqs) {
+    for (const hq of visiblePins()) {
       const x = screenX(mapX(hq.x)), y = screenY(mapY(hq.y));
       if (x < -10 || x > width + 10 || y < -10 || y > height + 10) continue;
       ctx.fillStyle = hq.zone === 'capital' ? 'rgba(130,222,211,.9)' : 'rgba(255,223,149,.84)';
@@ -142,10 +154,19 @@ function selectHQ(hq, jump = true) {
   selected = hq;
   if ((hq.zone || 'outside') !== activeZone) setZone(hq.zone || 'outside');
   if (jump) { centerX = mapX(hq.x); centerY = mapY(hq.y); scale = Math.max(scale, .9); }
-  document.getElementById('cardTag').textContent = hq.tag ? `[${hq.tag}]` : 'No detected tag';
+  document.getElementById('cardTag').textContent = hq.tag ? `[${hq.tag}]` : 'No alliance tag';
   document.getElementById('cardLevel').textContent = hq.hq ? `HQ ${hq.hq}` : 'HQ level unreadable';
   document.getElementById('cardName').textContent = hq.name;
   document.getElementById('cardLocation').textContent = `X ${hq.x} · Y ${hq.y}`;
+  const status = shieldStatus(hq);
+  const cardShield = document.getElementById('cardShield');
+  cardShield.className = `card-shield status-${status}`;
+  cardShield.textContent = `Shield: ${shieldLabels[status]}`;
+  const observed = document.getElementById('cardObserved');
+  if (hq.shield?.observedAt) {
+    const time = new Date(hq.shield.observedAt).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' });
+    observed.textContent = `Map capture: ${time} · ${hq.shield.terrain === 'grass' ? 'Grass' : hq.shield.terrain === 'mud' ? 'Mud' : 'Terrain needs review'}${hq.shield.note ? ` · ${hq.shield.note}` : ''}`;
+  } else observed.textContent = hq.shield?.note || 'No shield reading from this map sweep.';
   const image = document.getElementById('cardImage');
   image.src = hq.photo; image.alt = `In-game screenshot of ${hq.name}, HQ ${hq.hq}`;
   document.getElementById('cardImageLink').href = hq.photo;
@@ -165,6 +186,9 @@ function refreshList() {
   filtered = hqs.filter(hq => {
     if ((hq.zone || 'outside') !== activeZone) return false;
     if (allianceValue === '__blank__' ? hq.tag : allianceValue && hq.tag !== allianceValue) return false;
+    if (shield.value && shieldStatus(hq) !== shield.value) return false;
+    if (terrain.value && terrainStatus(hq) !== terrain.value) return false;
+    if ((hq.hq || 0) < Number(minHq.value)) return false;
     return !query || `${hq.name} ${hq.tag} ${hq.x},${hq.y}`.toLocaleLowerCase().includes(query);
   });
   if (sort.value === 'name') filtered.sort((a, b) => a.name.localeCompare(b.name));
@@ -172,9 +196,19 @@ function refreshList() {
   else filtered.sort((a, b) => (b.hq || 0) - (a.hq || 0) || a.name.localeCompare(b.name));
   displayLimit = 150;
   renderList();
+  scheduleDraw();
 }
 
 function renderList() {
+  if (!filtered.length) {
+    const empty = document.createElement('div');
+    empty.className = 'empty-results';
+    empty.textContent = 'No HQs match these filters.';
+    list.replaceChildren(empty);
+    document.getElementById('listCount').textContent = '0 matches';
+    document.getElementById('loadMore').hidden = true;
+    return;
+  }
   const fragment = document.createDocumentFragment();
   for (const hq of filtered.slice(list.childElementCount, displayLimit)) {
     const button = document.createElement('button');
@@ -186,18 +220,23 @@ function renderList() {
     const sub = document.createElement('span'); sub.className = 'sub';
     sub.textContent = `${hq.tag ? `[${hq.tag}] · ` : ''}X ${hq.x} · Y ${hq.y}`;
     copy.append(name, sub); button.append(badge, copy);
+    if (hq.shield) {
+      const state = document.createElement('span');
+      state.className = `shield-chip status-${shieldStatus(hq)}`;
+      state.textContent = shieldLabels[shieldStatus(hq)];
+      button.append(state);
+    }
     button.addEventListener('click', () => selectHQ(hq));
     fragment.append(button);
   }
   if (list.childElementCount === 0) list.replaceChildren(fragment); else list.append(fragment);
-  document.getElementById('listCount').textContent = `${filtered.length.toLocaleString()} shown`;
+  document.getElementById('listCount').textContent = `${filtered.length.toLocaleString()} matches`;
   document.getElementById('loadMore').hidden = list.childElementCount >= filtered.length;
 }
 
 function resetList() { list.replaceChildren(); refreshList(); }
 
 function setZone(zone) {
-  if (zone !== activeZone) { search.value = ''; alliance.value = ''; }
   activeZone = zone;
   for (const [name, id] of [['outside', 'outsideTab'], ['capital', 'capitalTab']]) {
     const tab = document.getElementById(id);
@@ -231,7 +270,7 @@ canvas.addEventListener('pointerup', event => {
     const rect = canvas.getBoundingClientRect();
     const px = event.clientX - rect.left, py = event.clientY - rect.top;
     let closest = null, distance = 18 * 18;
-    for (const hq of hqs) {
+    for (const hq of visiblePins()) {
       const dx = screenX(mapX(hq.x)) - px, dy = screenY(mapY(hq.y)) - py;
       const d = dx * dx + dy * dy;
       if (d < distance) { distance = d; closest = hq; }
@@ -258,19 +297,37 @@ document.getElementById('outsideTab').addEventListener('click', () => setZone('o
 document.getElementById('capitalTab').addEventListener('click', () => setZone('capital'));
 search.addEventListener('input', resetList);
 alliance.addEventListener('change', resetList);
+shield.addEventListener('change', () => {
+  if (activeZone === 'outside' && shield.value && shield.value !== 'unscanned') setZone('capital');
+  else resetList();
+});
+terrain.addEventListener('change', () => {
+  if (activeZone === 'outside' && terrain.value && terrain.value !== 'unscanned') setZone('capital');
+  else resetList();
+});
+minHq.addEventListener('change', resetList);
 sort.addEventListener('change', resetList);
+document.getElementById('clearFilters').addEventListener('click', () => {
+  search.value = ''; alliance.value = ''; shield.value = ''; terrain.value = ''; minHq.value = '0';
+  sort.value = 'hq'; resetList();
+});
 window.addEventListener('resize', resize);
 
 async function start() {
   try {
-    const [mapResponse, hqResponse] = await Promise.all([fetch('data/map.json'), fetch('data/hqs.json')]);
-    if (!mapResponse.ok || !hqResponse.ok) throw new Error('Map data could not be loaded');
+    const [mapResponse, hqResponse, shieldResponse] = await Promise.all([
+      fetch('data/map.json'), fetch('data/hqs.json'), fetch('data/shields.json')
+    ]);
+    if (!mapResponse.ok || !hqResponse.ok || !shieldResponse.ok) throw new Error('Map data could not be loaded');
     metadata = await mapResponse.json(); hqs = await hqResponse.json();
+    const observations = await shieldResponse.json();
+    const shieldById = new Map(observations.map(item => [item.id, item]));
+    for (const hq of hqs) hq.shield = shieldById.get(hq.id) || null;
     document.getElementById('visibleCount').textContent = `${hqs.length.toLocaleString()} HQ candidates`;
     document.getElementById('outsideCount').textContent = hqs.filter(hq => hq.zone !== 'capital').length.toLocaleString();
     document.getElementById('capitalCount').textContent = hqs.filter(hq => hq.zone === 'capital').length.toLocaleString();
     const tags = [...new Set(hqs.map(hq => hq.tag).filter(Boolean))].sort((a,b) => a.localeCompare(b));
-    const blank = document.createElement('option'); blank.value = '__blank__'; blank.textContent = 'No detected tag';
+    const blank = document.createElement('option'); blank.value = '__blank__'; blank.textContent = 'No alliance tag';
     alliance.append(blank);
     for (const tag of tags) { const option = document.createElement('option'); option.value = tag; option.textContent = `[${tag}]`; alliance.append(option); }
     resetList(); resize();

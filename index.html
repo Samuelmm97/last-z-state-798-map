@@ -24,18 +24,53 @@
         <label for="search">Find an HQ</label>
         <input id="search" type="search" placeholder="Name, alliance, or X,Y" autocomplete="off">
         <div class="filter-row">
-          <select id="alliance" aria-label="Filter by alliance"><option value="">All alliances</option></select>
-          <select id="sort" aria-label="Sort HQ list">
+          <label class="filter-field" for="alliance">Alliance
+            <select id="alliance"><option value="">All alliances</option></select>
+          </label>
+        </div>
+        <div class="filter-row">
+          <label class="filter-field" for="shield">Shield
+            <select id="shield">
+              <option value="">Any status</option>
+              <option value="shielded">Shielded</option>
+              <option value="unshielded">Unshielded</option>
+              <option value="review">Needs review</option>
+              <option value="not_applicable">Mud · N/A</option>
+              <option value="unscanned">Not scanned</option>
+            </select>
+          </label>
+          <label class="filter-field" for="terrain">Terrain
+            <select id="terrain">
+              <option value="">Any terrain</option>
+              <option value="grass">Grass</option>
+              <option value="mud">Mud</option>
+              <option value="review">Needs review</option>
+              <option value="unscanned">Not assessed</option>
+            </select>
+          </label>
+        </div>
+        <div class="filter-row">
+          <label class="filter-field" for="minHq">HQ level
+            <select id="minHq">
+              <option value="0">Any level</option>
+              <option value="20">20+</option>
+              <option value="25">25+</option>
+            </select>
+          </label>
+          <label class="filter-field" for="sort">Sort
+            <select id="sort">
             <option value="hq">Highest HQ</option>
             <option value="name">Name A–Z</option>
             <option value="alliance">Alliance A–Z</option>
-          </select>
+            </select>
+          </label>
         </div>
+        <button class="clear-filters" id="clearFilters" type="button">Clear filters</button>
       </div>
       <div class="list-head"><span id="listHeading">OUTSIDE HEADQUARTERS</span><span id="listCount"></span></div>
       <div class="hq-list" id="hqList" role="list"></div>
       <button class="more" id="loadMore" type="button" hidden>Show more HQs</button>
-      <div class="sidebar-foot">Names and coordinates are estimates from map screenshots. [Helm] is excluded from the outside list. The capital list includes [Helm] and uses a 100-tile radius around (500, 500).</div>
+      <div class="sidebar-foot">Names and coordinates are estimates from map screenshots. Shield status is a Sep 26 capture-time reading near the capital; “needs review” marks uncertain readings. [Helm] is excluded from the outside list.</div>
     </aside>
 
     <main class="map-shell">
@@ -58,6 +93,8 @@
         <div class="card-head"><span id="cardTag"></span><span id="cardLevel"></span></div>
         <h2 id="cardName"></h2>
         <div class="card-location" id="cardLocation"></div>
+        <div class="card-shield" id="cardShield"></div>
+        <div class="card-observed" id="cardObserved"></div>
         <a id="cardImageLink" href="#" target="_blank" rel="noopener"><img id="cardImage" alt="Original in-game screenshot crop of this HQ"></a>
         <div class="card-caption">Original game capture · <span id="cardSource"></span></div>
       </section>
