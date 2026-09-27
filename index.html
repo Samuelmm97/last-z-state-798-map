@@ -20,9 +20,14 @@
         <button id="outsideTab" class="zone-tab active" role="tab" aria-selected="true" type="button">Outside capital <span id="outsideCount"></span></button>
         <button id="capitalTab" class="zone-tab" role="tab" aria-selected="false" type="button">Capital · 100 tiles <span id="capitalCount"></span></button>
       </div>
+      <div class="view-tabs" role="tablist" aria-label="List view">
+        <button id="hqViewTab" class="view-tab active" role="tab" aria-selected="true" type="button">Headquarters</button>
+        <button id="allianceViewTab" class="view-tab" role="tab" aria-selected="false" type="button">Alliance participation</button>
+      </div>
       <div class="filters">
-        <label for="search">Find an HQ</label>
+        <label for="search" id="searchLabel">Find an HQ</label>
         <input id="search" type="search" placeholder="Name, alliance, or X,Y" autocomplete="off">
+        <div id="hqFilters">
         <div class="filter-row">
           <label class="filter-field" for="alliance">Alliance
             <select id="alliance"><option value="">All alliances</option></select>
@@ -36,6 +41,7 @@
               <option value="unshielded">Unshielded</option>
               <option value="review">Needs review</option>
               <option value="not_applicable">Mud · N/A</option>
+              <option value="not_hq">Not an HQ</option>
               <option value="unscanned">Not scanned</option>
             </select>
           </label>
@@ -64,6 +70,38 @@
             <option value="alliance">Alliance A–Z</option>
             </select>
           </label>
+        </div>
+        </div>
+        <div id="allianceFilters" hidden>
+          <div class="filter-row">
+            <label class="filter-field" for="allianceSort">Sort alliances
+              <select id="allianceSort">
+                <option value="count">Most within 100 tiles</option>
+                <option value="percent">Highest percentage</option>
+                <option value="name">Alliance A–Z</option>
+              </select>
+            </label>
+          </div>
+          <div class="filter-row">
+            <label class="filter-field" for="minParticipants">Within 100 tiles
+              <select id="minParticipants">
+                <option value="1">1 or more</option>
+                <option value="5">5 or more</option>
+                <option value="10">10 or more</option>
+                <option value="25">25 or more</option>
+              </select>
+            </label>
+            <label class="filter-field" for="minShare">Percentage
+              <select id="minShare">
+                <option value="0">Any</option>
+                <option value="25">25%+</option>
+                <option value="50">50%+</option>
+                <option value="75">75%+</option>
+                <option value="100">100%</option>
+              </select>
+            </label>
+          </div>
+          <p class="participation-note">Inside count ÷ all HQs with that tag in this atlas. Tap an alliance to see its HQs.</p>
         </div>
         <button class="clear-filters" id="clearFilters" type="button">Clear filters</button>
       </div>

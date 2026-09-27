@@ -8,22 +8,26 @@ const shield = document.getElementById('shield');
 const terrain = document.getElementById('terrain');
 const minHq = document.getElementById('minHq');
 const sort = document.getElementById('sort');
+const allianceSort = document.getElementById('allianceSort');
+const minParticipants = document.getElementById('minParticipants');
+const minShare = document.getElementById('minShare');
 const card = document.getElementById('hqCard');
 const sidebar = document.getElementById('sidebar');
 const cache = new Map();
 let metadata, hqs = [], filtered = [], selected = null;
 let activeZone = 'outside';
+let activeView = 'hqs', allianceStats = [], visibleAlliances = [];
 let centerX = 8000, centerY = 5250, scale = .08, fitted = false;
 let width = 1, height = 1, framePending = false, dragging = null, displayLimit = 150;
 
 const shieldLabels = {
   shielded: 'Shielded', unshielded: 'Unshielded', review: 'Needs review',
-  not_applicable: 'Mud · N/A', unscanned: 'Not scanned'
+  not_applicable: 'Mud · N/A', not_hq: 'Not an HQ', unscanned: 'Not scanned'
 };
 const shieldStatus = hq => hq.shield?.status || 'unscanned';
 const terrainStatus = hq => hq.shield?.terrain || 'unscanned';
 const filtersActive = () => Boolean(search.value.trim() || alliance.value || shield.value || terrain.value || Number(minHq.value));
-const visiblePins = () => filtersActive() ? filtered : hqs;
+const visiblePins = () => activeView === 'alliances' || filtersActive() ? filtered : hqs;
 
 const clamp = (value, low, high) => Math.min(high, Math.max(low, value));
 const mapX = x => x * metadata.scaleX;
@@ -182,6 +186,19 @@ function selectHQ(hq, jump = true) {
 
 function refreshList() {
   const query = search.value.trim().toLocaleLowerCase();
+  if (activeView === 'alliances') {
+    visibleAlliances = allianceStats.filter(item => item.tag.toLocaleLowerCase().includes(query)
+      && item.inside >= Number(minParticipants.value)
+      && item.inside / item.total * 100 >= Number(minShare.value));
+    if (allianceSort.value === 'name') visibleAlliances.sort((a, b) => a.tag.localeCompare(b.tag));
+    else if (allianceSort.value === 'percent') visibleAlliances.sort((a, b) => b.inside / b.total - a.inside / a.total || b.inside - a.inside || a.tag.localeCompare(b.tag));
+    else visibleAlliances.sort((a, b) => b.inside - a.inside || b.inside / b.total - a.inside / a.total || a.tag.localeCompare(b.tag));
+    const tags = new Set(visibleAlliances.map(item => item.tag));
+    filtered = hqs.filter(hq => hq.zone === 'capital' && tags.has(hq.tag));
+    renderAlliances();
+    scheduleDraw();
+    return;
+  }
   const allianceValue = alliance.value;
   filtered = hqs.filter(hq => {
     if ((hq.zone || 'outside') !== activeZone) return false;
@@ -197,6 +214,39 @@ function refreshList() {
   displayLimit = 150;
   renderList();
   scheduleDraw();
+}
+
+function renderAlliances() {
+  const fragment = document.createDocumentFragment();
+  for (const item of visibleAlliances) {
+    const button = document.createElement('button');
+    button.className = 'alliance-row';
+    button.type = 'button';
+    const tag = document.createElement('strong');
+    tag.textContent = `[${item.tag}]`;
+    const count = document.createElement('span');
+    count.textContent = `${item.inside} / ${item.total}`;
+    const share = document.createElement('span');
+    share.className = 'alliance-share';
+    share.textContent = `${(100 * item.inside / item.total).toFixed(1)}%`;
+    button.append(tag, count, share);
+    button.addEventListener('click', () => {
+      activeView = 'hqs';
+      search.value = '';
+      alliance.value = item.tag;
+      updateView();
+    });
+    fragment.append(button);
+  }
+  if (!visibleAlliances.length) {
+    const empty = document.createElement('div');
+    empty.className = 'empty-results';
+    empty.textContent = 'No alliances match these filters.';
+    fragment.append(empty);
+  }
+  list.replaceChildren(fragment);
+  document.getElementById('listCount').textContent = `${visibleAlliances.length} alliances`;
+  document.getElementById('loadMore').hidden = true;
 }
 
 function renderList() {
@@ -236,15 +286,30 @@ function renderList() {
 
 function resetList() { list.replaceChildren(); refreshList(); }
 
-function setZone(zone) {
-  activeZone = zone;
+function updateView() {
+  if (activeView === 'alliances') activeZone = 'capital';
   for (const [name, id] of [['outside', 'outsideTab'], ['capital', 'capitalTab']]) {
     const tab = document.getElementById(id);
-    tab.classList.toggle('active', name === zone);
-    tab.setAttribute('aria-selected', String(name === zone));
+    tab.classList.toggle('active', name === activeZone);
+    tab.setAttribute('aria-selected', String(name === activeZone));
   }
-  document.getElementById('listHeading').textContent = zone === 'capital' ? 'CAPITAL HEADQUARTERS' : 'OUTSIDE HEADQUARTERS';
+  for (const [name, id] of [['hqs', 'hqViewTab'], ['alliances', 'allianceViewTab']]) {
+    const tab = document.getElementById(id);
+    tab.classList.toggle('active', name === activeView);
+    tab.setAttribute('aria-selected', String(name === activeView));
+  }
+  document.getElementById('hqFilters').hidden = activeView !== 'hqs';
+  document.getElementById('allianceFilters').hidden = activeView !== 'alliances';
+  document.getElementById('searchLabel').textContent = activeView === 'alliances' ? 'Find an alliance' : 'Find an HQ';
+  search.placeholder = activeView === 'alliances' ? 'Alliance tag' : 'Name, alliance, or X,Y';
+  document.getElementById('listHeading').textContent = activeView === 'alliances' ? 'CAPITAL ALLIANCES' : activeZone === 'capital' ? 'CAPITAL HEADQUARTERS' : 'OUTSIDE HEADQUARTERS';
   resetList();
+}
+
+function setZone(zone) {
+  activeZone = zone;
+  if (zone === 'outside') activeView = 'hqs';
+  updateView();
 }
 
 canvas.addEventListener('pointerdown', event => {
@@ -295,6 +360,8 @@ document.getElementById('menuButton').addEventListener('click', () => sidebar.cl
 document.getElementById('loadMore').addEventListener('click', () => { displayLimit += 150; renderList(); });
 document.getElementById('outsideTab').addEventListener('click', () => setZone('outside'));
 document.getElementById('capitalTab').addEventListener('click', () => setZone('capital'));
+document.getElementById('hqViewTab').addEventListener('click', () => { activeView = 'hqs'; search.value = ''; updateView(); });
+document.getElementById('allianceViewTab').addEventListener('click', () => { activeView = 'alliances'; search.value = ''; updateView(); });
 search.addEventListener('input', resetList);
 alliance.addEventListener('change', resetList);
 shield.addEventListener('change', () => {
@@ -307,9 +374,12 @@ terrain.addEventListener('change', () => {
 });
 minHq.addEventListener('change', resetList);
 sort.addEventListener('change', resetList);
+allianceSort.addEventListener('change', resetList);
+minParticipants.addEventListener('change', resetList);
+minShare.addEventListener('change', resetList);
 document.getElementById('clearFilters').addEventListener('click', () => {
   search.value = ''; alliance.value = ''; shield.value = ''; terrain.value = ''; minHq.value = '0';
-  sort.value = 'hq'; resetList();
+  sort.value = 'hq'; allianceSort.value = 'count'; minParticipants.value = '1'; minShare.value = '0'; resetList();
 });
 window.addEventListener('resize', resize);
 
@@ -326,6 +396,13 @@ async function start() {
     document.getElementById('visibleCount').textContent = `${hqs.length.toLocaleString()} HQ candidates`;
     document.getElementById('outsideCount').textContent = hqs.filter(hq => hq.zone !== 'capital').length.toLocaleString();
     document.getElementById('capitalCount').textContent = hqs.filter(hq => hq.zone === 'capital').length.toLocaleString();
+    const totals = new Map(), inside = new Map();
+    for (const hq of hqs) {
+      if (!hq.tag) continue;
+      totals.set(hq.tag, (totals.get(hq.tag) || 0) + 1);
+      if (hq.zone === 'capital') inside.set(hq.tag, (inside.get(hq.tag) || 0) + 1);
+    }
+    allianceStats = [...inside].map(([tag, count]) => ({ tag, inside: count, total: totals.get(tag) }));
     const tags = [...new Set(hqs.map(hq => hq.tag).filter(Boolean))].sort((a,b) => a.localeCompare(b));
     const blank = document.createElement('option'); blank.value = '__blank__'; blank.textContent = 'No alliance tag';
     alliance.append(blank);
