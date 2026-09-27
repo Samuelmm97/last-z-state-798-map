@@ -194,7 +194,7 @@ function refreshList() {
     else if (allianceSort.value === 'percent') visibleAlliances.sort((a, b) => b.inside / b.total - a.inside / a.total || b.inside - a.inside || a.tag.localeCompare(b.tag));
     else visibleAlliances.sort((a, b) => b.inside - a.inside || b.inside / b.total - a.inside / a.total || a.tag.localeCompare(b.tag));
     const tags = new Set(visibleAlliances.map(item => item.tag));
-    filtered = hqs.filter(hq => hq.zone === 'capital' && tags.has(hq.tag));
+    filtered = hqs.filter(hq => hq.zone === 'capital' && shieldStatus(hq) !== 'not_hq' && tags.has(hq.tag));
     renderAlliances();
     scheduleDraw();
     return;
@@ -202,6 +202,7 @@ function refreshList() {
   const allianceValue = alliance.value;
   filtered = hqs.filter(hq => {
     if ((hq.zone || 'outside') !== activeZone) return false;
+    if (shieldStatus(hq) === 'not_hq' && shield.value !== 'not_hq') return false;
     if (allianceValue === '__blank__' ? hq.tag : allianceValue && hq.tag !== allianceValue) return false;
     if (shield.value && shieldStatus(hq) !== shield.value) return false;
     if (terrain.value && terrainStatus(hq) !== terrain.value) return false;
@@ -393,17 +394,18 @@ async function start() {
     const observations = await shieldResponse.json();
     const shieldById = new Map(observations.map(item => [item.id, item]));
     for (const hq of hqs) hq.shield = shieldById.get(hq.id) || null;
-    document.getElementById('visibleCount').textContent = `${hqs.length.toLocaleString()} HQ candidates`;
-    document.getElementById('outsideCount').textContent = hqs.filter(hq => hq.zone !== 'capital').length.toLocaleString();
-    document.getElementById('capitalCount').textContent = hqs.filter(hq => hq.zone === 'capital').length.toLocaleString();
+    const plausibleHqs = hqs.filter(hq => shieldStatus(hq) !== 'not_hq');
+    document.getElementById('visibleCount').textContent = `${plausibleHqs.length.toLocaleString()} HQ candidates`;
+    document.getElementById('outsideCount').textContent = plausibleHqs.filter(hq => hq.zone !== 'capital').length.toLocaleString();
+    document.getElementById('capitalCount').textContent = plausibleHqs.filter(hq => hq.zone === 'capital').length.toLocaleString();
     const totals = new Map(), inside = new Map();
-    for (const hq of hqs) {
+    for (const hq of plausibleHqs) {
       if (!hq.tag) continue;
       totals.set(hq.tag, (totals.get(hq.tag) || 0) + 1);
       if (hq.zone === 'capital') inside.set(hq.tag, (inside.get(hq.tag) || 0) + 1);
     }
     allianceStats = [...inside].map(([tag, count]) => ({ tag, inside: count, total: totals.get(tag) }));
-    const tags = [...new Set(hqs.map(hq => hq.tag).filter(Boolean))].sort((a,b) => a.localeCompare(b));
+    const tags = [...new Set(plausibleHqs.map(hq => hq.tag).filter(Boolean))].sort((a,b) => a.localeCompare(b));
     const blank = document.createElement('option'); blank.value = '__blank__'; blank.textContent = 'No alliance tag';
     alliance.append(blank);
     for (const tag of tags) { const option = document.createElement('option'); option.value = tag; option.textContent = `[${tag}]`; alliance.append(option); }

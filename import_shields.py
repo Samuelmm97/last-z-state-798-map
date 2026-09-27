@@ -10,7 +10,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-VALID_STATUS = {'shielded', 'unshielded', 'review', 'not_applicable'}
+VALID_STATUS = {'shielded', 'unshielded', 'review', 'not_applicable', 'not_hq'}
 VALID_TERRAIN = {'grass', 'mud', 'review'}
 
 
