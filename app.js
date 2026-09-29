@@ -22,7 +22,7 @@ const cache = new Map();
 let metadata, hqs = [], filtered = [], selected = null;
 let radiusPoint = { x: 500, y: 500 }, radius = 100, pickingPoint = false;
 let activeZone = 'outside';
-let activeView = 'hqs', allianceStats = [], visibleAlliances = [];
+let activeView = 'hqs', allianceStats = [], visibleAlliances = [], powerData = null, playerStats = [], visiblePlayers = [];
 let centerX = 8000, centerY = 5250, scale = .08, fitted = false;
 let width = 1, height = 1, framePending = false, dragging = null, displayLimit = 150;
 
@@ -36,8 +36,18 @@ const terrainStatus = hq => hq.shield?.terrain || 'unscanned';
 const nap13 = new Set(['Helm', 'SWT', 'WRtH', 'mERC', 'aTam', '4NG', 'UpS', 'Ayaa', 'E45Y', '7cie', 'SHSN', 'movR', 'ULD']);
 const napTagAliases = { HeIm: 'Helm', '7cle': '7cie', '7cIe': '7cie' };
 const isNap13 = tag => nap13.has(napTagAliases[tag] || tag);
+// The three survivor boards share one {rank, value} shape, so a single loop renders all of them.
+const powerMetrics = [['personal_power', 'personal power'], ['strongest_hero_power', 'strongest hero power'], ['total_hero_power', 'total hero power']];
+// Board totals run into the hundreds of millions, so units keep the card and list rows readable.
+const compactPower = value => {
+  if (!Number.isFinite(value)) return '—';
+  if (value >= 1e9) return `${(value / 1e9).toFixed(1)}B`;
+  if (value >= 1e6) return `${(value / 1e6).toFixed(1)}M`;
+  if (value >= 1e3) return `${(value / 1e3).toFixed(1)}K`;
+  return value.toLocaleString();
+};
 const filtersActive = () => Boolean(search.value.trim() || alliance.value || shield.value || terrain.value || Number(minHq.value));
-const visiblePins = () => activeView === 'alliances' || filtersActive() ? filtered : hqs;
+const visiblePins = () => activeView === 'alliances' || activeView === 'players' || filtersActive() ? filtered : hqs;
 
 const clamp = (value, low, high) => Math.min(high, Math.max(low, value));
 const mapX = x => x * metadata.scaleX;
@@ -201,6 +211,34 @@ function setPickingPoint(value) {
   canvas.classList.toggle('picking-point', value);
 }
 
+// Leaderboard rows are optional per HQ, so the block is rebuilt — or hidden — on every selection.
+function fillCardPower(player) {
+  const box = document.getElementById('cardPower');
+  const grid = document.createElement('div');
+  grid.className = 'power-grid';
+  for (const [key, label] of powerMetrics) {
+    const metric = player?.[key];
+    if (!metric) continue;
+    const cell = document.createElement('div');
+    cell.className = 'power-metric';
+    const caption = document.createElement('span');
+    caption.textContent = `#${metric.rank} ${label}`;
+    const value = document.createElement('strong');
+    value.textContent = compactPower(metric.value);
+    cell.append(caption, value);
+    grid.append(cell);
+  }
+  const alliancePower = player?.tag && powerData?.alliances?.[player.tag]?.alliance_power;
+  const notes = [];
+  if (player?.hero) notes.push(`Strongest hero: ${player.hero}`);
+  if (alliancePower) notes.push(`[${player.tag}] alliance power ${compactPower(alliancePower.value)} · #${alliancePower.rank}`);
+  const note = document.createElement('div');
+  note.className = 'power-note';
+  note.textContent = notes.join(' · ');
+  box.replaceChildren(grid, note);
+  box.hidden = !grid.childElementCount && !notes.length;
+}
+
 function selectHQ(hq, jump = true) {
   selected = hq;
   setRadiusPoint(hq.x, hq.y);
@@ -219,6 +257,7 @@ function selectHQ(hq, jump = true) {
     const time = new Date(hq.shield.observedAt).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' });
     observed.textContent = `Map capture: ${time} · ${hq.shield.terrain === 'grass' ? 'Grass' : hq.shield.terrain === 'mud' ? 'Mud' : 'Terrain needs review'}${hq.shield.note ? ` · ${hq.shield.note}` : ''}`;
   } else observed.textContent = hq.shield?.note || 'No shield reading from this map sweep.';
+  fillCardPower(hq.power);
   const image = document.getElementById('cardImage');
   image.src = hq.photo; image.alt = `In-game screenshot of ${hq.name}, HQ ${hq.hq}`;
   document.getElementById('cardImageLink').href = hq.photo;
@@ -244,6 +283,15 @@ function refreshList() {
     const tags = new Set(visibleAlliances.map(item => item.tag));
     filtered = hqs.filter(hq => hq.zone === 'capital' && shieldStatus(hq) !== 'not_hq' && tags.has(hq.tag));
     renderAlliances();
+    scheduleDraw();
+    return;
+  }
+  if (activeView === 'players') {
+    visiblePlayers = playerStats.filter(player => !query || `${player.name || ''} ${player.tag || ''} ${player.display || ''}`.toLocaleLowerCase().includes(query));
+    // Pins follow the board so a selected row can be found where that survivor sits.
+    const matched = new Set(visiblePlayers.map(player => player.atlas_id).filter(id => id != null));
+    filtered = hqs.filter(hq => matched.has(hq.id) && shieldStatus(hq) !== 'not_hq');
+    renderPlayers();
     scheduleDraw();
     return;
   }
@@ -298,6 +346,48 @@ function renderAlliances() {
   document.getElementById('loadMore').hidden = true;
 }
 
+function renderPlayers() {
+  const fragment = document.createDocumentFragment();
+  for (const player of visiblePlayers) {
+    const target = player.atlas_id != null ? hqs.find(hq => hq.id === player.atlas_id) : null;
+    const button = document.createElement('button');
+    // Only rows matched to an atlas HQ are worth a pointer and a jump; the rest are read-only.
+    button.className = `player-row${target ? ' map-link' : ''}`;
+    button.type = 'button';
+    const rank = document.createElement('span');
+    rank.className = 'player-rank';
+    rank.textContent = player.personal_power?.rank ? `#${player.personal_power.rank}` : '—';
+    const copy = document.createElement('span'); copy.className = 'copy';
+    const name = document.createElement('span'); name.className = 'name';
+    name.textContent = player.tag ? `[${player.tag}] ${player.name}` : player.name;
+    const sub = document.createElement('span'); sub.className = 'sub';
+    sub.textContent = powerMetrics.filter(([key]) => player[key])
+      .map(([key, label]) => `${compactPower(player[key].value)} ${label}`).join(' · ') || 'No power metric published';
+    copy.append(name, sub); button.append(rank, copy);
+    if (target) {
+      const pin = document.createElement('span');
+      pin.className = 'pin';
+      pin.textContent = target.hq ? String(target.hq) : '?';
+      button.append(pin);
+      button.addEventListener('click', () => {
+        selectHQ(target);
+        // selectHQ can switch zone tabs (and with them the view) when the HQ lies outside the capital.
+        if (activeView !== 'players') { activeView = 'players'; updateView(); }
+      });
+    }
+    fragment.append(button);
+  }
+  if (!visiblePlayers.length) {
+    const empty = document.createElement('div');
+    empty.className = 'empty-results';
+    empty.textContent = powerData ? 'No players match this search.' : 'No leaderboard capture has been published yet.';
+    fragment.append(empty);
+  }
+  list.replaceChildren(fragment);
+  document.getElementById('listCount').textContent = `${visiblePlayers.length} players`;
+  document.getElementById('loadMore').hidden = true;
+}
+
 function renderList() {
   if (!filtered.length) {
     const empty = document.createElement('div');
@@ -342,16 +432,18 @@ function updateView() {
     tab.classList.toggle('active', name === activeZone);
     tab.setAttribute('aria-selected', String(name === activeZone));
   }
-  for (const [name, id] of [['hqs', 'hqViewTab'], ['alliances', 'allianceViewTab']]) {
+  for (const [name, id] of [['hqs', 'hqViewTab'], ['alliances', 'allianceViewTab'], ['players', 'playerViewTab']]) {
     const tab = document.getElementById(id);
     tab.classList.toggle('active', name === activeView);
     tab.setAttribute('aria-selected', String(name === activeView));
   }
   document.getElementById('hqFilters').hidden = activeView !== 'hqs';
   document.getElementById('allianceFilters').hidden = activeView !== 'alliances';
-  document.getElementById('searchLabel').textContent = activeView === 'alliances' ? 'Find an alliance' : 'Find an HQ';
-  search.placeholder = activeView === 'alliances' ? 'Alliance tag' : 'Name, alliance, or X,Y';
-  document.getElementById('listHeading').textContent = activeView === 'alliances' ? 'CAPITAL ALLIANCES' : activeZone === 'capital' ? 'CAPITAL HEADQUARTERS' : 'OUTSIDE HEADQUARTERS';
+  document.getElementById('playerFilters').hidden = activeView !== 'players';
+  document.getElementById('searchLabel').textContent = activeView === 'alliances' ? 'Find an alliance' : activeView === 'players' ? 'Find a player' : 'Find an HQ';
+  search.placeholder = activeView === 'alliances' ? 'Alliance tag' : activeView === 'players' ? 'Player name or tag' : 'Name, alliance, or X,Y';
+  document.getElementById('listHeading').textContent = activeView === 'alliances' ? 'CAPITAL ALLIANCES' : activeView === 'players' ? 'POWER LEADERBOARDS' : activeZone === 'capital' ? 'CAPITAL HEADQUARTERS' : 'OUTSIDE HEADQUARTERS';
+  document.getElementById('powerCaptureNote').textContent = powerData?.captured_date ? `Leaderboards captured ${powerData.captured_date}` : 'No leaderboard capture has been published yet.';
   resetList();
 }
 
@@ -430,6 +522,7 @@ document.getElementById('outsideTab').addEventListener('click', () => setZone('o
 document.getElementById('capitalTab').addEventListener('click', () => setZone('capital'));
 document.getElementById('hqViewTab').addEventListener('click', () => { activeView = 'hqs'; search.value = ''; updateView(); });
 document.getElementById('allianceViewTab').addEventListener('click', () => { activeView = 'alliances'; search.value = ''; updateView(); });
+document.getElementById('playerViewTab').addEventListener('click', () => { activeView = 'players'; search.value = ''; updateView(); });
 search.addEventListener('input', resetList);
 alliance.addEventListener('change', resetList);
 shield.addEventListener('change', () => {
@@ -453,14 +546,23 @@ window.addEventListener('resize', resize);
 
 async function start() {
   try {
-    const [mapResponse, hqResponse, shieldResponse] = await Promise.all([
-      fetch('data/map.json'), fetch('data/hqs.json'), fetch('data/shields.json')
+    const [mapResponse, hqResponse, shieldResponse, powerResponse] = await Promise.all([
+      fetch('data/map.json'), fetch('data/hqs.json'), fetch('data/shields.json'),
+      // The daily board import is optional: a 404 (nothing published yet) must leave the atlas untouched.
+      fetch('data/power.json').catch(() => null)
     ]);
     if (!mapResponse.ok || !hqResponse.ok || !shieldResponse.ok) throw new Error('Map data could not be loaded');
     metadata = await mapResponse.json(); hqs = await hqResponse.json();
     const observations = await shieldResponse.json();
+    if (powerResponse?.ok) powerData = await powerResponse.json().catch(() => null);
     const shieldById = new Map(observations.map(item => [item.id, item]));
     for (const hq of hqs) hq.shield = shieldById.get(hq.id) || null;
+    const playerRows = Object.values(powerData?.players || {});
+    const powerById = new Map(playerRows.filter(item => item.atlas_id != null).map(item => [item.atlas_id, item]));
+    for (const hq of hqs) hq.power = powerById.get(hq.id) || null;
+    // Rows arrive top-down from the game; anyone missing a personal-power entry sinks below the ranked.
+    playerStats = playerRows.sort((a, b) => (b.personal_power?.value || 0) - (a.personal_power?.value || 0)
+      || String(a.display || a.name || '').localeCompare(String(b.display || b.name || '')));
     const plausibleHqs = hqs.filter(hq => shieldStatus(hq) !== 'not_hq');
     document.getElementById('visibleCount').textContent = `${plausibleHqs.length.toLocaleString()} HQ candidates`;
     document.getElementById('outsideCount').textContent = plausibleHqs.filter(hq => hq.zone !== 'capital').length.toLocaleString();

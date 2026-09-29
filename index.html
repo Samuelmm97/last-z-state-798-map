@@ -23,6 +23,7 @@
       <div class="view-tabs" role="tablist" aria-label="List view">
         <button id="hqViewTab" class="view-tab active" role="tab" aria-selected="true" type="button">Headquarters</button>
         <button id="allianceViewTab" class="view-tab" role="tab" aria-selected="false" type="button">Alliance participation</button>
+        <button id="playerViewTab" class="view-tab" role="tab" aria-selected="false" type="button">Power leaderboards</button>
       </div>
       <div class="filters">
         <label for="search" id="searchLabel">Find an HQ</label>
@@ -103,6 +104,10 @@
           </div>
           <p class="participation-note">Inside count ÷ all HQs with that tag in this atlas. Tap an alliance to see its HQs.</p>
         </div>
+        <div id="playerFilters" hidden>
+          <p class="participation-note" id="powerCaptureNote"></p>
+          <p class="participation-note">Ranked by personal power. Rows with a level badge are matched to an atlas HQ and jump to it.</p>
+        </div>
         <button class="clear-filters" id="clearFilters" type="button">Clear filters</button>
       </div>
       <div class="list-head"><span id="listHeading">OUTSIDE HEADQUARTERS</span><span id="listCount"></span></div>
@@ -145,6 +150,7 @@
         <div class="card-location" id="cardLocation"></div>
         <div class="card-shield" id="cardShield"></div>
         <div class="card-observed" id="cardObserved"></div>
+        <div class="card-power" id="cardPower" hidden></div>
         <a id="cardImageLink" href="#" target="_blank" rel="noopener"><img id="cardImage" alt="Original in-game screenshot crop of this HQ"></a>
         <div class="card-caption">Original game capture · <span id="cardSource"></span></div>
       </section>
