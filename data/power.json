@@ -806,10 +806,10 @@
   "alliance_power": 100,
   "personal_power": 138,
   "strongest_hero_power": 149,
-  "total_hero_power": 140
+  "total_hero_power": 150
  },
  "captured_date": "2026-09-29",
- "imported_at": "2026-09-29T17:31:53",
+ "imported_at": "2026-09-29T17:32:42",
  "players": {
   "": {
    "display": "[SWT]جابر",
@@ -836,7 +836,7 @@
    "name": "1Lumpi1",
    "tag": "UpS",
    "total_hero_power": {
-    "rank": 146,
+    "rank": 147,
     "value": 12483678
    }
   },
@@ -973,8 +973,8 @@
    },
    "tag": "4NG",
    "total_hero_power": {
-    "rank": 75,
-    "value": 14741480
+    "rank": 71,
+    "value": 14834453
    }
   },
   "allen42": {
@@ -1037,7 +1037,7 @@
    "tag": "SWT",
    "total_hero_power": {
     "rank": 90,
-    "value": 13998462
+    "value": 13999810
    }
   },
   "arduino": {
@@ -1257,7 +1257,11 @@
     "rank": 37,
     "value": 2257052
    },
-   "tag": "SWT"
+   "tag": "SWT",
+   "total_hero_power": {
+    "rank": 46,
+    "value": 16452207
+   }
   },
   "bigcod": {
    "atlas": {
@@ -1483,7 +1487,7 @@
    },
    "tag": "SWT",
    "total_hero_power": {
-    "rank": 67,
+    "rank": 68,
     "value": 15015970
    }
   },
@@ -1593,8 +1597,8 @@
    },
    "tag": "Helm",
    "total_hero_power": {
-    "rank": 22,
-    "value": 18688166
+    "rank": 21,
+    "value": 18900681
    }
   },
   "ceto": {
@@ -1647,7 +1651,7 @@
    },
    "tag": "Helm",
    "total_hero_power": {
-    "rank": 74,
+    "rank": 75,
     "value": 14762903
    }
   },
@@ -1887,7 +1891,11 @@
     "rank": 77,
     "value": 2023645
    },
-   "tag": "Helm"
+   "tag": "Helm",
+   "total_hero_power": {
+    "rank": 17,
+    "value": 20524145
+   }
   },
   "danilo11994": {
    "display": "[Helm]Danilo11994",
@@ -1932,7 +1940,7 @@
    "tag": "Helm",
    "total_hero_power": {
     "rank": 19,
-    "value": 19665683
+    "value": 19665688
    }
   },
   "dieselsix": {
@@ -2109,7 +2117,11 @@
     "rank": 25,
     "value": 2401979
    },
-   "tag": "mERC"
+   "tag": "mERC",
+   "total_hero_power": {
+    "rank": 49,
+    "value": 16223855
+   }
   },
   "fatimazohra": {
    "atlas": {
@@ -2175,7 +2187,7 @@
    },
    "tag": "Helm",
    "total_hero_power": {
-    "rank": 116,
+    "rank": 117,
     "value": 13264782
    }
   },
@@ -2331,7 +2343,7 @@
    "tag": "aTam",
    "total_hero_power": {
     "rank": 85,
-    "value": 14103580
+    "value": 14103780
    }
   },
   "ganjiwanleea": {
@@ -2420,10 +2432,10 @@
     "value": 16648038
    }
   },
-  "gruffllegunnar": {
-   "display": "[WRtH]GrufflleGunnar",
+  "gruffullegunnar": {
+   "display": "[WRtH]GruffulleGunnar",
    "match": "none",
-   "name": "GrufflleGunnar",
+   "name": "GruffulleGunnar",
    "tag": "WRtH",
    "total_hero_power": {
     "rank": 119,
@@ -2524,8 +2536,8 @@
    "name": "HangMan Coming",
    "tag": "4NG",
    "total_hero_power": {
-    "rank": 144,
-    "value": 12492842
+    "rank": 145,
+    "value": 12493842
    }
   },
   "hankscorpio725": {
@@ -2561,7 +2573,7 @@
    "name": "Hellmarch",
    "tag": "SWT",
    "total_hero_power": {
-    "rank": 72,
+    "rank": 73,
     "value": 14813719
    }
   },
@@ -2653,7 +2665,7 @@
    "name": "IrishGuy",
    "tag": "Helm",
    "total_hero_power": {
-    "rank": 149,
+    "rank": 150,
     "value": 12458820
    }
   },
@@ -2668,7 +2680,7 @@
    },
    "tag": "SHSN",
    "total_hero_power": {
-    "rank": 73,
+    "rank": 74,
     "value": 14781834
    }
   },
@@ -2679,7 +2691,7 @@
    "tag": "Helm",
    "total_hero_power": {
     "rank": 96,
-    "value": 13841304
+    "value": 13841504
    }
   },
   "jabeezy33": {
@@ -2692,7 +2704,7 @@
    },
    "tag": "mERC",
    "total_hero_power": {
-    "rank": 114,
+    "rank": 115,
     "value": 13286172
    }
   },
@@ -2714,7 +2726,7 @@
    },
    "tag": "WRtH",
    "total_hero_power": {
-    "rank": 115,
+    "rank": 116,
     "value": 13280653
    }
   },
@@ -2759,7 +2771,7 @@
    },
    "tag": "aTam",
    "total_hero_power": {
-    "rank": 71,
+    "rank": 72,
     "value": 14817044
    }
   },
@@ -2779,7 +2791,7 @@
    "tag": "SWT",
    "total_hero_power": {
     "rank": 69,
-    "value": 14959371
+    "value": 14953371
    }
   },
   "joanlane": {
@@ -2805,8 +2817,8 @@
    },
    "tag": "Helm",
    "total_hero_power": {
-    "rank": 126,
-    "value": 13094732
+    "rank": 124,
+    "value": 13114959
    }
   },
   "johnd03": {
@@ -2951,7 +2963,11 @@
     "rank": 24,
     "value": 2404695
    },
-   "tag": "WRtH"
+   "tag": "WRtH",
+   "total_hero_power": {
+    "rank": 18,
+    "value": 20047304
+   }
   },
   "kaanbilge": {
    "atlas": {
@@ -3020,8 +3036,8 @@
    },
    "tag": "Helm",
    "total_hero_power": {
-    "rank": 9,
-    "value": 23280542
+    "rank": 8,
+    "value": 23383721
    }
   },
   "kne": {
@@ -3043,7 +3059,11 @@
     "rank": 88,
     "value": 65155026
    },
-   "tag": "WRtH"
+   "tag": "WRtH",
+   "total_hero_power": {
+    "rank": 142,
+    "value": 12604060
+   }
   },
   "lebanesee": {
    "atlas": {
@@ -3112,7 +3132,11 @@
     "rank": 125,
     "value": 1741729
    },
-   "tag": "UpS"
+   "tag": "UpS",
+   "total_hero_power": {
+    "rank": 44,
+    "value": 16458559
+   }
   },
   "lextalionis": {
    "atlas": {
@@ -3178,8 +3202,8 @@
    },
    "tag": "UpS",
    "total_hero_power": {
-    "rank": 142,
-    "value": 12577590
+    "rank": 143,
+    "value": 12599465
    }
   },
   "lioman33": {
@@ -3228,11 +3252,7 @@
     "rank": 138,
     "value": 1704636
    },
-   "tag": "WRtH",
-   "total_hero_power": {
-    "rank": 150,
-    "value": 12430527
-   }
+   "tag": "WRtH"
   },
   "lordsouth8314": {
    "atlas": {
@@ -3446,7 +3466,7 @@
    },
    "tag": "mERC",
    "total_hero_power": {
-    "rank": 124,
+    "rank": 125,
     "value": 13112711
    }
   },
@@ -3538,8 +3558,8 @@
    },
    "tag": "UpS",
    "total_hero_power": {
-    "rank": 117,
-    "value": 13262324
+    "rank": 114,
+    "value": 13298084
    }
   },
   "michaelsz": {
@@ -3694,7 +3714,7 @@
    },
    "tag": "Ayaa",
    "total_hero_power": {
-    "rank": 145,
+    "rank": 146,
     "value": 12485549
    }
   },
@@ -3794,7 +3814,7 @@
    },
    "tag": "WRtH",
    "total_hero_power": {
-    "rank": 8,
+    "rank": 9,
     "value": 23309979
    }
   },
@@ -3842,7 +3862,11 @@
     "rank": 55,
     "value": 2150385
    },
-   "tag": "WRtH"
+   "tag": "WRtH",
+   "total_hero_power": {
+    "rank": 48,
+    "value": 16238321
+   }
   },
   "muhammed798": {
    "atlas": {
@@ -3895,7 +3919,7 @@
    "tag": "Helm",
    "total_hero_power": {
     "rank": 1,
-    "value": 34864945
+    "value": 34879795
    }
   },
   "nfg1": {
@@ -3974,8 +3998,8 @@
    },
    "tag": "Helm",
    "total_hero_power": {
-    "rank": 68,
-    "value": 15015912
+    "rank": 67,
+    "value": 15017437
    }
   },
   "panda67": {
@@ -4035,7 +4059,7 @@
    },
    "tag": "Helm",
    "total_hero_power": {
-    "rank": 21,
+    "rank": 22,
     "value": 18712568
    }
   },
@@ -4120,7 +4144,11 @@
     "rank": 44,
     "value": 2195392
    },
-   "tag": "Helm"
+   "tag": "Helm",
+   "total_hero_power": {
+    "rank": 16,
+    "value": 21290139
+   }
   },
   "pumpel007": {
    "display": "[SWT]Pumpel007",
@@ -4183,7 +4211,7 @@
    "name": "Rainbow866668",
    "tag": "4NG",
    "total_hero_power": {
-    "rank": 147,
+    "rank": 148,
     "value": 12480512
    }
   },
@@ -4267,7 +4295,7 @@
    },
    "tag": "UpS",
    "total_hero_power": {
-    "rank": 143,
+    "rank": 144,
     "value": 12567111
    }
   },
@@ -4295,7 +4323,7 @@
    "tag": "WRtH",
    "total_hero_power": {
     "rank": 24,
-    "value": 18261445
+    "value": 18266580
    }
   },
   "rayyy": {
@@ -4355,7 +4383,7 @@
    "tag": "Helm",
    "total_hero_power": {
     "rank": 128,
-    "value": 13053752
+    "value": 13055627
    }
   },
   "reihermat": {
@@ -4512,7 +4540,7 @@
    "tag": "4NG",
    "total_hero_power": {
     "rank": 112,
-    "value": 13380374
+    "value": 13390149
    }
   },
   "samuelm": {
@@ -4603,7 +4631,11 @@
     "rank": 11,
     "value": 2663418
    },
-   "tag": "Helm"
+   "tag": "Helm",
+   "total_hero_power": {
+    "rank": 15,
+    "value": 21802921
+   }
   },
   "shodak2": {
    "atlas": {
@@ -4649,7 +4681,11 @@
     "rank": 99,
     "value": 1878091
    },
-   "tag": "E45Y"
+   "tag": "E45Y",
+   "total_hero_power": {
+    "rank": 45,
+    "value": 16458129
+   }
   },
   "skywalkertony": {
    "atlas": {
@@ -4751,7 +4787,7 @@
    },
    "tag": "SWT",
    "total_hero_power": {
-    "rank": 125,
+    "rank": 126,
     "value": 13103150
    }
   },
@@ -4896,7 +4932,7 @@
    },
    "tag": "",
    "total_hero_power": {
-    "rank": 148,
+    "rank": 149,
     "value": 12468137
    }
   },
@@ -5063,7 +5099,11 @@
     "rank": 116,
     "value": 1795494
    },
-   "tag": "SWT"
+   "tag": "SWT",
+   "total_hero_power": {
+    "rank": 47,
+    "value": 16442389
+   }
   },
   "threeshot": {
    "atlas": {
