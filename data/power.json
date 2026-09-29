@@ -1,0 +1,5478 @@
+{
+ "alliances": {
+  "1BMP": {
+   "alliance_power": {
+    "rank": 72,
+    "value": 40444058
+   },
+   "display": "[1BMP]PODEROSAS",
+   "tag": "1BMP"
+  },
+  "1LEV": {
+   "alliance_power": {
+    "rank": 34,
+    "value": 266298987
+   },
+   "display": "[1LEV]Lions739",
+   "tag": "1LEV"
+  },
+  "333z": {
+   "alliance_power": {
+    "rank": 96,
+    "value": 4033082
+   },
+   "display": "[333z]zee",
+   "tag": "333z"
+  },
+  "4NG": {
+   "alliance_power": {
+    "rank": 5,
+    "value": 4163473788
+   },
+   "display": "[4NG]GOT4NG",
+   "tag": "4NG"
+  },
+  "5KY": {
+   "alliance_power": {
+    "rank": 77,
+    "value": 21180913
+   },
+   "display": "[5KY]SkyBoundEmpire",
+   "tag": "5KY"
+  },
+  "7815": {
+   "alliance_power": {
+    "rank": 26,
+    "value": 441344085
+   },
+   "display": "[7815]les Templier",
+   "tag": "7815"
+  },
+  "798F": {
+   "alliance_power": {
+    "rank": 88,
+    "value": 10403251
+   },
+   "display": "[798F]State 798 farms",
+   "tag": "798F"
+  },
+  "7cie": {
+   "alliance_power": {
+    "rank": 13,
+    "value": 1569542372
+   },
+   "display": "[7cie]7cie",
+   "tag": "7cie"
+  },
+  "896": {
+   "alliance_power": {
+    "rank": 98,
+    "value": 3767843
+   },
+   "display": "[896]896",
+   "tag": "896"
+  },
+  "ADAF": {
+   "alliance_power": {
+    "rank": 20,
+    "value": 562112828
+   },
+   "display": "[ADAF]WASDFR",
+   "tag": "ADAF"
+  },
+  "AGEB": {
+   "alliance_power": {
+    "rank": 64,
+    "value": 75640702
+   },
+   "display": "[AGEB]Angel Club",
+   "tag": "AGEB"
+  },
+  "AHM7": {
+   "alliance_power": {
+    "rank": 57,
+    "value": 87700557
+   },
+   "display": "[AHM7]Inhuman League",
+   "tag": "AHM7"
+  },
+  "ARAE": {
+   "alliance_power": {
+    "rank": 70,
+    "value": 47409951
+   },
+   "display": "[ARAE]بصمات",
+   "tag": "ARAE"
+  },
+  "ASL1": {
+   "alliance_power": {
+    "rank": 27,
+    "value": 397167441
+   },
+   "display": "[ASL1]AllStarLeague",
+   "tag": "ASL1"
+  },
+  "Ayaa": {
+   "alliance_power": {
+    "rank": 8,
+    "value": 3682087741
+   },
+   "display": "[Ayaa]Ayaaa",
+   "tag": "Ayaa"
+  },
+  "B4N": {
+   "alliance_power": {
+    "rank": 71,
+    "value": 45669015
+   },
+   "display": "[B4N]blood nation",
+   "tag": "B4N"
+  },
+  "BAD8": {
+   "alliance_power": {
+    "rank": 25,
+    "value": 458671441
+   },
+   "display": "[BAD8]L3g3nds",
+   "tag": "BAD8"
+  },
+  "BTCQ": {
+   "alliance_power": {
+    "rank": 63,
+    "value": 76589821
+   },
+   "display": "[BTCQ]BTC",
+   "tag": "BTCQ"
+  },
+  "CHIO": {
+   "alliance_power": {
+    "rank": 69,
+    "value": 52946324
+   },
+   "display": "[CHIO]Shelby Family",
+   "tag": "CHIO"
+  },
+  "COYO": {
+   "alliance_power": {
+    "rank": 24,
+    "value": 474994872
+   },
+   "display": "[COYO]COYOTES",
+   "tag": "COYO"
+  },
+  "CRIC": {
+   "alliance_power": {
+    "rank": 38,
+    "value": 222348142
+   },
+   "display": "[CRIC]TheCircus",
+   "tag": "CRIC"
+  },
+  "DMN": {
+   "alliance_power": {
+    "rank": 14,
+    "value": 1052570709
+   },
+   "display": "[DMN]DOMINION",
+   "tag": "DMN"
+  },
+  "DWX": {
+   "alliance_power": {
+    "rank": 60,
+    "value": 80887088
+   },
+   "display": "[DWX]Deathwish",
+   "tag": "DWX"
+  },
+  "DZC": {
+   "alliance_power": {
+    "rank": 100,
+    "value": 3137551
+   },
+   "display": "[DZC]Deadzone",
+   "tag": "DZC"
+  },
+  "E45Y": {
+   "alliance_power": {
+    "rank": 9,
+    "value": 3616634519
+   },
+   "display": "[E45Y]NoStress",
+   "tag": "E45Y"
+  },
+  "EGLT": {
+   "alliance_power": {
+    "rank": 42,
+    "value": 202125076
+   },
+   "display": "[EGLT]Eagle Talon",
+   "tag": "EGLT"
+  },
+  "ELVH": {
+   "alliance_power": {
+    "rank": 66,
+    "value": 60234948
+   },
+   "display": "[ELVH]EL VÂHÎD",
+   "tag": "ELVH"
+  },
+  "EzE": {
+   "alliance_power": {
+    "rank": 17,
+    "value": 739616263
+   },
+   "display": "[EzE]Endzeit Elite",
+   "tag": "EzE"
+  },
+  "FF07": {
+   "alliance_power": {
+    "rank": 55,
+    "value": 98793066
+   },
+   "display": "[FF07]Fatel Force",
+   "tag": "FF07"
+  },
+  "FOD": {
+   "alliance_power": {
+    "rank": 86,
+    "value": 11685560
+   },
+   "display": "[FOD]FriendsOfTDevil",
+   "tag": "FOD"
+  },
+  "FYL1": {
+   "alliance_power": {
+    "rank": 80,
+    "value": 16077574
+   },
+   "display": "[FYL1]FYL Bidness",
+   "tag": "FYL1"
+  },
+  "GID": {
+   "alliance_power": {
+    "rank": 30,
+    "value": 379303202
+   },
+   "display": "[GID]garudahindonesia",
+   "tag": "GID"
+  },
+  "GMA": {
+   "alliance_power": {
+    "rank": 73,
+    "value": 33174233
+   },
+   "display": "[GMA]grayman army",
+   "tag": "GMA"
+  },
+  "Gut": {
+   "alliance_power": {
+    "rank": 97,
+    "value": 3913169
+   },
+   "display": "[Gut]Deutschland1",
+   "tag": "Gut"
+  },
+  "Helm": {
+   "alliance_power": {
+    "rank": 1,
+    "value": 6535245471
+   },
+   "display": "[Helm]Helm",
+   "tag": "Helm"
+  },
+  "It1": {
+   "alliance_power": {
+    "rank": 94,
+    "value": 6202667
+   },
+   "display": "[It1]Italia1",
+   "tag": "It1"
+  },
+  "Itw": {
+   "alliance_power": {
+    "rank": 52,
+    "value": 108590787
+   },
+   "display": "[Itw]Italiawar",
+   "tag": "Itw"
+  },
+  "JKTN": {
+   "alliance_power": {
+    "rank": 35,
+    "value": 252370213
+   },
+   "display": "[JKTN]JAKARTANS",
+   "tag": "JKTN"
+  },
+  "KYLE": {
+   "alliance_power": {
+    "rank": 54,
+    "value": 105693087
+   },
+   "display": "[KYLE]KYLIE",
+   "tag": "KYLE"
+  },
+  "LKVX": {
+   "alliance_power": {
+    "rank": 48,
+    "value": 160575487
+   },
+   "display": "[LKVX]djdjddk",
+   "tag": "LKVX"
+  },
+  "LRDE": {
+   "alliance_power": {
+    "rank": 33,
+    "value": 326644991
+   },
+   "display": "[LRDE]Laronde",
+   "tag": "LRDE"
+  },
+  "Lsr": {
+   "alliance_power": {
+    "rank": 79,
+    "value": 16745617
+   },
+   "display": "[Lsr]Ymbc",
+   "tag": "Lsr"
+  },
+  "MPS1": {
+   "alliance_power": {
+    "rank": 28,
+    "value": 393619757
+   },
+   "display": "[MPS1]Melding Pot",
+   "tag": "MPS1"
+  },
+  "Mesi": {
+   "alliance_power": {
+    "rank": 22,
+    "value": 546234602
+   },
+   "display": "[Mesi]FORCE",
+   "tag": "Mesi"
+  },
+  "MsFd": {
+   "alliance_power": {
+    "rank": 41,
+    "value": 204385136
+   },
+   "display": "[MsFd]MisfitDisciples",
+   "tag": "MsFd"
+  },
+  "NCHT": {
+   "alliance_power": {
+    "rank": 87,
+    "value": 11208143
+   },
+   "display": "[NCHT]Blackbulls",
+   "tag": "NCHT"
+  },
+  "NLT": {
+   "alliance_power": {
+    "rank": 84,
+    "value": 12320542
+   },
+   "display": "[NLT]NL Cluppie",
+   "tag": "NLT"
+  },
+  "NOX1": {
+   "alliance_power": {
+    "rank": 90,
+    "value": 8653151
+   },
+   "display": "[NOX1]Unit By One",
+   "tag": "NOX1"
+  },
+  "Ogul": {
+   "alliance_power": {
+    "rank": 39,
+    "value": 206294778
+   },
+   "display": "[Ogul]ToprakOğul",
+   "tag": "Ogul"
+  },
+  "POHS": {
+   "alliance_power": {
+    "rank": 62,
+    "value": 78045879
+   },
+   "display": "[POHS]Power of honesty",
+   "tag": "POHS"
+  },
+  "Palz": {
+   "alliance_power": {
+    "rank": 95,
+    "value": 5071141
+   },
+   "display": "[Palz]Pumpkin Pacth",
+   "tag": "Palz"
+  },
+  "RE15": {
+   "alliance_power": {
+    "rank": 23,
+    "value": 523247290
+   },
+   "display": "[RE15]ROSILLO",
+   "tag": "RE15"
+  },
+  "RRRS": {
+   "alliance_power": {
+    "rank": 29,
+    "value": 391827304
+   },
+   "display": "[RRRS]RRSS",
+   "tag": "RRRS"
+  },
+  "RZCL": {
+   "alliance_power": {
+    "rank": 44,
+    "value": 177918058
+   },
+   "display": "[RZCL]CL Rage Z",
+   "tag": "RZCL"
+  },
+  "RsR": {
+   "alliance_power": {
+    "rank": 99,
+    "value": 3582007
+   },
+   "display": "[RsR]Remmis Rangers",
+   "tag": "RsR"
+  },
+  "Rwak": {
+   "alliance_power": {
+    "rank": 82,
+    "value": 13420576
+   },
+   "display": "[Rwak]قاوار",
+   "tag": "Rwak"
+  },
+  "SFU": {
+   "alliance_power": {
+    "rank": 49,
+    "value": 145335453
+   },
+   "display": "[SFU]united war",
+   "tag": "SFU"
+  },
+  "SHI": {
+   "alliance_power": {
+    "rank": 76,
+    "value": 23409892
+   },
+   "display": "[SHI]HIROSHIMA",
+   "tag": "SHI"
+  },
+  "SHSN": {
+   "alliance_power": {
+    "rank": 10,
+    "value": 3124668166
+   },
+   "display": "[SHSN]Shad0wSyndicate",
+   "tag": "SHSN"
+  },
+  "STGs": {
+   "alliance_power": {
+    "rank": 46,
+    "value": 169810841
+   },
+   "display": "[STGs]StrongTogether",
+   "tag": "STGs"
+  },
+  "SWT": {
+   "alliance_power": {
+    "rank": 3,
+    "value": 5242560194
+   },
+   "display": "[SWT]SHADØW TEAM",
+   "tag": "SWT"
+  },
+  "Smbz": {
+   "alliance_power": {
+    "rank": 36,
+    "value": 251613195
+   },
+   "display": "[Smbz]Suk mi balz",
+   "tag": "Smbz"
+  },
+  "Smsk": {
+   "alliance_power": {
+    "rank": 83,
+    "value": 12581386
+   },
+   "display": "[Smsk]Samoškiniai",
+   "tag": "Smsk"
+  },
+  "THGC": {
+   "alliance_power": {
+    "rank": 58,
+    "value": 86413765
+   },
+   "display": "[THGC]The Gojo Clan",
+   "tag": "THGC"
+  },
+  "TMJ": {
+   "alliance_power": {
+    "rank": 18,
+    "value": 652277800
+   },
+   "display": "[TMJ]Na paz de Deus",
+   "tag": "TMJ"
+  },
+  "TSL": {
+   "alliance_power": {
+    "rank": 65,
+    "value": 70809632
+   },
+   "display": "[TSL]Shadow Corps",
+   "tag": "TSL"
+  },
+  "TTYC": {
+   "alliance_power": {
+    "rank": 32,
+    "value": 338028456
+   },
+   "display": "[TTYC]schifxu",
+   "tag": "TTYC"
+  },
+  "TWLB": {
+   "alliance_power": {
+    "rank": 67,
+    "value": 55933120
+   },
+   "display": "[TWLB]CreepyZombies",
+   "tag": "TWLB"
+  },
+  "Tr1": {
+   "alliance_power": {
+    "rank": 56,
+    "value": 88784591
+   },
+   "display": "[Tr1]Boz1",
+   "tag": "Tr1"
+  },
+  "Trkr": {
+   "alliance_power": {
+    "rank": 89,
+    "value": 9251816
+   },
+   "display": "[Trkr]Türkler geliyor",
+   "tag": "Trkr"
+  },
+  "ULD": {
+   "alliance_power": {
+    "rank": 12,
+    "value": 1948714318
+   },
+   "display": "[ULD]UNYIELDING",
+   "tag": "ULD"
+  },
+  "UQV": {
+   "alliance_power": {
+    "rank": 68,
+    "value": 53849844
+   },
+   "display": "[UQV]Unquenchable Vy",
+   "tag": "UQV"
+  },
+  "UpS": {
+   "alliance_power": {
+    "rank": 7,
+    "value": 3717643090
+   },
+   "display": "[UpS]UrPainService",
+   "tag": "UpS"
+  },
+  "UpS2": {
+   "alliance_power": {
+    "rank": 31,
+    "value": 364066859
+   },
+   "display": "[UpS2]UrPainService2",
+   "tag": "UpS2"
+  },
+  "WA1N": {
+   "alliance_power": {
+    "rank": 93,
+    "value": 6567637
+   },
+   "display": "[WA1N]We Are 1 Nation",
+   "tag": "WA1N"
+  },
+  "WARp": {
+   "alliance_power": {
+    "rank": 75,
+    "value": 27478907
+   },
+   "display": "[WARp]WARPIGS",
+   "tag": "WARp"
+  },
+  "WEEQ": {
+   "alliance_power": {
+    "rank": 43,
+    "value": 198551443
+   },
+   "display": "[WEEQ]jxjxjdks",
+   "tag": "WEEQ"
+  },
+  "WHAN": {
+   "alliance_power": {
+    "rank": 15,
+    "value": 887067788
+   },
+   "display": "[WHAN]White Angels",
+   "tag": "WHAN"
+  },
+  "WRtH": {
+   "alliance_power": {
+    "rank": 2,
+    "value": 5284205634
+   },
+   "display": "[WRtH]WRĀTH",
+   "tag": "WRtH"
+  },
+  "Yukz": {
+   "alliance_power": {
+    "rank": 51,
+    "value": 112094394
+   },
+   "display": "[Yukz]Zabers clan",
+   "tag": "Yukz"
+  },
+  "ZDW": {
+   "alliance_power": {
+    "rank": 74,
+    "value": 30829175
+   },
+   "display": "[ZDW]Dire Wolf",
+   "tag": "ZDW"
+  },
+  "ZOAT": {
+   "alliance_power": {
+    "rank": 21,
+    "value": 551735927
+   },
+   "display": "[ZOAT]Zombie Attack",
+   "tag": "ZOAT"
+  },
+  "aTam": {
+   "alliance_power": {
+    "rank": 6,
+    "value": 3753782077
+   },
+   "display": "[aTam]TÜRK HUN",
+   "tag": "aTam"
+  },
+  "attd": {
+   "alliance_power": {
+    "rank": 53,
+    "value": 106174113
+   },
+   "display": "[attd]attackdogs",
+   "tag": "attd"
+  },
+  "be36": {
+   "alliance_power": {
+    "rank": 81,
+    "value": 14880529
+   },
+   "display": "[be36]Sea",
+   "tag": "be36"
+  },
+  "delu": {
+   "alliance_power": {
+    "rank": 37,
+    "value": 236894231
+   },
+   "display": "[delu]deluler",
+   "tag": "delu"
+  },
+  "dls": {
+   "alliance_power": {
+    "rank": 50,
+    "value": 132612360
+   },
+   "display": "[dls]dirilis34",
+   "tag": "dls"
+  },
+  "ffox": {
+   "alliance_power": {
+    "rank": 40,
+    "value": 204788114
+   },
+   "display": "[ffox]firefox",
+   "tag": "ffox"
+  },
+  "for1": {
+   "alliance_power": {
+    "rank": 16,
+    "value": 801155840
+   },
+   "display": "[for1]FOR",
+   "tag": "for1"
+  },
+  "hae": {
+   "alliance_power": {
+    "rank": 92,
+    "value": 7712206
+   },
+   "display": "[hae]haedar",
+   "tag": "hae"
+  },
+  "ibom": {
+   "alliance_power": {
+    "rank": 91,
+    "value": 8235477
+   },
+   "display": "[ibom]Italia boom",
+   "tag": "ibom"
+  },
+  "lino": {
+   "alliance_power": {
+    "rank": 78,
+    "value": 18755282
+   },
+   "display": "[lino]Migiwara",
+   "tag": "lino"
+  },
+  "mERC": {
+   "alliance_power": {
+    "rank": 4,
+    "value": 4991434805
+   },
+   "display": "[mERC]Mercenary",
+   "tag": "mERC"
+  },
+  "mERF": {
+   "alliance_power": {
+    "rank": 61,
+    "value": 80810956
+   },
+   "display": "[mERF]mERC Farm",
+   "tag": "mERF"
+  },
+  "mo7": {
+   "alliance_power": {
+    "rank": 19,
+    "value": 621897685
+   },
+   "display": "[mo7]رعد",
+   "tag": "mo7"
+  },
+  "movR": {
+   "alliance_power": {
+    "rank": 11,
+    "value": 2743113390
+   },
+   "display": "[movR]Moving Slowly",
+   "tag": "movR"
+  },
+  "oray": {
+   "alliance_power": {
+    "rank": 45,
+    "value": 176374769
+   },
+   "display": "[oray]oray22",
+   "tag": "oray"
+  },
+  "pEsT": {
+   "alliance_power": {
+    "rank": 47,
+    "value": 160747020
+   },
+   "display": "[pEsT]pNeUmOn pLaQuE",
+   "tag": "pEsT"
+  },
+  "prox": {
+   "alliance_power": {
+    "rank": 59,
+    "value": 86260410
+   },
+   "display": "[prox]proxusss",
+   "tag": "prox"
+  },
+  "s71": {
+   "alliance_power": {
+    "rank": 85,
+    "value": 11821188
+   },
+   "display": "[s71]sly 71",
+   "tag": "s71"
+  }
+ },
+ "atlas_records": 3681,
+ "board_rows": {
+  "alliance_power": 100,
+  "personal_power": 138,
+  "strongest_hero_power": 149,
+  "total_hero_power": 140
+ },
+ "captured_date": "2026-09-29",
+ "imported_at": "2026-09-29T17:13:23",
+ "players": {
+  "": {
+   "display": "[SWT]جابر",
+   "hero": "Katrina",
+   "match": "none",
+   "name": "جابر",
+   "strongest_hero_power": {
+    "rank": 75,
+    "value": 2028204
+   },
+   "tag": "SWT"
+  },
+  "1lumpi1": {
+   "atlas": {
+    "hq": 21,
+    "name": "1Lumpi1",
+    "x": 488,
+    "y": 457,
+    "zone": "capital"
+   },
+   "atlas_id": 3219,
+   "display": "[UpS]1Lumpi1",
+   "match": "exact+tag",
+   "name": "1Lumpi1",
+   "tag": "UpS",
+   "total_hero_power": {
+    "rank": 146,
+    "value": 12483678
+   }
+  },
+  "1stwarrior": {
+   "atlas": {
+    "hq": 26,
+    "name": "1stWarrior",
+    "x": 470,
+    "y": 461,
+    "zone": "capital"
+   },
+   "atlas_id": 2918,
+   "display": "[Helm]1stWarrior",
+   "hero": "Katrina",
+   "match": "exact+tag",
+   "name": "1stWarrior",
+   "personal_power": {
+    "rank": 10,
+    "value": 105651129
+   },
+   "strongest_hero_power": {
+    "rank": 35,
+    "value": 2271505
+   },
+   "tag": "Helm",
+   "total_hero_power": {
+    "rank": 11,
+    "value": 22730321
+   }
+  },
+  "2ballz1chin": {
+   "atlas": {
+    "hq": 26,
+    "name": "2Ballz1Chin",
+    "x": 480,
+    "y": 477,
+    "zone": "capital"
+   },
+   "atlas_id": 2919,
+   "display": "[Helm]2Ballz1Chin",
+   "hero": "Laura",
+   "match": "exact+tag",
+   "name": "2Ballz1Chin",
+   "personal_power": {
+    "rank": 37,
+    "value": 80853647
+   },
+   "strongest_hero_power": {
+    "rank": 14,
+    "value": 2532120
+   },
+   "tag": "Helm",
+   "total_hero_power": {
+    "rank": 12,
+    "value": 22382824
+   }
+  },
+  "2mad4rouge": {
+   "atlas": {
+    "hq": 24,
+    "name": "2Mad4Rouge",
+    "x": 485,
+    "y": 516,
+    "zone": "capital"
+   },
+   "atlas_id": 3245,
+   "display": "[WRtH]2Mad4Rouge",
+   "hero": "Oliveira",
+   "match": "exact+tag",
+   "name": "2Mad4Rouge",
+   "personal_power": {
+    "rank": 87,
+    "value": 65297256
+   },
+   "strongest_hero_power": {
+    "rank": 81,
+    "value": 1978429
+   },
+   "tag": "WRtH"
+  },
+  "abaddn": {
+   "atlas": {
+    "hq": 26,
+    "name": "ABADDØN",
+    "x": 474,
+    "y": 505,
+    "zone": "capital"
+   },
+   "atlas_id": 2920,
+   "display": "[Helm]ABADDØN",
+   "hero": "Oliveira",
+   "match": "exact+tag",
+   "name": "ABADDØN",
+   "personal_power": {
+    "rank": 22,
+    "value": 91770204
+   },
+   "strongest_hero_power": {
+    "rank": 9,
+    "value": 2805826
+   },
+   "tag": "Helm",
+   "total_hero_power": {
+    "rank": 6,
+    "value": 24243968
+   }
+  },
+  "acefighter": {
+   "display": "[Helm]acefighter",
+   "hero": "Oliveira",
+   "match": "none",
+   "name": "acefighter",
+   "strongest_hero_power": {
+    "rank": 141,
+    "value": 1701536
+   },
+   "tag": "Helm"
+  },
+  "acfofsweden": {
+   "atlas": {
+    "hq": 21,
+    "name": "acf-of-sweden",
+    "x": 518,
+    "y": 524,
+    "zone": "capital"
+   },
+   "atlas_id": 2675,
+   "display": "[4NG]acf-of-sweden",
+   "match": "exact+tag",
+   "name": "acf-of-sweden",
+   "personal_power": {
+    "rank": 74,
+    "value": 66251185
+   },
+   "tag": "4NG",
+   "total_hero_power": {
+    "rank": 75,
+    "value": 14741480
+   }
+  },
+  "allen42": {
+   "atlas": {
+    "hq": 21,
+    "name": "Allen42",
+    "x": 486,
+    "y": 470,
+    "zone": "capital"
+   },
+   "atlas_id": 3018,
+   "display": "[mERC]Allen42",
+   "match": "exact+tag",
+   "name": "Allen42",
+   "personal_power": {
+    "rank": 111,
+    "value": 62062580
+   },
+   "tag": "mERC"
+  },
+  "alws": {
+   "atlas": {
+    "hq": 22,
+    "name": "alws",
+    "x": 527,
+    "y": 518,
+    "zone": "capital"
+   },
+   "atlas_id": 2729,
+   "display": "[mERC]alws",
+   "match": "exact",
+   "name": "alws",
+   "personal_power": {
+    "rank": 104,
+    "value": 62659865
+   },
+   "tag": "mERC"
+  },
+  "anthonyalbanese": {
+   "atlas": {
+    "hq": 22,
+    "name": "AnthonyAlbanese",
+    "x": 994,
+    "y": 505,
+    "zone": null
+   },
+   "atlas_id": 2295,
+   "display": "[SWT]AnthonyAlbanese",
+   "hero": "Oliveira",
+   "match": "exact+tag",
+   "name": "AnthonyAlbanese",
+   "personal_power": {
+    "rank": 79,
+    "value": 65924382
+   },
+   "strongest_hero_power": {
+    "rank": 38,
+    "value": 2246114
+   },
+   "tag": "SWT",
+   "total_hero_power": {
+    "rank": 90,
+    "value": 13998462
+   }
+  },
+  "arduino": {
+   "atlas": {
+    "hq": 22,
+    "name": "ARduiNO",
+    "x": 517,
+    "y": 510,
+    "zone": "capital"
+   },
+   "atlas_id": 3401,
+   "display": "[7cie]ARduiNO",
+   "hero": "Katrina",
+   "match": "exact+tag",
+   "name": "ARduiNO",
+   "strongest_hero_power": {
+    "rank": 145,
+    "value": 1688348
+   },
+   "tag": "7cie"
+  },
+  "arraaa": {
+   "atlas": {
+    "hq": 23,
+    "name": "ArRaaa",
+    "x": 502,
+    "y": 528,
+    "zone": "capital"
+   },
+   "atlas_id": 3250,
+   "display": "[WRtH]ArRaaa",
+   "hero": "Katrina",
+   "match": "exact+tag",
+   "name": "ArRaaa",
+   "strongest_hero_power": {
+    "rank": 119,
+    "value": 1790970
+   },
+   "tag": "WRtH"
+  },
+  "asrte": {
+   "atlas": {
+    "hq": 23,
+    "name": "asrte",
+    "x": 478,
+    "y": 453,
+    "zone": "capital"
+   },
+   "atlas_id": 2926,
+   "display": "[Helm]asrte",
+   "match": "exact+tag",
+   "name": "asrte",
+   "personal_power": {
+    "rank": 128,
+    "value": 61006710
+   },
+   "tag": "Helm"
+  },
+  "ata70th": {
+   "atlas": {
+    "hq": 23,
+    "name": "Ata70th",
+    "x": 491,
+    "y": 526,
+    "zone": "capital"
+   },
+   "atlas_id": 3252,
+   "display": "[WRtH]Ata70th",
+   "match": "exact+tag",
+   "name": "Ata70th",
+   "personal_power": {
+    "rank": 49,
+    "value": 72732760
+   },
+   "tag": "WRtH",
+   "total_hero_power": {
+    "rank": 83,
+    "value": 14300330
+   }
+  },
+  "atech": {
+   "atlas": {
+    "hq": 21,
+    "name": "A-tech",
+    "x": 221,
+    "y": 545,
+    "zone": null
+   },
+   "atlas_id": 2444,
+   "display": "[UpS]A-tech",
+   "match": "exact+tag",
+   "name": "A-tech",
+   "personal_power": {
+    "rank": 103,
+    "value": 62720555
+   },
+   "tag": "UpS"
+  },
+  "axtus": {
+   "atlas": {
+    "hq": 21,
+    "name": "Axtus",
+    "x": 486,
+    "y": 460,
+    "zone": "capital"
+   },
+   "atlas_id": 2927,
+   "display": "[Helm]Axtus",
+   "match": "exact+tag",
+   "name": "Axtus",
+   "personal_power": {
+    "rank": 127,
+    "value": 61020527
+   },
+   "tag": "Helm"
+  },
+  "ayaaaa19": {
+   "atlas": {
+    "hq": 26,
+    "name": "Ayaaaa19",
+    "x": 481,
+    "y": 500,
+    "zone": "capital"
+   },
+   "atlas_id": 2818,
+   "display": "[Ayaa]Ayaaaa19",
+   "hero": "Oliveira",
+   "match": "exact+tag",
+   "name": "Ayaaaa19",
+   "personal_power": {
+    "rank": 23,
+    "value": 91185345
+   },
+   "strongest_hero_power": {
+    "rank": 32,
+    "value": 2307694
+   },
+   "tag": "Ayaa",
+   "total_hero_power": {
+    "rank": 26,
+    "value": 17764015
+   }
+  },
+  "b00man": {
+   "display": "[WRtH]B00man",
+   "match": "none",
+   "name": "B00man",
+   "personal_power": {
+    "rank": 129,
+    "value": 60995457
+   },
+   "tag": "WRtH"
+  },
+  "beardedbobscrew": {
+   "atlas": {
+    "hq": null,
+    "name": "BeardedBobsCrew",
+    "x": 507,
+    "y": 533,
+    "zone": "capital"
+   },
+   "atlas_id": 2868,
+   "display": "[E45Y]BeardedBobs Crew",
+   "hero": "Oliveira",
+   "match": "exact+tag",
+   "name": "BeardedBobs Crew",
+   "personal_power": {
+    "rank": 48,
+    "value": 73159481
+   },
+   "strongest_hero_power": {
+    "rank": 40,
+    "value": 2237390
+   },
+   "tag": "E45Y",
+   "total_hero_power": {
+    "rank": 65,
+    "value": 15135842
+   }
+  },
+  "benn0243": {
+   "atlas": {
+    "hq": 18,
+    "name": "benn0243",
+    "x": 463,
+    "y": 533,
+    "zone": "capital"
+   },
+   "atlas_id": 3223,
+   "display": "[UpS]benn0243",
+   "match": "exact+tag",
+   "name": "benn0243",
+   "tag": "UpS",
+   "total_hero_power": {
+    "rank": 139,
+    "value": 12707916
+   }
+  },
+  "beyazgece": {
+   "atlas": {
+    "hq": 26,
+    "name": "Beyazgece",
+    "x": 451,
+    "y": 946,
+    "zone": null
+   },
+   "atlas_id": 2296,
+   "display": "[SWT]Beyazgece",
+   "hero": "Oliveira",
+   "match": "exact+tag",
+   "name": "Beyazgece",
+   "personal_power": {
+    "rank": 53,
+    "value": 72105124
+   },
+   "strongest_hero_power": {
+    "rank": 37,
+    "value": 2257052
+   },
+   "tag": "SWT"
+  },
+  "bigcod": {
+   "atlas": {
+    "hq": 20,
+    "name": "big cod",
+    "x": 508,
+    "y": 477,
+    "zone": "capital"
+   },
+   "atlas_id": 3224,
+   "display": "[UpS]big cod",
+   "hero": "Oliveira",
+   "match": "exact+tag",
+   "name": "big cod",
+   "strongest_hero_power": {
+    "rank": 131,
+    "value": 1721926
+   },
+   "tag": "UpS"
+  },
+  "bigvic": {
+   "display": "[SHSN]BigVIC",
+   "match": "none",
+   "name": "BigVIC",
+   "personal_power": {
+    "rank": 132,
+    "value": 60769326
+   },
+   "tag": "SHSN"
+  },
+  "biscuitpotato": {
+   "display": "[Helm]BiscuitPotato",
+   "match": "none",
+   "name": "BiscuitPotato",
+   "tag": "Helm",
+   "total_hero_power": {
+    "rank": 78,
+    "value": 14590587
+   }
+  },
+  "bitterteel": {
+   "atlas": {
+    "hq": 24,
+    "name": "Bitter9teel",
+    "x": 490,
+    "y": 478,
+    "zone": "capital"
+   },
+   "atlas_id": 3020,
+   "display": "[mERC]Bitter$teel",
+   "hero": "Oliveira",
+   "match": "fuzzy",
+   "name": "Bitter$teel",
+   "strongest_hero_power": {
+    "rank": 117,
+    "value": 1795264
+   },
+   "tag": "mERC",
+   "total_hero_power": {
+    "rank": 52,
+    "value": 16063830
+   }
+  },
+  "blackxwidow": {
+   "atlas": {
+    "hq": 24,
+    "name": "BLACKxWlDOW",
+    "x": 475,
+    "y": 481,
+    "zone": "capital"
+   },
+   "atlas_id": 2929,
+   "display": "[Helm]BLACKxWIDOW",
+   "match": "fuzzy",
+   "name": "BLACKxWIDOW",
+   "tag": "Helm",
+   "total_hero_power": {
+    "rank": 134,
+    "value": 12781167
+   }
+  },
+  "blake": {
+   "atlas": {
+    "hq": 24,
+    "name": "bLakE",
+    "x": 483,
+    "y": 505,
+    "zone": "capital"
+   },
+   "atlas_id": 2930,
+   "display": "[Helm]bLake",
+   "hero": "Katrina",
+   "match": "exact+tag",
+   "name": "bLake",
+   "strongest_hero_power": {
+    "rank": 64,
+    "value": 2089983
+   },
+   "tag": "Helm"
+  },
+  "broggy85": {
+   "atlas": {
+    "hq": 22,
+    "name": "Broggy85",
+    "x": 532,
+    "y": 474,
+    "zone": "capital"
+   },
+   "atlas_id": 3138,
+   "display": "[SWT]Broggy85",
+   "hero": "Oliveira",
+   "match": "exact",
+   "name": "Broggy85",
+   "personal_power": {
+    "rank": 115,
+    "value": 61588789
+   },
+   "strongest_hero_power": {
+    "rank": 48,
+    "value": 2180031
+   },
+   "tag": "SWT"
+  },
+  "bromie": {
+   "display": "[Helm]Bromie브로미",
+   "hero": "Katrina",
+   "match": "none",
+   "name": "Bromie브로미",
+   "personal_power": {
+    "rank": 71,
+    "value": 67030462
+   },
+   "strongest_hero_power": {
+    "rank": 146,
+    "value": 1685122
+   },
+   "tag": "Helm",
+   "total_hero_power": {
+    "rank": 91,
+    "value": 13946132
+   }
+  },
+  "bromieging": {
+   "display": "[Helm]Bromie Ging",
+   "hero": "Katrina",
+   "match": "none",
+   "name": "Bromie Ging",
+   "personal_power": {
+    "rank": 43,
+    "value": 74881244
+   },
+   "strongest_hero_power": {
+    "rank": 68,
+    "value": 2051988
+   },
+   "tag": "Helm",
+   "total_hero_power": {
+    "rank": 42,
+    "value": 16614079
+   }
+  },
+  "bthuellebg": {
+   "atlas": {
+    "hq": 23,
+    "name": "Béthuel le BG",
+    "x": 523,
+    "y": 502,
+    "zone": "capital"
+   },
+   "atlas_id": 2734,
+   "display": "[mERC]Béthuel le BG",
+   "hero": "Katrina",
+   "match": "exact",
+   "name": "Béthuel le BG",
+   "strongest_hero_power": {
+    "rank": 85,
+    "value": 1956889
+   },
+   "tag": "mERC",
+   "total_hero_power": {
+    "rank": 130,
+    "value": 12968096
+   }
+  },
+  "burak006": {
+   "atlas": {
+    "hq": 24,
+    "name": "Burak006",
+    "x": 521,
+    "y": 481,
+    "zone": "capital"
+   },
+   "atlas_id": 3147,
+   "display": "[SWT]Burak006",
+   "match": "exact+tag",
+   "name": "Burak006",
+   "personal_power": {
+    "rank": 77,
+    "value": 66153525
+   },
+   "tag": "SWT",
+   "total_hero_power": {
+    "rank": 99,
+    "value": 13690206
+   }
+  },
+  "butthunter": {
+   "atlas": {
+    "hq": 24,
+    "name": "butt hunter",
+    "x": 532,
+    "y": 496,
+    "zone": "capital"
+   },
+   "atlas_id": 3386,
+   "display": "[SWT]butt hunter",
+   "hero": "Oliveira",
+   "match": "exact+tag",
+   "name": "butt hunter",
+   "strongest_hero_power": {
+    "rank": 83,
+    "value": 1965742
+   },
+   "tag": "SWT",
+   "total_hero_power": {
+    "rank": 67,
+    "value": 15015970
+   }
+  },
+  "cabbar06": {
+   "display": "CABBAR06",
+   "hero": "Katrina",
+   "match": "none",
+   "name": "CABBAR06",
+   "strongest_hero_power": {
+    "rank": 122,
+    "value": 1772577
+   },
+   "tag": ""
+  },
+  "calicloud9": {
+   "atlas": {
+    "hq": 26,
+    "name": "CaliCloud9",
+    "x": 486,
+    "y": 488,
+    "zone": "capital"
+   },
+   "atlas_id": 2932,
+   "display": "[Helm]CaliCloud9",
+   "hero": "Oliveira",
+   "match": "exact+tag",
+   "name": "CaliCloud9",
+   "personal_power": {
+    "rank": 11,
+    "value": 105548723
+   },
+   "strongest_hero_power": {
+    "rank": 10,
+    "value": 2738409
+   },
+   "tag": "Helm",
+   "total_hero_power": {
+    "rank": 7,
+    "value": 23803645
+   }
+  },
+  "callmesnk": {
+   "atlas": {
+    "hq": 24,
+    "name": "cållmeSnK",
+    "x": 473,
+    "y": 462,
+    "zone": "capital"
+   },
+   "atlas_id": 2939,
+   "display": "[Helm]callmeSnK",
+   "hero": "Sophia",
+   "match": "fuzzy",
+   "name": "callmeSnK",
+   "personal_power": {
+    "rank": 32,
+    "value": 82934850
+   },
+   "strongest_hero_power": {
+    "rank": 113,
+    "value": 1819623
+   },
+   "tag": "Helm",
+   "total_hero_power": {
+    "rank": 103,
+    "value": 13597981
+   }
+  },
+  "catoao": {
+   "atlas": {
+    "hq": 24,
+    "name": "CatOAO",
+    "x": 536,
+    "y": 463,
+    "zone": "capital"
+   },
+   "atlas_id": 3148,
+   "display": "[SWT]CatOAO",
+   "match": "exact+tag",
+   "name": "CatOAO",
+   "tag": "SWT",
+   "total_hero_power": {
+    "rank": 100,
+    "value": 13617779
+   }
+  },
+  "cb": {
+   "atlas": {
+    "hq": 25,
+    "name": "cb",
+    "x": 481,
+    "y": 473,
+    "zone": "capital"
+   },
+   "atlas_id": 2935,
+   "display": "[Helm]- cb -",
+   "hero": "Oliveira",
+   "match": "exact+tag",
+   "name": "- cb -",
+   "personal_power": {
+    "rank": 12,
+    "value": 105018012
+   },
+   "strongest_hero_power": {
+    "rank": 112,
+    "value": 1819777
+   },
+   "tag": "Helm",
+   "total_hero_power": {
+    "rank": 22,
+    "value": 18688166
+   }
+  },
+  "ceto": {
+   "atlas": {
+    "hq": 23,
+    "name": "ceto",
+    "x": 522,
+    "y": 493,
+    "zone": "capital"
+   },
+   "atlas_id": 2784,
+   "display": "[aTam]ceto",
+   "hero": "Katrina",
+   "match": "exact+tag",
+   "name": "ceto",
+   "personal_power": {
+    "rank": 122,
+    "value": 61328211
+   },
+   "strongest_hero_power": {
+    "rank": 128,
+    "value": 1733610
+   },
+   "tag": "aTam",
+   "total_hero_power": {
+    "rank": 132,
+    "value": 12879554
+   }
+  },
+  "cheeksqueak": {
+   "atlas": {
+    "hq": 24,
+    "name": "CheekSqueak",
+    "x": 483,
+    "y": 479,
+    "zone": "capital"
+   },
+   "atlas_id": 2936,
+   "display": "[Helm]CheekSqueak",
+   "hero": "Katrina",
+   "match": "exact+tag",
+   "name": "CheekSqueak",
+   "personal_power": {
+    "rank": 40,
+    "value": 77133440
+   },
+   "strongest_hero_power": {
+    "rank": 18,
+    "value": 2496206
+   },
+   "tag": "Helm",
+   "total_hero_power": {
+    "rank": 74,
+    "value": 14762903
+   }
+  },
+  "chickito": {
+   "atlas": {
+    "hq": 22,
+    "name": "Chickito",
+    "x": 520,
+    "y": 489,
+    "zone": "capital"
+   },
+   "atlas_id": 3150,
+   "display": "[SWT]Chickito",
+   "hero": "Oliveira",
+   "match": "exact+tag",
+   "name": "Chickito",
+   "personal_power": {
+    "rank": 69,
+    "value": 67538313
+   },
+   "strongest_hero_power": {
+    "rank": 49,
+    "value": 2177683
+   },
+   "tag": "SWT",
+   "total_hero_power": {
+    "rank": 32,
+    "value": 17376502
+   }
+  },
+  "chrisless84": {
+   "atlas": {
+    "hq": 24,
+    "name": "Chrisless84",
+    "x": 488,
+    "y": 459,
+    "zone": "capital"
+   },
+   "atlas_id": 2937,
+   "display": "[Helm]Chrisless84",
+   "hero": "Oliveira",
+   "match": "exact+tag",
+   "name": "Chrisless84",
+   "personal_power": {
+    "rank": 66,
+    "value": 68346605
+   },
+   "strongest_hero_power": {
+    "rank": 59,
+    "value": 2122708
+   },
+   "tag": "Helm",
+   "total_hero_power": {
+    "rank": 105,
+    "value": 13581960
+   }
+  },
+  "circusanimal": {
+   "atlas": {
+    "hq": 23,
+    "name": "CircusAnimal",
+    "x": 489,
+    "y": 472,
+    "zone": "capital"
+   },
+   "atlas_id": 3024,
+   "display": "[mERC]CircusAnimal",
+   "hero": "Oliveira",
+   "match": "exact+tag",
+   "name": "CircusAnimal",
+   "personal_power": {
+    "rank": 51,
+    "value": 72240383
+   },
+   "strongest_hero_power": {
+    "rank": 149,
+    "value": 1675456
+   },
+   "tag": "mERC",
+   "total_hero_power": {
+    "rank": 40,
+    "value": 16625124
+   }
+  },
+  "cjpoli67": {
+   "atlas": {
+    "hq": 22,
+    "name": "CJpoli67",
+    "x": 466,
+    "y": 512,
+    "zone": "capital"
+   },
+   "atlas_id": 2938,
+   "display": "[Helm]CJpoli67",
+   "match": "exact+tag",
+   "name": "CJpoli67",
+   "personal_power": {
+    "rank": 136,
+    "value": 60555249
+   },
+   "tag": "Helm"
+  },
+  "clarkey1": {
+   "display": "[mERC]Clarkey1",
+   "match": "none",
+   "name": "Clarkey1",
+   "personal_power": {
+    "rank": 86,
+    "value": 65649232
+   },
+   "tag": "mERC",
+   "total_hero_power": {
+    "rank": 80,
+    "value": 14570837
+   }
+  },
+  "cmoney514": {
+   "atlas": {
+    "hq": 22,
+    "name": "Cmoney514",
+    "x": 505,
+    "y": 523,
+    "zone": "capital"
+   },
+   "atlas_id": 2869,
+   "display": "[E45Y]Cmoney514",
+   "hero": "Katrina",
+   "match": "exact+tag",
+   "name": "Cmoney514",
+   "strongest_hero_power": {
+    "rank": 124,
+    "value": 1752771
+   },
+   "tag": "E45Y"
+  },
+  "commanderflame": {
+   "atlas": {
+    "hq": 24,
+    "name": "COMMANDER FLAME",
+    "x": 518,
+    "y": 471,
+    "zone": "capital"
+   },
+   "atlas_id": 3151,
+   "display": "[SWT]COMMANDER FLAME",
+   "hero": "Oliveira",
+   "match": "exact+tag",
+   "name": "COMMANDER FLAME",
+   "personal_power": {
+    "rank": 82,
+    "value": 65747315
+   },
+   "strongest_hero_power": {
+    "rank": 15,
+    "value": 2519644
+   },
+   "tag": "SWT",
+   "total_hero_power": {
+    "rank": 50,
+    "value": 16221975
+   }
+  },
+  "craaazychris": {
+   "atlas": {
+    "hq": 21,
+    "name": "CraaazyChris",
+    "x": 466,
+    "y": 467,
+    "zone": "capital"
+   },
+   "atlas_id": 3026,
+   "display": "[mERC]CraaazyChris",
+   "hero": "Katrina",
+   "match": "exact+tag",
+   "name": "CraaazyChris",
+   "strongest_hero_power": {
+    "rank": 103,
+    "value": 1843759
+   },
+   "tag": "mERC"
+  },
+  "cre7zu01": {
+   "atlas": {
+    "hq": 24,
+    "name": "Cre7zu01",
+    "x": 472,
+    "y": 485,
+    "zone": "capital"
+   },
+   "atlas_id": 3226,
+   "display": "[UpS]Cre7zu01",
+   "hero": "Laura",
+   "match": "exact+tag",
+   "name": "Cre7zu01",
+   "personal_power": {
+    "rank": 101,
+    "value": 62805538
+   },
+   "strongest_hero_power": {
+    "rank": 16,
+    "value": 2512719
+   },
+   "tag": "UpS",
+   "total_hero_power": {
+    "rank": 31,
+    "value": 17521431
+   }
+  },
+  "cyclopspops": {
+   "atlas": {
+    "hq": 23,
+    "name": "Cyclops pops",
+    "x": 481,
+    "y": 503,
+    "zone": "capital"
+   },
+   "atlas_id": 2829,
+   "display": "[Ayaa]Cyclops pops",
+   "match": "exact+tag",
+   "name": "Cyclops pops",
+   "personal_power": {
+    "rank": 75,
+    "value": 66236951
+   },
+   "tag": "Ayaa"
+  },
+  "daddywhip143": {
+   "display": "[Helm]Daddywhip143",
+   "hero": "Amelia",
+   "match": "none",
+   "name": "Daddywhip143",
+   "personal_power": {
+    "rank": 19,
+    "value": 94765455
+   },
+   "strongest_hero_power": {
+    "rank": 77,
+    "value": 2023645
+   },
+   "tag": "Helm"
+  },
+  "danilo11994": {
+   "display": "[Helm]Danilo11994",
+   "hero": "Katrina",
+   "match": "none",
+   "name": "Danilo11994",
+   "personal_power": {
+    "rank": 33,
+    "value": 82475853
+   },
+   "strongest_hero_power": {
+    "rank": 27,
+    "value": 2394720
+   },
+   "tag": "Helm",
+   "total_hero_power": {
+    "rank": 56,
+    "value": 15651927
+   }
+  },
+  "demon1sback": {
+   "atlas": {
+    "hq": null,
+    "name": "Demon1sback",
+    "x": 501,
+    "y": 493,
+    "zone": "capital"
+   },
+   "atlas_id": 2917,
+   "display": "[Helm]Demon1sback",
+   "hero": "Oliveira",
+   "match": "exact",
+   "name": "Demon1sback",
+   "personal_power": {
+    "rank": 58,
+    "value": 70906258
+   },
+   "strongest_hero_power": {
+    "rank": 31,
+    "value": 2343098
+   },
+   "tag": "Helm",
+   "total_hero_power": {
+    "rank": 19,
+    "value": 19665683
+   }
+  },
+  "dieselsix": {
+   "display": "[E45Y]DieselSix",
+   "match": "none",
+   "name": "DieselSix",
+   "personal_power": {
+    "rank": 98,
+    "value": 63562250
+   },
+   "tag": "E45Y"
+  },
+  "dilos34": {
+   "display": "[aTam]dilos34",
+   "hero": "Katrina",
+   "match": "none",
+   "name": "dilos34",
+   "personal_power": {
+    "rank": 50,
+    "value": 72419152
+   },
+   "strongest_hero_power": {
+    "rank": 107,
+    "value": 1825073
+   },
+   "tag": "aTam",
+   "total_hero_power": {
+    "rank": 92,
+    "value": 13937357
+   }
+  },
+  "docholliday34": {
+   "atlas": {
+    "hq": 21,
+    "name": "DocHolliday34",
+    "x": 475,
+    "y": 512,
+    "zone": "capital"
+   },
+   "atlas_id": 2830,
+   "display": "[Ayaa]DocHolliday34",
+   "hero": "Katrina",
+   "match": "exact+tag",
+   "name": "DocHolliday34",
+   "strongest_hero_power": {
+    "rank": 108,
+    "value": 1823468
+   },
+   "tag": "Ayaa"
+  },
+  "drg420": {
+   "atlas": {
+    "hq": 23,
+    "name": "DrG420",
+    "x": 477,
+    "y": 521,
+    "zone": "capital"
+   },
+   "atlas_id": 2944,
+   "display": "[Helm]DrG420",
+   "match": "exact+tag",
+   "name": "DrG420",
+   "tag": "Helm",
+   "total_hero_power": {
+    "rank": 87,
+    "value": 14061178
+   }
+  },
+  "dyrtyd": {
+   "atlas": {
+    "hq": 22,
+    "name": "DyrtyD",
+    "x": 483,
+    "y": 456,
+    "zone": "capital"
+   },
+   "atlas_id": 3227,
+   "display": "[UpS]DyrtyD",
+   "match": "exact+tag",
+   "name": "DyrtyD",
+   "tag": "UpS",
+   "total_hero_power": {
+    "rank": 110,
+    "value": 13449241
+   }
+  },
+  "eagle0047": {
+   "atlas": {
+    "hq": 21,
+    "name": "Eagle0047",
+    "x": 537,
+    "y": 495,
+    "zone": "capital"
+   },
+   "atlas_id": 3154,
+   "display": "[SWT]Eagle0047",
+   "hero": "Katrina",
+   "match": "exact+tag",
+   "name": "Eagle0047",
+   "strongest_hero_power": {
+    "rank": 102,
+    "value": 1845614
+   },
+   "tag": "SWT"
+  },
+  "edevice": {
+   "atlas": {
+    "hq": 22,
+    "name": "Edevice",
+    "x": 518,
+    "y": 552,
+    "zone": "capital"
+   },
+   "atlas_id": 2871,
+   "display": "[E45Y]Edevice",
+   "match": "exact+tag",
+   "name": "Edevice",
+   "personal_power": {
+    "rank": 108,
+    "value": 62400789
+   },
+   "tag": "E45Y"
+  },
+  "el3omda": {
+   "display": "[SWT]EL3oMDa",
+   "match": "none",
+   "name": "EL3oMDa",
+   "personal_power": {
+    "rank": 90,
+    "value": 64778351
+   },
+   "tag": "SWT"
+  },
+  "elbadawi": {
+   "atlas": {
+    "hq": 24,
+    "name": "Elbadawi",
+    "x": 487,
+    "y": 514,
+    "zone": "capital"
+   },
+   "atlas_id": 3405,
+   "display": "[WRtH]Elbadawi",
+   "match": "exact+tag",
+   "name": "Elbadawi",
+   "personal_power": {
+    "rank": 57,
+    "value": 71532880
+   },
+   "tag": "WRtH",
+   "total_hero_power": {
+    "rank": 77,
+    "value": 14664551
+   }
+  },
+  "elouuu": {
+   "atlas": {
+    "hq": 23,
+    "name": "Elouuu",
+    "x": 522,
+    "y": 505,
+    "zone": "capital"
+   },
+   "atlas_id": 2741,
+   "display": "[mERC]Elouuu",
+   "hero": "Katrina",
+   "match": "exact",
+   "name": "Elouuu",
+   "personal_power": {
+    "rank": 42,
+    "value": 74891207
+   },
+   "strongest_hero_power": {
+    "rank": 25,
+    "value": 2401979
+   },
+   "tag": "mERC"
+  },
+  "fatimazohra": {
+   "atlas": {
+    "hq": 24,
+    "name": "Fätima Zohra",
+    "x": 481,
+    "y": 488,
+    "zone": "capital"
+   },
+   "atlas_id": 2950,
+   "display": "[Helm]Fatima Zohra",
+   "hero": "Oliveira",
+   "match": "fuzzy",
+   "name": "Fatima Zohra",
+   "personal_power": {
+    "rank": 120,
+    "value": 61336466
+   },
+   "strongest_hero_power": {
+    "rank": 91,
+    "value": 1914006
+   },
+   "tag": "Helm",
+   "total_hero_power": {
+    "rank": 29,
+    "value": 17549062
+   }
+  },
+  "finnlegend1124": {
+   "display": "[Ayaa]FinnLegend1124",
+   "hero": "Katrina",
+   "match": "none",
+   "name": "FinnLegend1124",
+   "personal_power": {
+    "rank": 60,
+    "value": 69525222
+   },
+   "strongest_hero_power": {
+    "rank": 61,
+    "value": 2116049
+   },
+   "tag": "Ayaa",
+   "total_hero_power": {
+    "rank": 64,
+    "value": 15137316
+   }
+  },
+  "firequeenaelin": {
+   "atlas": {
+    "hq": 24,
+    "name": "FireQueenAelin",
+    "x": 477,
+    "y": 477,
+    "zone": "capital"
+   },
+   "atlas_id": 2948,
+   "display": "[Helm]FireQueenAelin",
+   "match": "exact+tag",
+   "name": "FireQueenAelin",
+   "personal_power": {
+    "rank": 83,
+    "value": 65681592
+   },
+   "tag": "Helm",
+   "total_hero_power": {
+    "rank": 116,
+    "value": 13264782
+   }
+  },
+  "fluffymeowmeow": {
+   "atlas": {
+    "hq": 24,
+    "name": "FluffyMeowMeow",
+    "x": 482,
+    "y": 522,
+    "zone": "capital"
+   },
+   "atlas_id": 3259,
+   "display": "[WRtH]FluffyMeowMeow",
+   "match": "exact+tag",
+   "name": "FluffyMeowMeow",
+   "personal_power": {
+    "rank": 131,
+    "value": 60807675
+   },
+   "tag": "WRtH"
+  },
+  "fogofwar": {
+   "atlas": {
+    "hq": 23,
+    "name": "Fog of war",
+    "x": 528,
+    "y": 485,
+    "zone": "capital"
+   },
+   "atlas_id": 3378,
+   "display": "[SWT]Fog of war",
+   "hero": "Sophia",
+   "match": "exact+tag",
+   "name": "Fog of war",
+   "personal_power": {
+    "rank": 55,
+    "value": 71799455
+   },
+   "strongest_hero_power": {
+    "rank": 39,
+    "value": 2242313
+   },
+   "tag": "SWT",
+   "total_hero_power": {
+    "rank": 37,
+    "value": 16780829
+   }
+  },
+  "fr3ecola": {
+   "atlas": {
+    "hq": 22,
+    "name": "fr3ecola",
+    "x": 503,
+    "y": 470,
+    "zone": "capital"
+   },
+   "atlas_id": 2949,
+   "display": "[Helm]fr3ecola",
+   "hero": "Amelia",
+   "match": "exact+tag",
+   "name": "fr3ecola",
+   "personal_power": {
+    "rank": 121,
+    "value": 61331552
+   },
+   "strongest_hero_power": {
+    "rank": 56,
+    "value": 2141972
+   },
+   "tag": "Helm",
+   "total_hero_power": {
+    "rank": 53,
+    "value": 15863519
+   }
+  },
+  "freeps": {
+   "atlas": {
+    "hq": 21,
+    "name": "FreePS",
+    "x": 542,
+    "y": 541,
+    "zone": "capital"
+   },
+   "atlas_id": 3443,
+   "display": "[4NG]FreePS",
+   "hero": "Amelia",
+   "match": "exact+tag",
+   "name": "FreePS",
+   "strongest_hero_power": {
+    "rank": 46,
+    "value": 2184175
+   },
+   "tag": "4NG"
+  },
+  "furrballer": {
+   "atlas": {
+    "hq": 20,
+    "name": "FurrBaller",
+    "x": 503,
+    "y": 459,
+    "zone": "capital"
+   },
+   "atlas_id": 3110,
+   "display": "[SHSN]FurrBaller",
+   "hero": "Katrina",
+   "match": "exact+tag",
+   "name": "FurrBaller",
+   "personal_power": {
+    "rank": 63,
+    "value": 68960806
+   },
+   "strongest_hero_power": {
+    "rank": 86,
+    "value": 1944217
+   },
+   "tag": "SHSN",
+   "total_hero_power": {
+    "rank": 57,
+    "value": 15650217
+   }
+  },
+  "g8tr": {
+   "display": "[WRtH]G8TR",
+   "match": "none",
+   "name": "G8TR",
+   "tag": "WRtH",
+   "total_hero_power": {
+    "rank": 62,
+    "value": 15220021
+   }
+  },
+  "ganjiwanlea": {
+   "atlas": {
+    "hq": 25,
+    "name": "GanjiWanlea",
+    "x": 514,
+    "y": 509,
+    "zone": "capital"
+   },
+   "atlas_id": 2789,
+   "display": "[aTam]GanjiWanlea",
+   "hero": "Oliveira",
+   "match": "exact+tag",
+   "name": "GanjiWanlea",
+   "personal_power": {
+    "rank": 29,
+    "value": 87527184
+   },
+   "strongest_hero_power": {
+    "rank": 54,
+    "value": 2150962
+   },
+   "tag": "aTam",
+   "total_hero_power": {
+    "rank": 85,
+    "value": 14103580
+   }
+  },
+  "ganjiwanleea": {
+   "atlas": {
+    "hq": 25,
+    "name": "GanjiWanlea",
+    "x": 514,
+    "y": 509,
+    "zone": "capital"
+   },
+   "atlas_id": 2789,
+   "display": "[aTam]GanjiWanleea",
+   "hero": "Katrina",
+   "match": "fuzzy",
+   "name": "GanjiWanleea",
+   "strongest_hero_power": {
+    "rank": 140,
+    "value": 1702913
+   },
+   "tag": "aTam"
+  },
+  "ghzawi": {
+   "atlas": {
+    "hq": 24,
+    "name": "ghzawi",
+    "x": 496,
+    "y": 520,
+    "zone": "capital"
+   },
+   "atlas_id": 3264,
+   "display": "[WRtH]ghzawi",
+   "match": "exact+tag",
+   "name": "ghzawi",
+   "personal_power": {
+    "rank": 67,
+    "value": 67946278
+   },
+   "tag": "WRtH",
+   "total_hero_power": {
+    "rank": 82,
+    "value": 14372115
+   }
+  },
+  "goturback2": {
+   "atlas": {
+    "hq": 20,
+    "name": "GotUrBack2",
+    "x": 536,
+    "y": 501,
+    "zone": "capital"
+   },
+   "atlas_id": 2687,
+   "display": "[4NG]GotUrBack2",
+   "match": "exact+tag",
+   "name": "GotUrBack2",
+   "personal_power": {
+    "rank": 135,
+    "value": 60601916
+   },
+   "tag": "4NG"
+  },
+  "groovy1188": {
+   "atlas": {
+    "hq": 24,
+    "name": "Groovy 1188",
+    "x": 461,
+    "y": 530,
+    "zone": "capital"
+   },
+   "atlas_id": 3265,
+   "display": "[WRtH]Groovy 1188",
+   "hero": "Laura",
+   "match": "exact+tag",
+   "name": "Groovy 1188",
+   "personal_power": {
+    "rank": 18,
+    "value": 95177537
+   },
+   "strongest_hero_power": {
+    "rank": 50,
+    "value": 2176288
+   },
+   "tag": "WRtH",
+   "total_hero_power": {
+    "rank": 39,
+    "value": 16648038
+   }
+  },
+  "gruffllegunnar": {
+   "display": "[WRtH]GrufflleGunnar",
+   "match": "none",
+   "name": "GrufflleGunnar",
+   "tag": "WRtH",
+   "total_hero_power": {
+    "rank": 119,
+    "value": 13259744
+   }
+  },
+  "gttinjosie": {
+   "atlas": {
+    "hq": 23,
+    "name": "Göttin Josie",
+    "x": 511,
+    "y": 484,
+    "zone": "capital"
+   },
+   "atlas_id": 3158,
+   "display": "[SWT]Göttin Josie",
+   "hero": "Katrina",
+   "match": "exact+tag",
+   "name": "Göttin Josie",
+   "strongest_hero_power": {
+    "rank": 150,
+    "value": 1674122
+   },
+   "tag": "SWT"
+  },
+  "guma": {
+   "atlas": {
+    "hq": 24,
+    "name": "GUMA",
+    "x": 486,
+    "y": 443,
+    "zone": "capital"
+   },
+   "atlas_id": 2951,
+   "display": "GUMA",
+   "hero": "Sophia",
+   "match": "exact",
+   "name": "GUMA",
+   "personal_power": {
+    "rank": 35,
+    "value": 81633662
+   },
+   "strongest_hero_power": {
+    "rank": 30,
+    "value": 2372523
+   },
+   "tag": ""
+  },
+  "hadiajodani": {
+   "atlas": {
+    "hq": 20,
+    "name": "hadiajodani",
+    "x": 419,
+    "y": 241,
+    "zone": null
+   },
+   "atlas_id": 1225,
+   "display": "[Ayaa]hadiajodani",
+   "hero": "Katrina",
+   "match": "exact+tag",
+   "name": "hadiajodani",
+   "strongest_hero_power": {
+    "rank": 147,
+    "value": 1683345
+   },
+   "tag": "Ayaa"
+  },
+  "hamzabeyy": {
+   "display": "[SWT]HamzaBeyy",
+   "hero": "Oliveira",
+   "match": "none",
+   "name": "HamzaBeyy",
+   "personal_power": {
+    "rank": 21,
+    "value": 92424197
+   },
+   "strongest_hero_power": {
+    "rank": 29,
+    "value": 2384528
+   },
+   "tag": "SWT",
+   "total_hero_power": {
+    "rank": 30,
+    "value": 17543573
+   }
+  },
+  "hangmancoming": {
+   "atlas": {
+    "hq": 21,
+    "name": "HangMan Coming",
+    "x": 499,
+    "y": 441,
+    "zone": "capital"
+   },
+   "atlas_id": 2780,
+   "display": "[4NG]HangMan Coming",
+   "match": "exact",
+   "name": "HangMan Coming",
+   "tag": "4NG",
+   "total_hero_power": {
+    "rank": 144,
+    "value": 12492842
+   }
+  },
+  "hankscorpio725": {
+   "atlas": {
+    "hq": 24,
+    "name": "Hankscorpi0725",
+    "x": 470,
+    "y": 496,
+    "zone": "capital"
+   },
+   "atlas_id": 2952,
+   "display": "[Helm]Hankscorpio725",
+   "hero": "Katrina",
+   "match": "fuzzy",
+   "name": "Hankscorpio725",
+   "personal_power": {
+    "rank": 47,
+    "value": 73644240
+   },
+   "strongest_hero_power": {
+    "rank": 65,
+    "value": 2083527
+   },
+   "tag": "Helm",
+   "total_hero_power": {
+    "rank": 122,
+    "value": 13153630
+   }
+  },
+  "hellmarch": {
+   "display": "[SWT]Hellmarch",
+   "match": "none",
+   "name": "Hellmarch",
+   "tag": "SWT",
+   "total_hero_power": {
+    "rank": 72,
+    "value": 14813719
+   }
+  },
+  "herreinchains": {
+   "atlas": {
+    "hq": 24,
+    "name": "Herre in chains",
+    "x": 510,
+    "y": 527,
+    "zone": "capital"
+   },
+   "atlas_id": 2953,
+   "display": "[Helm]Herre in chains",
+   "match": "exact+tag",
+   "name": "Herre in chains",
+   "personal_power": {
+    "rank": 61,
+    "value": 69241985
+   },
+   "tag": "Helm"
+  },
+  "hespazz": {
+   "atlas": {
+    "hq": 22,
+    "name": "HeSpazz",
+    "x": 906,
+    "y": 777,
+    "zone": null
+   },
+   "atlas_id": 2598,
+   "display": "[WRtH]HeSpazz",
+   "match": "exact+tag",
+   "name": "HeSpazz",
+   "tag": "WRtH",
+   "total_hero_power": {
+    "rank": 141,
+    "value": 12605659
+   }
+  },
+  "ic3cold8": {
+   "display": "[SWT]Ic3Cold8",
+   "hero": "Sophia",
+   "match": "none",
+   "name": "Ic3Cold8",
+   "strongest_hero_power": {
+    "rank": 130,
+    "value": 1728261
+   },
+   "tag": "SWT"
+  },
+  "imperialxxi": {
+   "atlas": {
+    "hq": 27,
+    "name": "Imperial XXI",
+    "x": 488,
+    "y": 485,
+    "zone": "capital"
+   },
+   "atlas_id": 3484,
+   "display": "[Helm]Imperial XXI",
+   "hero": "Oliveira",
+   "match": "exact+tag",
+   "name": "Imperial XXI",
+   "personal_power": {
+    "rank": 1,
+    "value": 154434282
+   },
+   "strongest_hero_power": {
+    "rank": 1,
+    "value": 3361632
+   },
+   "tag": "Helm",
+   "total_hero_power": {
+    "rank": 2,
+    "value": 27625080
+   }
+  },
+  "irishguy": {
+   "atlas": {
+    "hq": 22,
+    "name": "IrishGuy",
+    "x": 501,
+    "y": 451,
+    "zone": "capital"
+   },
+   "atlas_id": 2954,
+   "display": "[Helm]IrishGuy",
+   "match": "exact+tag",
+   "name": "IrishGuy",
+   "tag": "Helm",
+   "total_hero_power": {
+    "rank": 149,
+    "value": 12458820
+   }
+  },
+  "itsprime": {
+   "display": "[SHSN]ItsPrime",
+   "hero": "Katrina",
+   "match": "none",
+   "name": "ItsPrime",
+   "strongest_hero_power": {
+    "rank": 106,
+    "value": 1831559
+   },
+   "tag": "SHSN",
+   "total_hero_power": {
+    "rank": 73,
+    "value": 14781834
+   }
+  },
+  "j0hnd03": {
+   "display": "[Helm]J0hnd03",
+   "match": "none",
+   "name": "J0hnd03",
+   "tag": "Helm",
+   "total_hero_power": {
+    "rank": 96,
+    "value": 13841304
+   }
+  },
+  "jabeezy33": {
+   "display": "[mERC]Jabeezy33",
+   "match": "none",
+   "name": "Jabeezy33",
+   "personal_power": {
+    "rank": 126,
+    "value": 61038130
+   },
+   "tag": "mERC",
+   "total_hero_power": {
+    "rank": 114,
+    "value": 13286172
+   }
+  },
+  "jaggermeister": {
+   "atlas": {
+    "hq": 23,
+    "name": "JaggerMeister",
+    "x": 483,
+    "y": 512,
+    "zone": "capital"
+   },
+   "atlas_id": 3270,
+   "display": "[WRtH]JaggerMeister",
+   "match": "exact+tag",
+   "name": "JaggerMeister",
+   "personal_power": {
+    "rank": 118,
+    "value": 61364975
+   },
+   "tag": "WRtH",
+   "total_hero_power": {
+    "rank": 115,
+    "value": 13280653
+   }
+  },
+  "jagur4x4": {
+   "atlas": {
+    "hq": 22,
+    "name": "Jagur 4x4",
+    "x": 522,
+    "y": 490,
+    "zone": "capital"
+   },
+   "atlas_id": 2795,
+   "display": "[aTam]Jagur 4x4",
+   "match": "exact+tag",
+   "name": "Jagur 4x4",
+   "tag": "aTam",
+   "total_hero_power": {
+    "rank": 86,
+    "value": 14100319
+   }
+  },
+  "jaya002": {
+   "atlas": {
+    "hq": 24,
+    "name": "Jaya002",
+    "x": 520,
+    "y": 501,
+    "zone": "capital"
+   },
+   "atlas_id": 2796,
+   "display": "[aTam]Jaya002",
+   "hero": "Oliveira",
+   "match": "exact+tag",
+   "name": "Jaya002",
+   "personal_power": {
+    "rank": 106,
+    "value": 62482774
+   },
+   "strongest_hero_power": {
+    "rank": 80,
+    "value": 1988820
+   },
+   "tag": "aTam",
+   "total_hero_power": {
+    "rank": 71,
+    "value": 14817044
+   }
+  },
+  "jaydeepl": {
+   "display": "[SWT]JaydeePL",
+   "hero": "Katrina",
+   "match": "none",
+   "name": "JaydeePL",
+   "personal_power": {
+    "rank": 107,
+    "value": 62460702
+   },
+   "strongest_hero_power": {
+    "rank": 97,
+    "value": 1891064
+   },
+   "tag": "SWT",
+   "total_hero_power": {
+    "rank": 69,
+    "value": 14959371
+   }
+  },
+  "joanlane": {
+   "atlas": {
+    "hq": 24,
+    "name": "Joan Lane",
+    "x": 476,
+    "y": 503,
+    "zone": "capital"
+   },
+   "atlas_id": 2956,
+   "display": "[Helm]Joan Lane",
+   "hero": "Katrina",
+   "match": "exact+tag",
+   "name": "Joan Lane",
+   "personal_power": {
+    "rank": 92,
+    "value": 64358497
+   },
+   "strongest_hero_power": {
+    "rank": 52,
+    "value": 2167075
+   },
+   "tag": "Helm",
+   "total_hero_power": {
+    "rank": 126,
+    "value": 13094732
+   }
+  },
+  "johnd03": {
+   "atlas": {
+    "hq": 24,
+    "name": "JOhnd03",
+    "x": 484,
+    "y": 482,
+    "zone": "capital"
+   },
+   "atlas_id": 2957,
+   "display": "[Helm]JOhnd03",
+   "hero": "Katrina",
+   "match": "exact+tag",
+   "name": "JOhnd03",
+   "personal_power": {
+    "rank": 65,
+    "value": 68591279
+   },
+   "strongest_hero_power": {
+    "rank": 142,
+    "value": 1701373
+   },
+   "tag": "Helm"
+  },
+  "joker": {
+   "display": "[WRtH]° JOKER °",
+   "hero": "Katrina",
+   "match": "none",
+   "name": "° JOKER °",
+   "personal_power": {
+    "rank": 94,
+    "value": 64087305
+   },
+   "strongest_hero_power": {
+    "rank": 121,
+    "value": 1776536
+   },
+   "tag": "WRtH"
+  },
+  "jongosghufron": {
+   "atlas": {
+    "hq": 24,
+    "name": "Jongos Ghufron",
+    "x": 483,
+    "y": 525,
+    "zone": "capital"
+   },
+   "atlas_id": 3272,
+   "display": "[WRtH]Jongos Ghufron",
+   "hero": "Oliveira",
+   "match": "exact+tag",
+   "name": "Jongos Ghufron",
+   "personal_power": {
+    "rank": 73,
+    "value": 66738016
+   },
+   "strongest_hero_power": {
+    "rank": 66,
+    "value": 2059755
+   },
+   "tag": "WRtH"
+  },
+  "joo": {
+   "atlas": {
+    "hq": 22,
+    "name": "JOO",
+    "x": 522,
+    "y": 625,
+    "zone": null
+   },
+   "atlas_id": 1842,
+   "display": "[mERC]JOO",
+   "hero": "Katrina",
+   "match": "exact+tag",
+   "name": "JOO",
+   "strongest_hero_power": {
+    "rank": 78,
+    "value": 1998535
+   },
+   "tag": "mERC"
+  },
+  "joyboyz": {
+   "atlas": {
+    "hq": 23,
+    "name": "JOY BOY",
+    "x": 483,
+    "y": 509,
+    "zone": "capital"
+   },
+   "atlas_id": 3273,
+   "display": "[WRtH]JOY BOY Z",
+   "hero": "Katrina",
+   "match": "fuzzy",
+   "name": "JOY BOY Z",
+   "strongest_hero_power": {
+    "rank": 148,
+    "value": 1678613
+   },
+   "tag": "WRtH",
+   "total_hero_power": {
+    "rank": 135,
+    "value": 12762517
+   }
+  },
+  "juliosantos": {
+   "atlas": {
+    "hq": 23,
+    "name": "Ju1io Santos",
+    "x": 519,
+    "y": 507,
+    "zone": "capital"
+   },
+   "atlas_id": 2693,
+   "display": "[4NG]Julio Santos",
+   "match": "fuzzy",
+   "name": "Julio Santos",
+   "personal_power": {
+    "rank": 85,
+    "value": 65649762
+   },
+   "tag": "4NG"
+  },
+  "jun9006": {
+   "atlas": {
+    "hq": 26,
+    "name": "Jun9006",
+    "x": 489,
+    "y": 520,
+    "zone": "capital"
+   },
+   "atlas_id": 3275,
+   "display": "[WRtH]Jun9006",
+   "hero": "Scarlett",
+   "match": "exact+tag",
+   "name": "Jun9006",
+   "personal_power": {
+    "rank": 26,
+    "value": 89674589
+   },
+   "strongest_hero_power": {
+    "rank": 24,
+    "value": 2404695
+   },
+   "tag": "WRtH"
+  },
+  "kaanbilge": {
+   "atlas": {
+    "hq": 25,
+    "name": "KACAN BILGE",
+    "x": 520,
+    "y": 498,
+    "zone": "capital"
+   },
+   "atlas_id": 2800,
+   "display": "[aTam]KAĞAN BİLGE",
+   "match": "fuzzy",
+   "name": "KAĞAN BİLGE",
+   "tag": "aTam",
+   "total_hero_power": {
+    "rank": 25,
+    "value": 17831630
+   }
+  },
+  "kaganbilge": {
+   "atlas": {
+    "hq": 25,
+    "name": "KACAN BILGE",
+    "x": 520,
+    "y": 498,
+    "zone": "capital"
+   },
+   "atlas_id": 2800,
+   "display": "[aTam]KAGAN BİLGE",
+   "hero": "Katrina",
+   "match": "fuzzy",
+   "name": "KAGAN BİLGE",
+   "personal_power": {
+    "rank": 24,
+    "value": 90248020
+   },
+   "strongest_hero_power": {
+    "rank": 63,
+    "value": 2091738
+   },
+   "tag": "aTam"
+  },
+  "khenar": {
+   "display": "[Helm]KHEN- aR",
+   "hero": "Katrina",
+   "match": "none",
+   "name": "KHEN- aR",
+   "strongest_hero_power": {
+    "rank": 96,
+    "value": 1895783
+   },
+   "tag": "Helm"
+  },
+  "kltrini11": {
+   "display": "[Helm]kltrini11",
+   "hero": "Oliveira",
+   "match": "none",
+   "name": "kltrini11",
+   "personal_power": {
+    "rank": 15,
+    "value": 100238875
+   },
+   "strongest_hero_power": {
+    "rank": 13,
+    "value": 2609508
+   },
+   "tag": "Helm",
+   "total_hero_power": {
+    "rank": 9,
+    "value": 23280542
+   }
+  },
+  "kne": {
+   "display": "[Helm]Kåne",
+   "hero": "Katrina",
+   "match": "none",
+   "name": "Kåne",
+   "strongest_hero_power": {
+    "rank": 143,
+    "value": 1693346
+   },
+   "tag": "Helm"
+  },
+  "kubiqb": {
+   "display": "[WRtH]KUBI-QB",
+   "match": "none",
+   "name": "KUBI-QB",
+   "personal_power": {
+    "rank": 88,
+    "value": 65155026
+   },
+   "tag": "WRtH"
+  },
+  "lebanesee": {
+   "atlas": {
+    "hq": null,
+    "name": "Lebanesee",
+    "x": 475,
+    "y": 500,
+    "zone": "capital"
+   },
+   "atlas_id": 2961,
+   "display": "[Helm]Lebanesee",
+   "hero": "Katrina",
+   "match": "exact+tag",
+   "name": "Lebanesee",
+   "strongest_hero_power": {
+    "rank": 120,
+    "value": 1785387
+   },
+   "tag": "Helm",
+   "total_hero_power": {
+    "rank": 140,
+    "value": 12665924
+   }
+  },
+  "legionnaire": {
+   "atlas": {
+    "hq": 24,
+    "name": "Legionnairee",
+    "x": 518,
+    "y": 504,
+    "zone": "capital"
+   },
+   "atlas_id": 2700,
+   "display": "[4NG]Legionnaire",
+   "hero": "Oliveira",
+   "match": "fuzzy",
+   "name": "Legionnaire",
+   "personal_power": {
+    "rank": 44,
+    "value": 74650485
+   },
+   "strongest_hero_power": {
+    "rank": 62,
+    "value": 2093424
+   },
+   "tag": "4NG",
+   "total_hero_power": {
+    "rank": 51,
+    "value": 16072100
+   }
+  },
+  "lev7392026": {
+   "atlas": {
+    "hq": 23,
+    "name": "Lev7392026",
+    "x": 470,
+    "y": 488,
+    "zone": "capital"
+   },
+   "atlas_id": 3229,
+   "display": "[UpS]Lev7392026",
+   "hero": "Katrina",
+   "match": "exact+tag",
+   "name": "Lev7392026",
+   "strongest_hero_power": {
+    "rank": 125,
+    "value": 1741729
+   },
+   "tag": "UpS"
+  },
+  "lextalionis": {
+   "atlas": {
+    "hq": 23,
+    "name": "Lex Talionis",
+    "x": 494,
+    "y": 457,
+    "zone": "capital"
+   },
+   "atlas_id": 3230,
+   "display": "[UpS]Lex Talionis",
+   "hero": "Katrina",
+   "match": "exact+tag",
+   "name": "Lex Talionis",
+   "strongest_hero_power": {
+    "rank": 144,
+    "value": 1691911
+   },
+   "tag": "UpS"
+  },
+  "lfg903": {
+   "atlas": {
+    "hq": 23,
+    "name": "LFG903",
+    "x": 487,
+    "y": 474,
+    "zone": "capital"
+   },
+   "atlas_id": 3045,
+   "display": "[mERC]LFG903",
+   "hero": "Sophia",
+   "match": "exact+tag",
+   "name": "LFG903",
+   "personal_power": {
+    "rank": 78,
+    "value": 66042974
+   },
+   "strongest_hero_power": {
+    "rank": 111,
+    "value": 1821455
+   },
+   "tag": "mERC",
+   "total_hero_power": {
+    "rank": 28,
+    "value": 17602773
+   }
+  },
+  "liferun": {
+   "atlas": {
+    "hq": 22,
+    "name": "Liferun",
+    "x": 474,
+    "y": 489,
+    "zone": "capital"
+   },
+   "atlas_id": 3231,
+   "display": "[UpS]Liferun",
+   "match": "exact+tag",
+   "name": "Liferun",
+   "personal_power": {
+    "rank": 130,
+    "value": 60884676
+   },
+   "tag": "UpS",
+   "total_hero_power": {
+    "rank": 142,
+    "value": 12577590
+   }
+  },
+  "lioman33": {
+   "display": "[Helm]Lioman33",
+   "match": "none",
+   "name": "Lioman33",
+   "personal_power": {
+    "rank": 62,
+    "value": 68990598
+   },
+   "tag": "Helm"
+  },
+  "ljmk": {
+   "atlas": {
+    "hq": 23,
+    "name": "LJMK",
+    "x": 505,
+    "y": 520,
+    "zone": "capital"
+   },
+   "atlas_id": 2879,
+   "display": "[E45Y]LJMK",
+   "hero": "Oliveira",
+   "match": "exact+tag",
+   "name": "LJMK",
+   "strongest_hero_power": {
+    "rank": 76,
+    "value": 2025522
+   },
+   "tag": "E45Y"
+  },
+  "lodmir": {
+   "atlas": {
+    "hq": 24,
+    "name": "Lodmir",
+    "x": 493,
+    "y": 523,
+    "zone": "capital"
+   },
+   "atlas_id": 3278,
+   "display": "[WRtH]Lodmir",
+   "hero": "Katrina",
+   "match": "exact+tag",
+   "name": "Lodmir",
+   "strongest_hero_power": {
+    "rank": 138,
+    "value": 1704636
+   },
+   "tag": "WRtH",
+   "total_hero_power": {
+    "rank": 150,
+    "value": 12430527
+   }
+  },
+  "lordsouth8314": {
+   "atlas": {
+    "hq": 24,
+    "name": "LORDSOUTH8314",
+    "x": 478,
+    "y": 492,
+    "zone": "capital"
+   },
+   "atlas_id": 2964,
+   "display": "[Helm]LORDSOUTH8314",
+   "hero": "Katrina",
+   "match": "exact+tag",
+   "name": "LORDSOUTH8314",
+   "personal_power": {
+    "rank": 20,
+    "value": 94184153
+   },
+   "strongest_hero_power": {
+    "rank": 82,
+    "value": 1977059
+   },
+   "tag": "Helm",
+   "total_hero_power": {
+    "rank": 55,
+    "value": 15653488
+   }
+  },
+  "lordwaguri83": {
+   "atlas": {
+    "hq": 19,
+    "name": "LordWaguri83X",
+    "x": 501,
+    "y": 461,
+    "zone": "capital"
+   },
+   "atlas_id": 3123,
+   "display": "[SHSN]LordWaguri83",
+   "hero": "Katrina",
+   "match": "fuzzy",
+   "name": "LordWaguri83",
+   "strongest_hero_power": {
+    "rank": 47,
+    "value": 2181593
+   },
+   "tag": "SHSN"
+  },
+  "lordwaguri83x": {
+   "atlas": {
+    "hq": 19,
+    "name": "LordWaguri83X",
+    "x": 501,
+    "y": 461,
+    "zone": "capital"
+   },
+   "atlas_id": 3123,
+   "display": "[SHSN]LordWaguri83X",
+   "match": "exact+tag",
+   "name": "LordWaguri83X",
+   "tag": "SHSN",
+   "total_hero_power": {
+    "rank": 63,
+    "value": 15169124
+   }
+  },
+  "lsf1986": {
+   "atlas": {
+    "hq": 22,
+    "name": "LSF1986",
+    "x": 535,
+    "y": 521,
+    "zone": "capital"
+   },
+   "atlas_id": 2701,
+   "display": "[4NG]LSF1986",
+   "match": "exact+tag",
+   "name": "LSF1986",
+   "personal_power": {
+    "rank": 138,
+    "value": 60328064
+   },
+   "tag": "4NG"
+  },
+  "m3aly": {
+   "atlas": {
+    "hq": 24,
+    "name": "M3aly",
+    "x": 478,
+    "y": 495,
+    "zone": "capital"
+   },
+   "atlas_id": 2966,
+   "display": "[Helm]M3aly",
+   "hero": "Katrina",
+   "match": "exact+tag",
+   "name": "M3aly",
+   "personal_power": {
+    "rank": 84,
+    "value": 65652009
+   },
+   "strongest_hero_power": {
+    "rank": 100,
+    "value": 1860322
+   },
+   "tag": "Helm",
+   "total_hero_power": {
+    "rank": 109,
+    "value": 13498488
+   }
+  },
+  "maj4": {
+   "atlas": {
+    "hq": 22,
+    "name": "Maj 4",
+    "x": 532,
+    "y": 510,
+    "zone": "capital"
+   },
+   "atlas_id": 2702,
+   "display": "[4NG]Maj 4",
+   "match": "exact+tag",
+   "name": "Maj 4",
+   "tag": "4NG",
+   "total_hero_power": {
+    "rank": 121,
+    "value": 13220151
+   }
+  },
+  "maj420": {
+   "atlas": {
+    "hq": 27,
+    "name": "Maj-42",
+    "x": 483,
+    "y": 493,
+    "zone": "capital"
+   },
+   "atlas_id": 3383,
+   "display": "[Helm]Maj-420",
+   "hero": "Oliveira",
+   "match": "fuzzy",
+   "name": "Maj-420",
+   "personal_power": {
+    "rank": 5,
+    "value": 116324395
+   },
+   "strongest_hero_power": {
+    "rank": 6,
+    "value": 2966342
+   },
+   "tag": "Helm",
+   "total_hero_power": {
+    "rank": 4,
+    "value": 26690415
+   }
+  },
+  "maneraki": {
+   "atlas": {
+    "hq": 23,
+    "name": "Maneraki",
+    "x": 470,
+    "y": 508,
+    "zone": "capital"
+   },
+   "atlas_id": 3232,
+   "display": "[UpS]Maneraki",
+   "match": "exact+tag",
+   "name": "Maneraki",
+   "tag": "UpS",
+   "total_hero_power": {
+    "rank": 102,
+    "value": 13600084
+   }
+  },
+  "marcelo396": {
+   "atlas": {
+    "hq": 20,
+    "name": "MARCELO 396",
+    "x": 958,
+    "y": 805,
+    "zone": null
+   },
+   "atlas_id": 2604,
+   "display": "[WRtH]MARCELO 396",
+   "match": "exact+tag",
+   "name": "MARCELO 396",
+   "personal_power": {
+    "rank": 80,
+    "value": 65919457
+   },
+   "tag": "WRtH",
+   "total_hero_power": {
+    "rank": 123,
+    "value": 13138929
+   }
+  },
+  "maychan": {
+   "atlas": {
+    "hq": 20,
+    "name": "MayChan",
+    "x": 471,
+    "y": 459,
+    "zone": "capital"
+   },
+   "atlas_id": 3048,
+   "display": "[mERC]MayChan",
+   "match": "exact+tag",
+   "name": "MayChan",
+   "personal_power": {
+    "rank": 125,
+    "value": 61046623
+   },
+   "tag": "mERC",
+   "total_hero_power": {
+    "rank": 124,
+    "value": 13112711
+   }
+  },
+  "mcbear": {
+   "atlas": {
+    "hq": 24,
+    "name": "McBear",
+    "x": 484,
+    "y": 489,
+    "zone": "capital"
+   },
+   "atlas_id": 2967,
+   "display": "[Helm]McBear",
+   "hero": "Oliveira",
+   "match": "exact+tag",
+   "name": "McBear",
+   "personal_power": {
+    "rank": 6,
+    "value": 113177203
+   },
+   "strongest_hero_power": {
+    "rank": 19,
+    "value": 2492513
+   },
+   "tag": "Helm",
+   "total_hero_power": {
+    "rank": 14,
+    "value": 22005688
+   }
+  },
+  "mdmillon": {
+   "display": "[WRtH]MD millon",
+   "hero": "Katrina",
+   "match": "none",
+   "name": "MD millon",
+   "strongest_hero_power": {
+    "rank": 98,
+    "value": 1879052
+   },
+   "tag": "WRtH"
+  },
+  "mechasauce": {
+   "atlas": {
+    "hq": 23,
+    "name": "MechaSauce",
+    "x": 520,
+    "y": 476,
+    "zone": "capital"
+   },
+   "atlas_id": 3164,
+   "display": "[SWT]MechaSauce",
+   "hero": "Katrina",
+   "match": "exact+tag",
+   "name": "MechaSauce",
+   "personal_power": {
+    "rank": 68,
+    "value": 67799752
+   },
+   "strongest_hero_power": {
+    "rank": 93,
+    "value": 1908145
+   },
+   "tag": "SWT",
+   "total_hero_power": {
+    "rank": 61,
+    "value": 15254871
+   }
+  },
+  "mentiscope": {
+   "atlas": {
+    "hq": 23,
+    "name": "Mentiscope",
+    "x": 459,
+    "y": 488,
+    "zone": "capital"
+   },
+   "atlas_id": 3234,
+   "display": "[UpS]Mentiscope",
+   "hero": "Oliveira",
+   "match": "exact+tag",
+   "name": "Mentiscope",
+   "personal_power": {
+    "rank": 89,
+    "value": 64886022
+   },
+   "strongest_hero_power": {
+    "rank": 58,
+    "value": 2129773
+   },
+   "tag": "UpS",
+   "total_hero_power": {
+    "rank": 117,
+    "value": 13262324
+   }
+  },
+  "michaelsz": {
+   "atlas": {
+    "hq": 22,
+    "name": "Michaelsz",
+    "x": 517,
+    "y": 638,
+    "zone": null
+   },
+   "atlas_id": 1844,
+   "display": "[mERC]Michaelsz",
+   "match": "exact+tag",
+   "name": "Michaelsz",
+   "tag": "mERC",
+   "total_hero_power": {
+    "rank": 133,
+    "value": 12845916
+   }
+  },
+  "milesdavis": {
+   "atlas": {
+    "hq": 23,
+    "name": "MilesDavis",
+    "x": 469,
+    "y": 493,
+    "zone": "capital"
+   },
+   "atlas_id": 2968,
+   "display": "[Helm]MilesDavis",
+   "hero": "Katrina",
+   "match": "exact+tag",
+   "name": "MilesDavis",
+   "personal_power": {
+    "rank": 81,
+    "value": 65809910
+   },
+   "strongest_hero_power": {
+    "rank": 45,
+    "value": 2189847
+   },
+   "tag": "Helm"
+  },
+  "misslecter": {
+   "atlas": {
+    "hq": 22,
+    "name": "Misslecter",
+    "x": 198,
+    "y": 801,
+    "zone": null
+   },
+   "atlas_id": 994,
+   "display": "[7cie]Misslecter",
+   "match": "exact+tag",
+   "name": "Misslecter",
+   "personal_power": {
+    "rank": 124,
+    "value": 61181941
+   },
+   "tag": "7cie"
+  },
+  "mkaforever": {
+   "display": "[SWT]MKA FOREVER",
+   "hero": "Oliveira",
+   "match": "none",
+   "name": "MKA FOREVER",
+   "strongest_hero_power": {
+    "rank": 43,
+    "value": 2200803
+   },
+   "tag": "SWT",
+   "total_hero_power": {
+    "rank": 107,
+    "value": 13505391
+   }
+  },
+  "mohamedali25": {
+   "atlas": {
+    "hq": null,
+    "name": "Mohamed ALI 25",
+    "x": 533,
+    "y": 490,
+    "zone": "capital"
+   },
+   "atlas_id": 3165,
+   "display": "[SWT]Mohamed ALI 25",
+   "hero": "Katrina",
+   "match": "exact+tag",
+   "name": "Mohamed ALI 25",
+   "strongest_hero_power": {
+    "rank": 109,
+    "value": 1822683
+   },
+   "tag": "SWT"
+  },
+  "mohammd123": {
+   "atlas": {
+    "hq": 22,
+    "name": "Mohammd 123",
+    "x": 557,
+    "y": 504,
+    "zone": "capital"
+   },
+   "atlas_id": 2804,
+   "display": "[aTam]Mohammd 123",
+   "match": "exact+tag",
+   "name": "Mohammd 123",
+   "personal_power": {
+    "rank": 123,
+    "value": 61264661
+   },
+   "tag": "aTam"
+  },
+  "moochikun": {
+   "atlas": {
+    "hq": null,
+    "name": "Moochi-kun",
+    "x": 533,
+    "y": 500,
+    "zone": "capital"
+   },
+   "atlas_id": 2704,
+   "display": "[4NG]Moochi-kun",
+   "hero": "Katrina",
+   "match": "exact+tag",
+   "name": "Moochi-kun",
+   "strongest_hero_power": {
+    "rank": 74,
+    "value": 2029147
+   },
+   "tag": "4NG",
+   "total_hero_power": {
+    "rank": 79,
+    "value": 14573316
+   }
+  },
+  "moopz": {
+   "atlas": {
+    "hq": 22,
+    "name": "moopz",
+    "x": 462,
+    "y": 505,
+    "zone": "capital"
+   },
+   "atlas_id": 2841,
+   "display": "[Ayaa]moopz",
+   "match": "exact+tag",
+   "name": "moopz",
+   "personal_power": {
+    "rank": 96,
+    "value": 63670100
+   },
+   "tag": "Ayaa",
+   "total_hero_power": {
+    "rank": 145,
+    "value": 12485549
+   }
+  },
+  "morpheus54": {
+   "atlas": {
+    "hq": 22,
+    "name": "Morpheus54",
+    "x": 521,
+    "y": 531,
+    "zone": "capital"
+   },
+   "atlas_id": 2752,
+   "display": "[7cie]Morpheus54",
+   "hero": "Katrina",
+   "match": "exact+tag",
+   "name": "Morpheus54",
+   "strongest_hero_power": {
+    "rank": 105,
+    "value": 1832506
+   },
+   "tag": "7cie"
+  },
+  "mostwanted": {
+   "atlas": {
+    "hq": 25,
+    "name": "MOSTWANTED",
+    "x": 497,
+    "y": 526,
+    "zone": "capital"
+   },
+   "atlas_id": 3285,
+   "display": "[WRtH]MOSTWANTED",
+   "hero": "Katrina",
+   "match": "exact+tag",
+   "name": "MOSTWANTED",
+   "personal_power": {
+    "rank": 25,
+    "value": 90147566
+   },
+   "strongest_hero_power": {
+    "rank": 57,
+    "value": 2137177
+   },
+   "tag": "WRtH",
+   "total_hero_power": {
+    "rank": 70,
+    "value": 14881346
+   }
+  },
+  "mrahn": {
+   "atlas": {
+    "hq": 27,
+    "name": "MR AHN",
+    "x": 482,
+    "y": 485,
+    "zone": "capital"
+   },
+   "atlas_id": 2970,
+   "display": "[Helm]MR AHN",
+   "hero": "Oliveira",
+   "match": "exact+tag",
+   "name": "MR AHN",
+   "personal_power": {
+    "rank": 4,
+    "value": 118046225
+   },
+   "strongest_hero_power": {
+    "rank": 3,
+    "value": 3088591
+   },
+   "tag": "Helm",
+   "total_hero_power": {
+    "rank": 3,
+    "value": 27509901
+   }
+  },
+  "mrcoqui": {
+   "atlas": {
+    "hq": 24,
+    "name": "Mr coqui",
+    "x": 492,
+    "y": 520,
+    "zone": "capital"
+   },
+   "atlas_id": 3286,
+   "display": "[WRtH]Mr Coqui",
+   "hero": "Katrina",
+   "match": "exact+tag",
+   "name": "Mr Coqui",
+   "personal_power": {
+    "rank": 7,
+    "value": 112300507
+   },
+   "strongest_hero_power": {
+    "rank": 4,
+    "value": 2995610
+   },
+   "tag": "WRtH",
+   "total_hero_power": {
+    "rank": 8,
+    "value": 23309979
+   }
+  },
+  "mrphz": {
+   "atlas": {
+    "hq": 24,
+    "name": "Mørphz",
+    "x": 499,
+    "y": 523,
+    "zone": "capital"
+   },
+   "atlas_id": 3288,
+   "display": "[WRtH]Mørphz",
+   "hero": "Katrina",
+   "match": "exact+tag",
+   "name": "Mørphz",
+   "strongest_hero_power": {
+    "rank": 41,
+    "value": 2233480
+   },
+   "tag": "WRtH",
+   "total_hero_power": {
+    "rank": 95,
+    "value": 13874940
+   }
+  },
+  "mschuster": {
+   "atlas": {
+    "hq": 24,
+    "name": "MSchuster I",
+    "x": 499,
+    "y": 520,
+    "zone": "capital"
+   },
+   "atlas_id": 3287,
+   "display": "[WRtH]MSchuster",
+   "hero": "Katrina",
+   "match": "fuzzy",
+   "name": "MSchuster",
+   "personal_power": {
+    "rank": 34,
+    "value": 82082322
+   },
+   "strongest_hero_power": {
+    "rank": 55,
+    "value": 2150385
+   },
+   "tag": "WRtH"
+  },
+  "muhammed798": {
+   "atlas": {
+    "hq": 23,
+    "name": "Muhammed 798",
+    "x": 513,
+    "y": 488,
+    "zone": "capital"
+   },
+   "atlas_id": 3167,
+   "display": "[SWT]Muhammed 798",
+   "hero": "Katrina",
+   "match": "exact+tag",
+   "name": "Muhammed 798",
+   "personal_power": {
+    "rank": 133,
+    "value": 60638943
+   },
+   "strongest_hero_power": {
+    "rank": 36,
+    "value": 2258833
+   },
+   "tag": "SWT",
+   "total_hero_power": {
+    "rank": 131,
+    "value": 12942356
+   }
+  },
+  "myricle": {
+   "atlas": {
+    "hq": 27,
+    "name": "Myricle",
+    "x": 480,
+    "y": 497,
+    "zone": "capital"
+   },
+   "atlas_id": 3388,
+   "display": "[Helm]Myricle",
+   "hero": "Oliveira",
+   "match": "exact+tag",
+   "name": "Myricle",
+   "personal_power": {
+    "rank": 2,
+    "value": 151994932
+   },
+   "strongest_hero_power": {
+    "rank": 2,
+    "value": 3330620
+   },
+   "tag": "Helm",
+   "total_hero_power": {
+    "rank": 1,
+    "value": 34864945
+   }
+  },
+  "nfg1": {
+   "atlas": {
+    "hq": null,
+    "name": "NFG1",
+    "x": 494,
+    "y": 472,
+    "zone": "capital"
+   },
+   "atlas_id": 3051,
+   "display": "[mERC]NFG1",
+   "hero": "Katrina",
+   "match": "exact+tag",
+   "name": "NFG1",
+   "strongest_hero_power": {
+    "rank": 84,
+    "value": 1965445
+   },
+   "tag": "mERC",
+   "total_hero_power": {
+    "rank": 84,
+    "value": 14225838
+   }
+  },
+  "obaida798": {
+   "atlas": {
+    "hq": 23,
+    "name": "Obaida 798",
+    "x": 486,
+    "y": 508,
+    "zone": "capital"
+   },
+   "atlas_id": 3291,
+   "display": "[WRtH]Obaida 798",
+   "hero": "Sophia",
+   "match": "exact+tag",
+   "name": "Obaida 798",
+   "strongest_hero_power": {
+    "rank": 89,
+    "value": 1927665
+   },
+   "tag": "WRtH"
+  },
+  "oguzkagan": {
+   "atlas": {
+    "hq": 20,
+    "name": "OguzKagann",
+    "x": 144,
+    "y": 195,
+    "zone": null
+   },
+   "atlas_id": 997,
+   "display": "OguzKagan",
+   "hero": "Katrina",
+   "match": "fuzzy",
+   "name": "OguzKagan",
+   "strongest_hero_power": {
+    "rank": 114,
+    "value": 1809756
+   },
+   "tag": ""
+  },
+  "oronw123": {
+   "display": "[Helm]oronw123",
+   "hero": "Katrina",
+   "match": "none",
+   "name": "oronw123",
+   "personal_power": {
+    "rank": 27,
+    "value": 88994970
+   },
+   "strongest_hero_power": {
+    "rank": 67,
+    "value": 2058562
+   },
+   "tag": "Helm",
+   "total_hero_power": {
+    "rank": 68,
+    "value": 15015912
+   }
+  },
+  "panda67": {
+   "display": "[mERC]panda67",
+   "hero": "Katrina",
+   "match": "none",
+   "name": "panda67",
+   "personal_power": {
+    "rank": 95,
+    "value": 63788591
+   },
+   "strongest_hero_power": {
+    "rank": 71,
+    "value": 2039159
+   },
+   "tag": "mERC"
+  },
+  "papadk": {
+   "atlas": {
+    "hq": 24,
+    "name": "Papadk",
+    "x": 472,
+    "y": 491,
+    "zone": "capital"
+   },
+   "atlas_id": 2976,
+   "display": "[Helm]Papadk",
+   "hero": "Sophia",
+   "match": "exact+tag",
+   "name": "Papadk",
+   "strongest_hero_power": {
+    "rank": 133,
+    "value": 1714467
+   },
+   "tag": "Helm"
+  },
+  "pdot": {
+   "atlas": {
+    "hq": 25,
+    "name": "P D O T",
+    "x": 486,
+    "y": 480,
+    "zone": "capital"
+   },
+   "atlas_id": 2975,
+   "display": "[Helm]P D O T",
+   "hero": "Oliveira",
+   "match": "exact+tag",
+   "name": "P D O T",
+   "personal_power": {
+    "rank": 28,
+    "value": 88160876
+   },
+   "strongest_hero_power": {
+    "rank": 42,
+    "value": 2202163
+   },
+   "tag": "Helm",
+   "total_hero_power": {
+    "rank": 21,
+    "value": 18712568
+   }
+  },
+  "phoenixsaint": {
+   "atlas": {
+    "hq": 23,
+    "name": "Phoenix Saint",
+    "x": 471,
+    "y": 504,
+    "zone": "capital"
+   },
+   "atlas_id": 2978,
+   "display": "[Helm]Phoenix Saint",
+   "hero": "Katrina",
+   "match": "exact+tag",
+   "name": "Phoenix Saint",
+   "strongest_hero_power": {
+    "rank": 132,
+    "value": 1721483
+   },
+   "tag": "Helm"
+  },
+  "pierreman": {
+   "atlas": {
+    "hq": 22,
+    "name": "pierreman",
+    "x": 510,
+    "y": 461,
+    "zone": "capital"
+   },
+   "atlas_id": 3125,
+   "display": "[SHSN]pierreman",
+   "match": "exact+tag",
+   "name": "pierreman",
+   "personal_power": {
+    "rank": 116,
+    "value": 61417076
+   },
+   "tag": "SHSN",
+   "total_hero_power": {
+    "rank": 111,
+    "value": 13441074
+   }
+  },
+  "prisonmike": {
+   "display": "[Helm]PRISON MIKE",
+   "hero": "Oliveira",
+   "match": "none",
+   "name": "PRISON MIKE",
+   "personal_power": {
+    "rank": 14,
+    "value": 102748134
+   },
+   "strongest_hero_power": {
+    "rank": 5,
+    "value": 2972197
+   },
+   "tag": "Helm",
+   "total_hero_power": {
+    "rank": 5,
+    "value": 26148095
+   }
+  },
+  "psgfarm": {
+   "atlas": {
+    "hq": 24,
+    "name": "PSG Farm",
+    "x": 472,
+    "y": 512,
+    "zone": "capital"
+   },
+   "atlas_id": 2979,
+   "display": "[Helm]PSG Farm",
+   "hero": "Katrina",
+   "match": "exact+tag",
+   "name": "PSG Farm",
+   "personal_power": {
+    "rank": 9,
+    "value": 107545466
+   },
+   "strongest_hero_power": {
+    "rank": 44,
+    "value": 2195392
+   },
+   "tag": "Helm"
+  },
+  "pumpel007": {
+   "display": "[SWT]Pumpel007",
+   "match": "none",
+   "name": "Pumpel007",
+   "personal_power": {
+    "rank": 72,
+    "value": 66888500
+   },
+   "tag": "SWT"
+  },
+  "pureplaya2": {
+   "atlas": {
+    "hq": 23,
+    "name": "PurePlaya2",
+    "x": 469,
+    "y": 485,
+    "zone": "capital"
+   },
+   "atlas_id": 3377,
+   "display": "[Helm]PurePlaya2",
+   "hero": "Oliveira",
+   "match": "exact+tag",
+   "name": "PurePlaya2",
+   "personal_power": {
+    "rank": 112,
+    "value": 61970938
+   },
+   "strongest_hero_power": {
+    "rank": 21,
+    "value": 2462685
+   },
+   "tag": "Helm",
+   "total_hero_power": {
+    "rank": 34,
+    "value": 17247685
+   }
+  },
+  "rabe": {
+   "display": "[UpS]R-A-B-E",
+   "match": "none",
+   "name": "R-A-B-E",
+   "personal_power": {
+    "rank": 117,
+    "value": 61371888
+   },
+   "tag": "UpS"
+  },
+  "rainbow866668": {
+   "atlas": {
+    "hq": 22,
+    "name": "Ralnbow866668",
+    "x": 535,
+    "y": 524,
+    "zone": "capital"
+   },
+   "atlas_id": 2711,
+   "display": "[4NG]Rainbow866668",
+   "match": "fuzzy",
+   "name": "Rainbow866668",
+   "tag": "4NG",
+   "total_hero_power": {
+    "rank": 147,
+    "value": 12480512
+   }
+  },
+  "rampantjourney": {
+   "atlas": {
+    "hq": 21,
+    "name": "rampantjoumey",
+    "x": 512,
+    "y": 625,
+    "zone": null
+   },
+   "atlas_id": 1845,
+   "display": "[mERC]rampantjourney",
+   "hero": "Katrina",
+   "match": "fuzzy",
+   "name": "rampantjourney",
+   "strongest_hero_power": {
+    "rank": 104,
+    "value": 1842363
+   },
+   "tag": "mERC",
+   "total_hero_power": {
+    "rank": 76,
+    "value": 14685095
+   }
+  },
+  "raphealmontana": {
+   "atlas": {
+    "hq": 22,
+    "name": "Rapheal Montana",
+    "x": 422,
+    "y": 225,
+    "zone": null
+   },
+   "atlas_id": 1233,
+   "display": "[Ayaa]Rapheal Montana",
+   "hero": "Katrina",
+   "match": "exact+tag",
+   "name": "Rapheal Montana",
+   "strongest_hero_power": {
+    "rank": 70,
+    "value": 2041256
+   },
+   "tag": "Ayaa"
+  },
+  "rasiter": {
+   "atlas": {
+    "hq": 22,
+    "name": "Rasiter",
+    "x": 480,
+    "y": 516,
+    "zone": "capital"
+   },
+   "atlas_id": 3295,
+   "display": "[WRtH]Rasiter",
+   "hero": "Katrina",
+   "match": "exact+tag",
+   "name": "Rasiter",
+   "strongest_hero_power": {
+    "rank": 139,
+    "value": 1704119
+   },
+   "tag": "WRtH"
+  },
+  "rave21": {
+   "atlas": {
+    "hq": 21,
+    "name": "RaVe21",
+    "x": 502,
+    "y": 478,
+    "zone": "capital"
+   },
+   "atlas_id": 3370,
+   "display": "[UpS]RaVe21",
+   "hero": "Laura",
+   "match": "exact+tag",
+   "name": "RaVe21",
+   "strongest_hero_power": {
+    "rank": 87,
+    "value": 1940676
+   },
+   "tag": "UpS",
+   "total_hero_power": {
+    "rank": 143,
+    "value": 12567111
+   }
+  },
+  "raybudd": {
+   "atlas": {
+    "hq": null,
+    "name": "Raybudd",
+    "x": 501,
+    "y": 533,
+    "zone": "capital"
+   },
+   "atlas_id": 3296,
+   "display": "[WRtH]Raybudd",
+   "hero": "Katrina",
+   "match": "exact+tag",
+   "name": "Raybudd",
+   "personal_power": {
+    "rank": 41,
+    "value": 76469649
+   },
+   "strongest_hero_power": {
+    "rank": 23,
+    "value": 2413864
+   },
+   "tag": "WRtH",
+   "total_hero_power": {
+    "rank": 24,
+    "value": 18261445
+   }
+  },
+  "rayyy": {
+   "atlas": {
+    "hq": 25,
+    "name": "Rayyy",
+    "x": 468,
+    "y": 503,
+    "zone": "capital"
+   },
+   "atlas_id": 2980,
+   "display": "[Helm]Rayyy •",
+   "hero": "Amelia",
+   "match": "exact+tag",
+   "name": "Rayyy •",
+   "strongest_hero_power": {
+    "rank": 73,
+    "value": 2031083
+   },
+   "tag": "Helm"
+  },
+  "raz798": {
+   "atlas": {
+    "hq": 24,
+    "name": "rAz 798",
+    "x": 524,
+    "y": 505,
+    "zone": "capital"
+   },
+   "atlas_id": 2759,
+   "display": "[mERC]rAz 798",
+   "hero": "Katrina",
+   "match": "exact",
+   "name": "rAz 798",
+   "personal_power": {
+    "rank": 52,
+    "value": 72180103
+   },
+   "strongest_hero_power": {
+    "rank": 88,
+    "value": 1932391
+   },
+   "tag": "mERC"
+  },
+  "reacher1357": {
+   "atlas": {
+    "hq": 21,
+    "name": "Reacher1357",
+    "x": 476,
+    "y": 491,
+    "zone": "capital"
+   },
+   "atlas_id": 2981,
+   "display": "[Helm]Reacher1357",
+   "match": "exact+tag",
+   "name": "Reacher1357",
+   "tag": "Helm",
+   "total_hero_power": {
+    "rank": 128,
+    "value": 13053752
+   }
+  },
+  "reihermat": {
+   "atlas": {
+    "hq": 23,
+    "name": "RElHERMAT",
+    "x": 502,
+    "y": 530,
+    "zone": "capital"
+   },
+   "atlas_id": 3297,
+   "display": "[WRtH]REIHERMAT",
+   "match": "fuzzy",
+   "name": "REIHERMAT",
+   "personal_power": {
+    "rank": 100,
+    "value": 62812271
+   },
+   "tag": "WRtH",
+   "total_hero_power": {
+    "rank": 104,
+    "value": 13590292
+   }
+  },
+  "rocksoclown": {
+   "atlas": {
+    "hq": 24,
+    "name": "Rockso Clown",
+    "x": 490,
+    "y": 523,
+    "zone": "capital"
+   },
+   "atlas_id": 3299,
+   "display": "[WRtH]Rockso Clown",
+   "hero": "Oliveira",
+   "match": "exact+tag",
+   "name": "Rockso Clown",
+   "personal_power": {
+    "rank": 45,
+    "value": 74274513
+   },
+   "strongest_hero_power": {
+    "rank": 7,
+    "value": 2917291
+   },
+   "tag": "WRtH",
+   "total_hero_power": {
+    "rank": 23,
+    "value": 18297314
+   }
+  },
+  "roven1": {
+   "atlas": {
+    "hq": 20,
+    "name": "Roven1",
+    "x": 322,
+    "y": 957,
+    "zone": null
+   },
+   "atlas_id": 1050,
+   "display": "[ADAF]Roven1",
+   "match": "exact+tag",
+   "name": "Roven1",
+   "personal_power": {
+    "rank": 110,
+    "value": 62350588
+   },
+   "tag": "ADAF",
+   "total_hero_power": {
+    "rank": 81,
+    "value": 14380717
+   }
+  },
+  "roxium": {
+   "display": "[7cie]RoXiuM",
+   "match": "none",
+   "name": "RoXiuM",
+   "tag": "7cie",
+   "total_hero_power": {
+    "rank": 108,
+    "value": 13499479
+   }
+  },
+  "rraccoon": {
+   "atlas": {
+    "hq": 23,
+    "name": "Rraccoon",
+    "x": 519,
+    "y": 486,
+    "zone": "capital"
+   },
+   "atlas_id": 3174,
+   "display": "[SWT]Rraccoon",
+   "hero": "Oliveira",
+   "match": "exact+tag",
+   "name": "Rraccoon",
+   "personal_power": {
+    "rank": 102,
+    "value": 62774596
+   },
+   "strongest_hero_power": {
+    "rank": 90,
+    "value": 1923348
+   },
+   "tag": "SWT",
+   "total_hero_power": {
+    "rank": 60,
+    "value": 15255432
+   }
+  },
+  "rsshunter": {
+   "atlas": {
+    "hq": 27,
+    "name": "Rsshunter",
+    "x": 516,
+    "y": 480,
+    "zone": "capital"
+   },
+   "atlas_id": 3175,
+   "display": "[SWT]RssHunter",
+   "hero": "Oliveira",
+   "match": "exact+tag",
+   "name": "RssHunter",
+   "personal_power": {
+    "rank": 13,
+    "value": 103991163
+   },
+   "strongest_hero_power": {
+    "rank": 8,
+    "value": 2840119
+   },
+   "tag": "SWT",
+   "total_hero_power": {
+    "rank": 10,
+    "value": 22797973
+   }
+  },
+  "sachhhhh": {
+   "atlas": {
+    "hq": 22,
+    "name": "Sachhhhh",
+    "x": 529,
+    "y": 508,
+    "zone": "capital"
+   },
+   "atlas_id": 3399,
+   "display": "[4NG]Sachhhhh",
+   "match": "exact+tag",
+   "name": "Sachhhhh",
+   "personal_power": {
+    "rank": 97,
+    "value": 63614342
+   },
+   "tag": "4NG",
+   "total_hero_power": {
+    "rank": 112,
+    "value": 13380374
+   }
+  },
+  "samuelm": {
+   "atlas": {
+    "hq": 26,
+    "name": "Samuelm",
+    "x": 481,
+    "y": 510,
+    "zone": "capital"
+   },
+   "atlas_id": 3483,
+   "display": "[Helm]Samuelm",
+   "hero": "Laura",
+   "match": "exact+tag",
+   "name": "Samuelm",
+   "personal_power": {
+    "rank": 36,
+    "value": 81299836
+   },
+   "strongest_hero_power": {
+    "rank": 101,
+    "value": 1847958
+   },
+   "tag": "Helm",
+   "total_hero_power": {
+    "rank": 59,
+    "value": 15337188
+   }
+  },
+  "schmed": {
+   "atlas": {
+    "hq": 24,
+    "name": "Schmed",
+    "x": 470,
+    "y": 475,
+    "zone": "capital"
+   },
+   "atlas_id": 3058,
+   "display": "[mERC]Schmed",
+   "match": "exact+tag",
+   "name": "Schmed",
+   "personal_power": {
+    "rank": 16,
+    "value": 97198299
+   },
+   "tag": "mERC",
+   "total_hero_power": {
+    "rank": 13,
+    "value": 22016306
+   }
+  },
+  "shaun": {
+   "atlas": {
+    "hq": 22,
+    "name": "ShAuN",
+    "x": 492,
+    "y": 464,
+    "zone": "capital"
+   },
+   "atlas_id": 3060,
+   "display": "[mERC]ShAuN",
+   "match": "exact+tag",
+   "name": "ShAuN",
+   "tag": "mERC",
+   "total_hero_power": {
+    "rank": 120,
+    "value": 13228923
+   }
+  },
+  "shiva666": {
+   "atlas": {
+    "hq": null,
+    "name": "Shiva666",
+    "x": 487,
+    "y": 481,
+    "zone": "capital"
+   },
+   "atlas_id": 2985,
+   "display": "[Helm]Shiva666",
+   "hero": "Oliveira",
+   "match": "exact+tag",
+   "name": "Shiva666",
+   "personal_power": {
+    "rank": 8,
+    "value": 111395843
+   },
+   "strongest_hero_power": {
+    "rank": 11,
+    "value": 2663418
+   },
+   "tag": "Helm"
+  },
+  "shodak2": {
+   "atlas": {
+    "hq": 25,
+    "name": "Shodak2",
+    "x": 480,
+    "y": 512,
+    "zone": "capital"
+   },
+   "atlas_id": 3301,
+   "display": "[WRtH]Shodak2",
+   "hero": "Sophia",
+   "match": "exact+tag",
+   "name": "Shodak2",
+   "personal_power": {
+    "rank": 17,
+    "value": 96806151
+   },
+   "strongest_hero_power": {
+    "rank": 28,
+    "value": 2392692
+   },
+   "tag": "WRtH",
+   "total_hero_power": {
+    "rank": 36,
+    "value": 16956841
+   }
+  },
+  "shroomysmurf": {
+   "atlas": {
+    "hq": 22,
+    "name": "Shroomysmurf",
+    "x": 524,
+    "y": 487,
+    "zone": "capital"
+   },
+   "atlas_id": 2890,
+   "display": "[E45Y]Shroomysmurf",
+   "hero": "Katrina",
+   "match": "exact+tag",
+   "name": "Shroomysmurf",
+   "strongest_hero_power": {
+    "rank": 99,
+    "value": 1878091
+   },
+   "tag": "E45Y"
+  },
+  "skywalkertony": {
+   "atlas": {
+    "hq": 24,
+    "name": "Skywalker Tony",
+    "x": 494,
+    "y": 445,
+    "zone": "capital"
+   },
+   "atlas_id": 2986,
+   "display": "[Helm]Skywalker Tony",
+   "hero": "Oliveira",
+   "match": "exact+tag",
+   "name": "Skywalker Tony",
+   "personal_power": {
+    "rank": 59,
+    "value": 69759412
+   },
+   "strongest_hero_power": {
+    "rank": 136,
+    "value": 1708096
+   },
+   "tag": "Helm",
+   "total_hero_power": {
+    "rank": 54,
+    "value": 15793640
+   }
+  },
+  "slypeeler": {
+   "atlas": {
+    "hq": 24,
+    "name": "sly Peeler",
+    "x": 479,
+    "y": 489,
+    "zone": "capital"
+   },
+   "atlas_id": 2987,
+   "display": "[Helm]sly Peeler",
+   "hero": "Katrina",
+   "match": "exact+tag",
+   "name": "sly Peeler",
+   "personal_power": {
+    "rank": 54,
+    "value": 71977213
+   },
+   "strongest_hero_power": {
+    "rank": 33,
+    "value": 2284064
+   },
+   "tag": "Helm",
+   "total_hero_power": {
+    "rank": 38,
+    "value": 16719448
+   }
+  },
+  "smokinghot": {
+   "atlas": {
+    "hq": 27,
+    "name": "Smokingh0t",
+    "x": 481,
+    "y": 491,
+    "zone": "capital"
+   },
+   "atlas_id": 2988,
+   "display": "[Helm]Smokinghot",
+   "hero": "Oliveira",
+   "match": "fuzzy",
+   "name": "Smokinghot",
+   "personal_power": {
+    "rank": 3,
+    "value": 140751901
+   },
+   "strongest_hero_power": {
+    "rank": 12,
+    "value": 2610365
+   },
+   "tag": "Helm",
+   "total_hero_power": {
+    "rank": 20,
+    "value": 19544272
+   }
+  },
+  "spandam2": {
+   "atlas": {
+    "hq": 23,
+    "name": "Spandam2",
+    "x": 530,
+    "y": 494,
+    "zone": "capital"
+   },
+   "atlas_id": 3179,
+   "display": "[SWT]Spandam2",
+   "hero": "Katrina",
+   "match": "exact+tag",
+   "name": "Spandam2",
+   "strongest_hero_power": {
+    "rank": 51,
+    "value": 2167397
+   },
+   "tag": "SWT",
+   "total_hero_power": {
+    "rank": 125,
+    "value": 13103150
+   }
+  },
+  "spanishking": {
+   "display": "[SWT]SPANISH KING",
+   "match": "none",
+   "name": "SPANISH KING",
+   "personal_power": {
+    "rank": 137,
+    "value": 60369183
+   },
+   "tag": "SWT"
+  },
+  "ssshotgun": {
+   "display": "[Helm]ssshotgun",
+   "match": "none",
+   "name": "ssshotgun",
+   "personal_power": {
+    "rank": 105,
+    "value": 62495920
+   },
+   "tag": "Helm",
+   "total_hero_power": {
+    "rank": 129,
+    "value": 13019249
+   }
+  },
+  "stageiv": {
+   "display": "[7cie]StaGe IV",
+   "hero": "Katrina",
+   "match": "none",
+   "name": "StaGe IV",
+   "strongest_hero_power": {
+    "rank": 118,
+    "value": 1792123
+   },
+   "tag": "7cie"
+  },
+  "steelhaus": {
+   "atlas": {
+    "hq": 23,
+    "name": "SteelHaus",
+    "x": 511,
+    "y": 541,
+    "zone": "capital"
+   },
+   "atlas_id": 3442,
+   "display": "[E45Y]SteelHaus",
+   "hero": "Oliveira",
+   "match": "exact+tag",
+   "name": "SteelHaus",
+   "strongest_hero_power": {
+    "rank": 123,
+    "value": 1764759
+   },
+   "tag": "E45Y"
+  },
+  "stkclarky": {
+   "atlas": {
+    "hq": 24,
+    "name": "StK Clarky",
+    "x": 481,
+    "y": 481,
+    "zone": "capital"
+   },
+   "atlas_id": 2989,
+   "display": "[Helm]StK Clarky",
+   "match": "exact+tag",
+   "name": "StK Clarky",
+   "personal_power": {
+    "rank": 76,
+    "value": 66214234
+   },
+   "tag": "Helm"
+  },
+  "sunlight": {
+   "display": "[SWT]SUNLiGHT",
+   "hero": "Oliveira",
+   "match": "none",
+   "name": "SUNLiGHT",
+   "personal_power": {
+    "rank": 46,
+    "value": 73721226
+   },
+   "strongest_hero_power": {
+    "rank": 34,
+    "value": 2277238
+   },
+   "tag": "SWT",
+   "total_hero_power": {
+    "rank": 138,
+    "value": 12713147
+   }
+  },
+  "supahero": {
+   "atlas": {
+    "hq": 24,
+    "name": "SupaHero",
+    "x": 486,
+    "y": 520,
+    "zone": "capital"
+   },
+   "atlas_id": 3303,
+   "display": "[WRtH]SupaHero",
+   "hero": "Oliveira",
+   "match": "exact+tag",
+   "name": "SupaHero",
+   "personal_power": {
+    "rank": 31,
+    "value": 85888607
+   },
+   "strongest_hero_power": {
+    "rank": 22,
+    "value": 2426553
+   },
+   "tag": "WRtH",
+   "total_hero_power": {
+    "rank": 33,
+    "value": 17360906
+   }
+  },
+  "survivor813bm": {
+   "atlas": {
+    "hq": 10,
+    "name": "Survivor813WM",
+    "x": 38,
+    "y": 921,
+    "zone": null
+   },
+   "atlas_id": 2027,
+   "display": "Survivor813Bm",
+   "hero": "Katrina",
+   "match": "fuzzy",
+   "name": "Survivor813Bm",
+   "personal_power": {
+    "rank": 93,
+    "value": 64277853
+   },
+   "strongest_hero_power": {
+    "rank": 92,
+    "value": 1911493
+   },
+   "tag": "",
+   "total_hero_power": {
+    "rank": 148,
+    "value": 12468137
+   }
+  },
+  "survivorisme": {
+   "display": "[SWT]Survivorisme",
+   "match": "none",
+   "name": "Survivorisme",
+   "tag": "SWT",
+   "total_hero_power": {
+    "rank": 106,
+    "value": 13531409
+   }
+  },
+  "t": {
+   "display": "[Helm]Tεοツ",
+   "hero": "Amelia",
+   "match": "none",
+   "name": "Tεοツ",
+   "strongest_hero_power": {
+    "rank": 115,
+    "value": 1799832
+   },
+   "tag": "Helm"
+  },
+  "tachebleu59": {
+   "atlas": {
+    "hq": 24,
+    "name": "Tachebleu59",
+    "x": 515,
+    "y": 513,
+    "zone": "capital"
+   },
+   "atlas_id": 2764,
+   "display": "[mERC]Tachebleu59",
+   "hero": "Katrina",
+   "match": "exact",
+   "name": "Tachebleu59",
+   "personal_power": {
+    "rank": 38,
+    "value": 80151034
+   },
+   "strongest_hero_power": {
+    "rank": 110,
+    "value": 1822330
+   },
+   "tag": "mERC",
+   "total_hero_power": {
+    "rank": 27,
+    "value": 17603765
+   }
+  },
+  "tappamwah": {
+   "atlas": {
+    "hq": 24,
+    "name": "TappamWah",
+    "x": 497,
+    "y": 536,
+    "zone": "capital"
+   },
+   "atlas_id": 3305,
+   "display": "[WRtH]TappamWah",
+   "hero": "Katrina",
+   "match": "exact+tag",
+   "name": "TappamWah",
+   "strongest_hero_power": {
+    "rank": 134,
+    "value": 1714329
+   },
+   "tag": "WRtH",
+   "total_hero_power": {
+    "rank": 93,
+    "value": 13902603
+   }
+  },
+  "tardyaura": {
+   "atlas": {
+    "hq": 22,
+    "name": "TardyAura",
+    "x": 806,
+    "y": 873,
+    "zone": null
+   },
+   "atlas_id": 2436,
+   "display": "[ULD]TardyAura",
+   "hero": "Katrina",
+   "match": "exact+tag",
+   "name": "TardyAura",
+   "strongest_hero_power": {
+    "rank": 95,
+    "value": 1903574
+   },
+   "tag": "ULD"
+  },
+  "thab0mbsquad": {
+   "display": "[mERC]ThaB0mBsquad",
+   "hero": "Scarlett",
+   "match": "none",
+   "name": "ThaB0mBsquad",
+   "personal_power": {
+    "rank": 99,
+    "value": 63516425
+   },
+   "strongest_hero_power": {
+    "rank": 94,
+    "value": 1906078
+   },
+   "tag": "mERC",
+   "total_hero_power": {
+    "rank": 98,
+    "value": 13693335
+   }
+  },
+  "thecolonele46m3": {
+   "display": "[mERC]TheColonelE 46M3",
+   "match": "none",
+   "name": "TheColonelE 46M3",
+   "personal_power": {
+    "rank": 119,
+    "value": 61347384
+   },
+   "tag": "mERC"
+  },
+  "therise": {
+   "atlas": {
+    "hq": 22,
+    "name": "The Rise",
+    "x": 802,
+    "y": 865,
+    "zone": "outside"
+   },
+   "atlas_id": 3643,
+   "display": "[ULD]The Rise",
+   "hero": "Oliveira",
+   "match": "exact+tag",
+   "name": "The Rise",
+   "strongest_hero_power": {
+    "rank": 17,
+    "value": 2507423
+   },
+   "tag": "ULD",
+   "total_hero_power": {
+    "rank": 43,
+    "value": 16477835
+   }
+  },
+  "thewildcard": {
+   "atlas": {
+    "hq": 24,
+    "name": "The WILDCARD",
+    "x": 518,
+    "y": 475,
+    "zone": "capital"
+   },
+   "atlas_id": 3183,
+   "display": "[SWT]The WILDCARD",
+   "hero": "Oliveira",
+   "match": "exact+tag",
+   "name": "The WILDCARD",
+   "personal_power": {
+    "rank": 39,
+    "value": 77774592
+   },
+   "strongest_hero_power": {
+    "rank": 116,
+    "value": 1795494
+   },
+   "tag": "SWT"
+  },
+  "threeshot": {
+   "atlas": {
+    "hq": 22,
+    "name": "ThreeShot",
+    "x": 488,
+    "y": 536,
+    "zone": "capital"
+   },
+   "atlas_id": 3306,
+   "display": "[WRtH]ThreeShot",
+   "match": "exact+tag",
+   "name": "ThreeShot",
+   "tag": "WRtH",
+   "total_hero_power": {
+    "rank": 89,
+    "value": 14027199
+   }
+  },
+  "tomebila2": {
+   "atlas": {
+    "hq": 23,
+    "name": "tomebila 2",
+    "x": 522,
+    "y": 467,
+    "zone": "capital"
+   },
+   "atlas_id": 3185,
+   "display": "[SWT]tomebila 2",
+   "hero": "Oliveira",
+   "match": "exact+tag",
+   "name": "tomebila 2",
+   "strongest_hero_power": {
+    "rank": 127,
+    "value": 1733697
+   },
+   "tag": "SWT"
+  },
+  "trinilavoe": {
+   "display": "[Ayaa]TriniLavoe",
+   "hero": "Katrina",
+   "match": "none",
+   "name": "TriniLavoe",
+   "strongest_hero_power": {
+    "rank": 60,
+    "value": 2116476
+   },
+   "tag": "Ayaa"
+  },
+  "tudorking": {
+   "display": "[mERC]TUDORKING",
+   "match": "none",
+   "name": "TUDORKING",
+   "tag": "mERC",
+   "total_hero_power": {
+    "rank": 127,
+    "value": 13085812
+   }
+  },
+  "tunaty9": {
+   "atlas": {
+    "hq": 24,
+    "name": "TunaTy9",
+    "x": 476,
+    "y": 497,
+    "zone": "capital"
+   },
+   "atlas_id": 3387,
+   "display": "[Helm]TunaTy9",
+   "hero": "Amelia",
+   "match": "exact+tag",
+   "name": "TunaTy9",
+   "personal_power": {
+    "rank": 70,
+    "value": 67415407
+   },
+   "strongest_hero_power": {
+    "rank": 26,
+    "value": 2400994
+   },
+   "tag": "Helm",
+   "total_hero_power": {
+    "rank": 58,
+    "value": 15409149
+   }
+  },
+  "viking29": {
+   "atlas": {
+    "hq": 22,
+    "name": "Viking29",
+    "x": 525,
+    "y": 459,
+    "zone": "capital"
+   },
+   "atlas_id": 3349,
+   "display": "[SWT]Viking29",
+   "match": "exact+tag",
+   "name": "Viking29",
+   "personal_power": {
+    "rank": 113,
+    "value": 61795600
+   },
+   "tag": "SWT"
+  },
+  "volkann": {
+   "display": "[aTam]Volkann",
+   "hero": "Katrina",
+   "match": "none",
+   "name": "Volkann",
+   "strongest_hero_power": {
+    "rank": 135,
+    "value": 1712742
+   },
+   "tag": "aTam"
+  },
+  "vurre": {
+   "atlas": {
+    "hq": 22,
+    "name": "Vurre",
+    "x": 496,
+    "y": 455,
+    "zone": "capital"
+   },
+   "atlas_id": 2996,
+   "display": "[Helm]Vurre",
+   "hero": "Katrina",
+   "match": "exact+tag",
+   "name": "Vurre",
+   "strongest_hero_power": {
+    "rank": 137,
+    "value": 1707486
+   },
+   "tag": "Helm"
+  },
+  "w3sty": {
+   "atlas": {
+    "hq": 22,
+    "name": "W3sTY",
+    "x": 512,
+    "y": 532,
+    "zone": "capital"
+   },
+   "atlas_id": 2894,
+   "display": "[E45Y]W3sTY",
+   "match": "exact+tag",
+   "name": "W3sTY",
+   "personal_power": {
+    "rank": 114,
+    "value": 61763075
+   },
+   "tag": "E45Y"
+  },
+  "wario696969": {
+   "atlas": {
+    "hq": 21,
+    "name": "Wari0696969",
+    "x": 500,
+    "y": 477,
+    "zone": "capital"
+   },
+   "atlas_id": 3066,
+   "display": "[mERC]Wario696969",
+   "hero": "Sophia",
+   "match": "fuzzy",
+   "name": "Wario696969",
+   "strongest_hero_power": {
+    "rank": 79,
+    "value": 1992578
+   },
+   "tag": "mERC",
+   "total_hero_power": {
+    "rank": 66,
+    "value": 15073182
+   }
+  },
+  "waxin": {
+   "atlas": {
+    "hq": 22,
+    "name": "Waxin",
+    "x": 491,
+    "y": 549,
+    "zone": "capital"
+   },
+   "atlas_id": 3214,
+   "display": "[ULD]Waxin",
+   "hero": "Oliveira",
+   "match": "exact+tag",
+   "name": "Waxin",
+   "personal_power": {
+    "rank": 91,
+    "value": 64764862
+   },
+   "strongest_hero_power": {
+    "rank": 69,
+    "value": 2045451
+   },
+   "tag": "ULD",
+   "total_hero_power": {
+    "rank": 97,
+    "value": 13786171
+   }
+  },
+  "willofk": {
+   "display": "[SWT]WillOfK",
+   "match": "none",
+   "name": "WillOfK",
+   "tag": "SWT",
+   "total_hero_power": {
+    "rank": 136,
+    "value": 12756395
+   }
+  },
+  "wtmf": {
+   "atlas": {
+    "hq": 24,
+    "name": "WTMF",
+    "x": 484,
+    "y": 486,
+    "zone": "capital"
+   },
+   "atlas_id": 2997,
+   "display": "[Helm]WTMF",
+   "match": "exact+tag",
+   "name": "WTMF",
+   "personal_power": {
+    "rank": 64,
+    "value": 68795239
+   },
+   "tag": "Helm",
+   "total_hero_power": {
+    "rank": 118,
+    "value": 13262165
+   }
+  },
+  "xalcaponex": {
+   "atlas": {
+    "hq": 20,
+    "name": "xALCAPONEx",
+    "x": 508,
+    "y": 472,
+    "zone": "capital"
+   },
+   "atlas_id": 3136,
+   "display": "[SHSN]xALCAPONEx",
+   "match": "exact+tag",
+   "name": "xALCAPONEx",
+   "personal_power": {
+    "rank": 134,
+    "value": 60613878
+   },
+   "tag": "SHSN",
+   "total_hero_power": {
+    "rank": 137,
+    "value": 12715434
+   }
+  },
+  "xxtinxx": {
+   "display": "[SWT]XxTINxX",
+   "match": "none",
+   "name": "XxTINxX",
+   "tag": "SWT",
+   "total_hero_power": {
+    "rank": 101,
+    "value": 13609695
+   }
+  },
+  "youmadbro": {
+   "atlas": {
+    "hq": 20,
+    "name": "You Mad Bro",
+    "x": 994,
+    "y": 725,
+    "zone": null
+   },
+   "atlas_id": 1241,
+   "display": "[Ayaa]You Mad Bro",
+   "match": "exact+tag",
+   "name": "You Mad Bro",
+   "tag": "Ayaa",
+   "total_hero_power": {
+    "rank": 88,
+    "value": 14056151
+   }
+  },
+  "yourjovialally": {
+   "display": "[UpS]YourJovialAlly",
+   "hero": "Oliveira",
+   "match": "none",
+   "name": "YourJovialAlly",
+   "strongest_hero_power": {
+    "rank": 72,
+    "value": 2031527
+   },
+   "tag": "UpS"
+  },
+  "zaid90": {
+   "atlas": {
+    "hq": 24,
+    "name": "Zaid 90",
+    "x": 520,
+    "y": 483,
+    "zone": "capital"
+   },
+   "atlas_id": 3192,
+   "display": "[SWT]Zaid 90",
+   "hero": "Oliveira",
+   "match": "exact+tag",
+   "name": "Zaid 90",
+   "personal_power": {
+    "rank": 56,
+    "value": 71540037
+   },
+   "strongest_hero_power": {
+    "rank": 53,
+    "value": 2160366
+   },
+   "tag": "SWT",
+   "total_hero_power": {
+    "rank": 113,
+    "value": 13358324
+   }
+  },
+  "zaph42": {
+   "atlas": {
+    "hq": 25,
+    "name": "Zaph42",
+    "x": 487,
+    "y": 517,
+    "zone": "capital"
+   },
+   "atlas_id": 3311,
+   "display": "[WRtH]Zaph42",
+   "hero": "Katrina",
+   "match": "exact+tag",
+   "name": "Zaph42",
+   "personal_power": {
+    "rank": 30,
+    "value": 86662052
+   },
+   "strongest_hero_power": {
+    "rank": 20,
+    "value": 2489947
+   },
+   "tag": "WRtH",
+   "total_hero_power": {
+    "rank": 35,
+    "value": 16977409
+   }
+  },
+  "zombietown": {
+   "atlas": {
+    "hq": 21,
+    "name": "zombie town",
+    "x": 505,
+    "y": 566,
+    "zone": "capital"
+   },
+   "atlas_id": 3480,
+   "display": "[Smbz]zombie town",
+   "match": "exact+tag",
+   "name": "zombie town",
+   "tag": "Smbz",
+   "total_hero_power": {
+    "rank": 94,
+    "value": 13893551
+   }
+  },
+  "zorck2": {
+   "atlas": {
+    "hq": 22,
+    "name": "Zorck2",
+    "x": 507,
+    "y": 522,
+    "zone": "capital"
+   },
+   "atlas_id": 3217,
+   "display": "[mERC]Zorck2",
+   "hero": "Katrina",
+   "match": "exact",
+   "name": "Zorck2",
+   "strongest_hero_power": {
+    "rank": 129,
+    "value": 1731317
+   },
+   "tag": "mERC"
+  },
+  "zx1085": {
+   "atlas": {
+    "hq": 24,
+    "name": "Zx1085",
+    "x": 496,
+    "y": 523,
+    "zone": "capital"
+   },
+   "atlas_id": 3313,
+   "display": "[WRtH]Zx1085",
+   "match": "exact+tag",
+   "name": "Zx1085",
+   "personal_power": {
+    "rank": 109,
+    "value": 62380907
+   },
+   "tag": "WRtH",
+   "total_hero_power": {
+    "rank": 41,
+    "value": 16619310
+   }
+  }
+ },
+ "source": "in-game Rankings (Profile > Rankings)",
+ "state": "798"
+}
