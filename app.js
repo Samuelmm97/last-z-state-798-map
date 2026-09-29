@@ -13,8 +13,14 @@ const minParticipants = document.getElementById('minParticipants');
 const minShare = document.getElementById('minShare');
 const card = document.getElementById('hqCard');
 const sidebar = document.getElementById('sidebar');
+const radiusX = document.getElementById('radiusX');
+const radiusY = document.getElementById('radiusY');
+const radiusSize = document.getElementById('radiusSize');
+const excludeNap = document.getElementById('excludeNap');
+const pickRadiusPoint = document.getElementById('pickRadiusPoint');
 const cache = new Map();
 let metadata, hqs = [], filtered = [], selected = null;
+let radiusPoint = { x: 500, y: 500 }, radius = 100, pickingPoint = false;
 let activeZone = 'outside';
 let activeView = 'hqs', allianceStats = [], visibleAlliances = [];
 let centerX = 8000, centerY = 5250, scale = .08, fitted = false;
@@ -26,6 +32,10 @@ const shieldLabels = {
 };
 const shieldStatus = hq => hq.shield?.status || 'unscanned';
 const terrainStatus = hq => hq.shield?.terrain || 'unscanned';
+// September 2026 alliance power ranking, limited to alliances recorded at the capital.
+const nap13 = new Set(['Helm', 'SWT', 'WRtH', 'mERC', 'aTam', '4NG', 'UpS', 'Ayaa', 'E45Y', '7cie', 'SHSN', 'movR', 'ULD']);
+const napTagAliases = { HeIm: 'Helm', '7cle': '7cie', '7cIe': '7cie' };
+const isNap13 = tag => nap13.has(napTagAliases[tag] || tag);
 const filtersActive = () => Boolean(search.value.trim() || alliance.value || shield.value || terrain.value || Number(minHq.value));
 const visiblePins = () => activeView === 'alliances' || filtersActive() ? filtered : hqs;
 
@@ -115,6 +125,13 @@ function drawOverlays() {
       ctx.beginPath(); ctx.arc(x, y, radius, 0, Math.PI * 2); ctx.fill();
     }
   }
+  const pointX = screenX(mapX(radiusPoint.x)), pointY = screenY(mapY(radiusPoint.y));
+  ctx.strokeStyle = 'rgba(255,211,111,.95)'; ctx.fillStyle = 'rgba(255,211,111,.1)'; ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.ellipse(pointX, pointY, radius * metadata.scaleX * scale, radius * metadata.scaleY * scale, 0, 0, Math.PI * 2);
+  ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#ffdc92'; ctx.strokeStyle = '#342817'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(pointX, pointY, 5, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
   if (selected) {
     const x = screenX(mapX(selected.x)), y = screenY(mapY(selected.y));
     ctx.fillStyle = '#2a2117'; ctx.strokeStyle = '#ffe5a0'; ctx.lineWidth = 3;
@@ -154,8 +171,39 @@ function zoomTo(next, sx = width / 2, sy = height / 2) {
   scheduleDraw();
 }
 
+function refreshRadius() {
+  if (!hqs.length) return;
+  const radiusSquared = radius * radius;
+  let count = 0, levelSum = 0, unreadable = 0;
+  for (const hq of hqs) {
+    if (shieldStatus(hq) === 'not_hq' || (excludeNap.checked && isNap13(hq.tag))) continue;
+    const dx = hq.x - radiusPoint.x, dy = hq.y - radiusPoint.y;
+    if (dx * dx + dy * dy > radiusSquared) continue;
+    count++;
+    if (Number.isFinite(hq.hq) && hq.hq > 0) levelSum += hq.hq;
+    else unreadable++;
+  }
+  document.getElementById('radiusResults').textContent = `${count.toLocaleString()} HQs · ${levelSum.toLocaleString()} total HQ levels`;
+  document.getElementById('radiusNote').textContent = `${unreadable ? `${unreadable} unreadable level${unreadable === 1 ? '' : 's'} omitted from level total · ` : ''}Circle includes HQs on its edge${excludeNap.checked ? ' · NAP 13 excluded' : ''}`;
+  scheduleDraw();
+}
+
+function setRadiusPoint(x, y) {
+  radiusPoint = { x, y };
+  radiusX.value = x; radiusY.value = y;
+  refreshRadius();
+}
+
+function setPickingPoint(value) {
+  pickingPoint = value;
+  pickRadiusPoint.setAttribute('aria-pressed', String(value));
+  pickRadiusPoint.textContent = value ? 'Tap a point on the map…' : 'Pick point on map';
+  canvas.classList.toggle('picking-point', value);
+}
+
 function selectHQ(hq, jump = true) {
   selected = hq;
+  setRadiusPoint(hq.x, hq.y);
   if ((hq.zone || 'outside') !== activeZone) setZone(hq.zone || 'outside');
   if (jump) { centerX = mapX(hq.x); centerY = mapY(hq.y); scale = Math.max(scale, .9); }
   document.getElementById('cardTag').textContent = hq.tag ? `[${hq.tag}]` : 'No alliance tag';
@@ -335,6 +383,13 @@ canvas.addEventListener('pointerup', event => {
   if (dragging && !dragging.moved && metadata) {
     const rect = canvas.getBoundingClientRect();
     const px = event.clientX - rect.left, py = event.clientY - rect.top;
+    if (pickingPoint) {
+      const point = worldAt(px, py);
+      setRadiusPoint(point.x, point.y);
+      setPickingPoint(false);
+      dragging = null; canvas.classList.remove('dragging');
+      return;
+    }
     let closest = null, distance = 18 * 18;
     for (const hq of visiblePins()) {
       const dx = screenX(mapX(hq.x)) - px, dy = screenY(mapY(hq.y)) - py;
@@ -356,6 +411,18 @@ document.getElementById('zoomOut').addEventListener('click', () => zoomTo(scale 
 document.getElementById('fitMap').addEventListener('click', fitMap);
 document.getElementById('showPins').addEventListener('change', scheduleDraw);
 document.getElementById('showGrid').addEventListener('change', scheduleDraw);
+pickRadiusPoint.addEventListener('click', () => setPickingPoint(!pickingPoint));
+for (const input of [radiusX, radiusY, radiusSize]) input.addEventListener('change', () => {
+  const values = [radiusX, radiusY, radiusSize].map(item => Number(item.value));
+  if (values.some(value => !Number.isInteger(value) || value < 0 || value > 999)) {
+    radiusX.value = radiusPoint.x; radiusY.value = radiusPoint.y; radiusSize.value = radius;
+    return;
+  }
+  radiusPoint = { x: values[0], y: values[1] };
+  radius = values[2];
+  refreshRadius();
+});
+excludeNap.addEventListener('change', refreshRadius);
 document.getElementById('closeCard').addEventListener('click', () => { card.hidden = true; selected = null; scheduleDraw(); });
 document.getElementById('menuButton').addEventListener('click', () => sidebar.classList.toggle('open'));
 document.getElementById('loadMore').addEventListener('click', () => { displayLimit += 150; renderList(); });
@@ -409,7 +476,7 @@ async function start() {
     const blank = document.createElement('option'); blank.value = '__blank__'; blank.textContent = 'No alliance tag';
     alliance.append(blank);
     for (const tag of tags) { const option = document.createElement('option'); option.value = tag; option.textContent = `[${tag}]`; alliance.append(option); }
-    resetList(); resize();
+    resetList(); resize(); refreshRadius();
     document.getElementById('loading').hidden = true;
     const deepLink = /^#hq-(\d+)$/.exec(location.hash);
     if (deepLink && hqs[Number(deepLink[1])]) selectHQ(hqs[Number(deepLink[1])]);

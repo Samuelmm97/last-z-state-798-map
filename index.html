@@ -125,6 +125,18 @@
         <label class="toggle"><input id="showPins" type="checkbox" checked> HQ pins</label>
         <label class="toggle"><input id="showGrid" type="checkbox" checked> Grid</label>
       </div>
+      <section class="radius-tool" aria-label="HQ radius analysis">
+        <div class="radius-title">HQs around a point</div>
+        <div class="radius-inputs">
+          <label>X <input id="radiusX" type="number" min="0" max="999" step="1" value="500"></label>
+          <label>Y <input id="radiusY" type="number" min="0" max="999" step="1" value="500"></label>
+          <label>Radius <input id="radiusSize" type="number" min="0" max="999" step="1" value="100"></label>
+        </div>
+        <button id="pickRadiusPoint" class="pick-point" type="button" aria-pressed="false">Pick point on map</button>
+        <label class="radius-toggle"><input id="excludeNap" type="checkbox"> Exclude NAP 13 alliances</label>
+        <div id="radiusResults" class="radius-results" aria-live="polite">Loading HQs…</div>
+        <div id="radiusNote" class="radius-note"></div>
+      </section>
       <div class="map-hint">Drag to pan · scroll to zoom · select a name to jump to its HQ</div>
       <section class="hq-card" id="hqCard" hidden aria-live="polite">
         <button class="close-card" id="closeCard" type="button" aria-label="Close HQ details">×</button>
