@@ -225,9 +225,9 @@ function fillCardPower(player) {
     const cell = document.createElement('div');
     cell.className = 'power-metric';
     const caption = document.createElement('span');
-    caption.textContent = `#${metric.rank} ${label}`;
+    caption.textContent = metric.rank ? `#${metric.rank} ${label}` : `${label} · roster reading`;
     const value = document.createElement('strong');
-    value.textContent = compactPower(metric.value);
+    value.textContent = `${metric.approximate ? '≈ ' : ''}${compactPower(metric.value)}`;
     cell.append(caption, value);
     grid.append(cell);
   }
@@ -264,6 +264,8 @@ function selectHQ(hq, jump = true) {
     ? ` · Location captured ${hq.observed_date || '2026-09-26'}${hq.current === false ? ' (not seen in latest sweep)' : ''}`
     : ' · No map location captured.';
   if (hq.roster_current) observed.textContent += ` · Roster confirmed by ${hq.roster_source || 'HQ leaderboard'} ${hq.roster_observed_date}`;
+  if (hq.name_reading_status==='partial') observed.textContent += ' · Name partly unreadable; see the roster card.';
+  if (hq.roster_status==='not_matched_to_current_roster') observed.textContent += ' · Not matched to the current roster; excluded from placement pending identity review.';
   const stateLabels = {listed_alliance:'Alliance appears on State 798 leaderboard',
     state_player_leaderboard:'State 798 player leaderboard confirms this player; current alliance is blank',
     likely_visitor:'Likely visitor: alliance absent from State 798 leaderboard; excluded from automatic placement',
@@ -274,7 +276,11 @@ function selectHQ(hq, jump = true) {
   const imageLink = document.getElementById('cardImageLink'); imageLink.hidden = !hq.photo;
   if (hq.photo) { image.src = hq.photo; imageLink.href = hq.photo; }
   image.alt = `In-game screenshot of ${hq.name}, HQ ${hq.hq}`;
-  document.getElementById('cardSource').textContent = hq.source || `HQ leaderboard rank ${hq.leaderboard_rank}`;
+  document.getElementById('cardSource').textContent = hq.source || (hq.leaderboard_rank ? `HQ leaderboard rank ${hq.leaderboard_rank}` : 'Verified alliance member roster');
+  if (hq.roster_photo) {
+    const link=document.createElement('a');link.href=hq.roster_photo;link.target='_blank';link.rel='noopener';link.textContent='View saved roster card';
+    document.getElementById('cardSource').append(' · ',link);
+  }
   card.hidden = false;
   sidebar.classList.remove('open');
   document.querySelectorAll('.hq-row.active').forEach(element => element.classList.remove('active'));
@@ -364,7 +370,7 @@ function renderAlliances() {
 function renderPlayers() {
   const fragment = document.createDocumentFragment();
   for (const player of visiblePlayers) {
-    const target = player.atlas_id != null ? hqs.find(hq => hq.id === player.atlas_id) : null;
+    const target = player.atlas_id != null ? allHqs.find(hq => hq.id === player.atlas_id) : null;
     const button = document.createElement('button');
     // Only rows matched to an atlas HQ are worth a pointer and a jump; the rest are read-only.
     button.className = `player-row${target ? ' map-link' : ''}`;
@@ -377,7 +383,7 @@ function renderPlayers() {
     name.textContent = player.tag ? `[${player.tag}] ${player.name}` : player.name;
     const sub = document.createElement('span'); sub.className = 'sub';
     sub.textContent = powerMetrics.filter(([key]) => player[key])
-      .map(([key, label]) => `${compactPower(player[key].value)} ${label}`).join(' · ') || 'No power metric published';
+      .map(([key, label]) => `${player[key].approximate ? '≈ ' : ''}${compactPower(player[key].value)} ${label}`).join(' · ') || 'No power metric published';
     copy.append(name, sub); button.append(rank, copy);
     if (target) {
       const pin = document.createElement('span');
