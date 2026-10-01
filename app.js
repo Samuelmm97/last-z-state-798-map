@@ -6,6 +6,7 @@ const search = document.getElementById('search');
 const alliance = document.getElementById('alliance');
 const shield = document.getElementById('shield');
 const terrain = document.getElementById('terrain');
+const stateMembership = document.getElementById('stateMembership');
 const minHq = document.getElementById('minHq');
 const sort = document.getElementById('sort');
 const allianceSort = document.getElementById('allianceSort');
@@ -22,6 +23,7 @@ const cache = new Map();
 let metadata, hqs = [], filtered = [], selected = null;
 let radiusPoint = { x: 500, y: 500 }, radius = 100, pickingPoint = false;
 let activeZone = 'outside';
+let allHqs = [], participationData = null;
 let activeView = 'hqs', allianceStats = [], visibleAlliances = [], powerData = null, playerStats = [], visiblePlayers = [];
 let centerX = 8000, centerY = 5250, scale = .08, fitted = false;
 let width = 1, height = 1, framePending = false, dragging = null, displayLimit = 150;
@@ -32,6 +34,7 @@ const shieldLabels = {
 };
 const shieldStatus = hq => hq.shield?.status || 'unscanned';
 const terrainStatus = hq => hq.shield?.terrain || 'unscanned';
+const hasLocation = hq => Number.isFinite(hq?.x) && Number.isFinite(hq?.y);
 // September 2026 alliance power ranking, limited to alliances recorded at the capital.
 const nap13 = new Set(['Helm', 'SWT', 'WRtH', 'mERC', 'aTam', '4NG', 'UpS', 'Ayaa', 'E45Y', '7cie', 'SHSN', 'movR', 'ULD']);
 const napTagAliases = { HeIm: 'Helm', '7cle': '7cie', '7cIe': '7cie' };
@@ -142,7 +145,7 @@ function drawOverlays() {
   ctx.fill(); ctx.stroke();
   ctx.fillStyle = '#ffdc92'; ctx.strokeStyle = '#342817'; ctx.lineWidth = 2;
   ctx.beginPath(); ctx.arc(pointX, pointY, 5, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
-  if (selected) {
+  if (selected && hasLocation(selected)) {
     const x = screenX(mapX(selected.x)), y = screenY(mapY(selected.y));
     ctx.fillStyle = '#2a2117'; ctx.strokeStyle = '#ffe5a0'; ctx.lineWidth = 3;
     ctx.beginPath(); ctx.arc(x, y, 10, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
@@ -241,27 +244,37 @@ function fillCardPower(player) {
 
 function selectHQ(hq, jump = true) {
   selected = hq;
-  setRadiusPoint(hq.x, hq.y);
+  if (hasLocation(hq)) setRadiusPoint(hq.x, hq.y);
   if ((hq.zone || 'outside') !== activeZone) setZone(hq.zone || 'outside');
-  if (jump) { centerX = mapX(hq.x); centerY = mapY(hq.y); scale = Math.max(scale, .9); }
+  if (jump && hasLocation(hq)) { centerX = mapX(hq.x); centerY = mapY(hq.y); scale = Math.max(scale, .9); }
   document.getElementById('cardTag').textContent = hq.tag ? `[${hq.tag}]` : 'No alliance tag';
   document.getElementById('cardLevel').textContent = hq.hq ? `HQ ${hq.hq}` : 'HQ level unreadable';
   document.getElementById('cardName').textContent = hq.name;
-  document.getElementById('cardLocation').textContent = `X ${hq.x} · Y ${hq.y}`;
+  document.getElementById('cardLocation').textContent = hasLocation(hq) ? `X ${hq.x} · Y ${hq.y}` : 'Current map location unknown';
   const status = shieldStatus(hq);
   const cardShield = document.getElementById('cardShield');
   cardShield.className = `card-shield status-${status}`;
-  cardShield.textContent = `Shield: ${shieldLabels[status]}`;
+  cardShield.textContent = `Previous SvS shield: ${shieldLabels[status]}`;
   const observed = document.getElementById('cardObserved');
   if (hq.shield?.observedAt) {
     const time = new Date(hq.shield.observedAt).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' });
-    observed.textContent = `Map capture: ${time} · ${hq.shield.terrain === 'grass' ? 'Grass' : hq.shield.terrain === 'mud' ? 'Mud' : 'Terrain needs review'}${hq.shield.note ? ` · ${hq.shield.note}` : ''}`;
-  } else observed.textContent = hq.shield?.note || 'No shield reading from this map sweep.';
+    observed.textContent = `SvS observation: ${time} · ${hq.shield.terrain === 'grass' ? 'Grass' : hq.shield.terrain === 'mud' ? 'Mud' : 'Terrain needs review'}${hq.shield.note ? ` · ${hq.shield.note}` : ''}`;
+  } else observed.textContent = hq.shield?.note || 'No shield reading from the previous SvS.';
+  observed.textContent += hasLocation(hq)
+    ? ` · Location captured ${hq.observed_date || '2026-09-26'}${hq.current === false ? ' (not seen in latest sweep)' : ''}`
+    : ' · No map location captured.';
+  if (hq.roster_current) observed.textContent += ` · Roster confirmed by ${hq.roster_source || 'HQ leaderboard'} ${hq.roster_observed_date}`;
+  const stateLabels = {listed_alliance:'Alliance appears on State 798 leaderboard',
+    state_player_leaderboard:'State 798 player leaderboard confirms this player; current alliance is blank',
+    likely_visitor:'Likely visitor: alliance absent from State 798 leaderboard; excluded from automatic placement',
+    unconfirmed:'State alliance unconfirmed; excluded from automatic placement until reviewed'};
+  if(hq.state_membership) observed.textContent += ` · ${stateLabels[hq.state_membership]} (${hq.state_checked_date})`;
   fillCardPower(hq.power);
   const image = document.getElementById('cardImage');
-  image.src = hq.photo; image.alt = `In-game screenshot of ${hq.name}, HQ ${hq.hq}`;
-  document.getElementById('cardImageLink').href = hq.photo;
-  document.getElementById('cardSource').textContent = hq.source;
+  const imageLink = document.getElementById('cardImageLink'); imageLink.hidden = !hq.photo;
+  if (hq.photo) { image.src = hq.photo; imageLink.href = hq.photo; }
+  image.alt = `In-game screenshot of ${hq.name}, HQ ${hq.hq}`;
+  document.getElementById('cardSource').textContent = hq.source || `HQ leaderboard rank ${hq.leaderboard_rank}`;
   card.hidden = false;
   sidebar.classList.remove('open');
   document.querySelectorAll('.hq-row.active').forEach(element => element.classList.remove('active'));
@@ -281,7 +294,7 @@ function refreshList() {
     else if (allianceSort.value === 'percent') visibleAlliances.sort((a, b) => b.inside / b.total - a.inside / a.total || b.inside - a.inside || a.tag.localeCompare(b.tag));
     else visibleAlliances.sort((a, b) => b.inside - a.inside || b.inside / b.total - a.inside / a.total || a.tag.localeCompare(b.tag));
     const tags = new Set(visibleAlliances.map(item => item.tag));
-    filtered = hqs.filter(hq => hq.zone === 'capital' && shieldStatus(hq) !== 'not_hq' && tags.has(hq.tag));
+    filtered = hqs.filter(hq => hq.zone === 'capital' && shieldStatus(hq) !== 'not_hq' && tags.has(hq.participation?.tag || hq.tag));
     renderAlliances();
     scheduleDraw();
     return;
@@ -299,9 +312,11 @@ function refreshList() {
   filtered = hqs.filter(hq => {
     if ((hq.zone || 'outside') !== activeZone) return false;
     if (shieldStatus(hq) === 'not_hq' && shield.value !== 'not_hq') return false;
-    if (allianceValue === '__blank__' ? hq.tag : allianceValue && hq.tag !== allianceValue) return false;
+    const cohortTag = activeZone === 'capital' ? hq.participation?.tag || hq.tag : hq.tag;
+    if (allianceValue === '__blank__' ? cohortTag : allianceValue && cohortTag !== allianceValue) return false;
     if (shield.value && shieldStatus(hq) !== shield.value) return false;
     if (terrain.value && terrainStatus(hq) !== terrain.value) return false;
+    if (stateMembership.value && hq.state_membership !== stateMembership.value) return false;
     if ((hq.hq || 0) < Number(minHq.value)) return false;
     return !query || `${hq.name} ${hq.tag} ${hq.x},${hq.y}`.toLocaleLowerCase().includes(query);
   });
@@ -427,7 +442,7 @@ function resetList() { list.replaceChildren(); refreshList(); }
 
 function updateView() {
   if (activeView === 'alliances') activeZone = 'capital';
-  for (const [name, id] of [['outside', 'outsideTab'], ['capital', 'capitalTab']]) {
+  for (const [name, id] of [['outside', 'outsideTab'], ['capital', 'capitalTab'], ['unknown', 'unknownTab']]) {
     const tab = document.getElementById(id);
     tab.classList.toggle('active', name === activeZone);
     tab.setAttribute('aria-selected', String(name === activeZone));
@@ -442,14 +457,14 @@ function updateView() {
   document.getElementById('playerFilters').hidden = activeView !== 'players';
   document.getElementById('searchLabel').textContent = activeView === 'alliances' ? 'Find an alliance' : activeView === 'players' ? 'Find a player' : 'Find an HQ';
   search.placeholder = activeView === 'alliances' ? 'Alliance tag' : activeView === 'players' ? 'Player name or tag' : 'Name, alliance, or X,Y';
-  document.getElementById('listHeading').textContent = activeView === 'alliances' ? 'CAPITAL ALLIANCES' : activeView === 'players' ? 'POWER LEADERBOARDS' : activeZone === 'capital' ? 'CAPITAL HEADQUARTERS' : 'OUTSIDE HEADQUARTERS';
+  document.getElementById('listHeading').textContent = activeView === 'alliances' ? 'PREVIOUS SvS ALLIANCES' : activeView === 'players' ? 'POWER LEADERBOARDS' : activeZone === 'capital' ? 'PREVIOUS CAPITAL PARTICIPANTS' : activeZone === 'unknown' ? 'NO PRIOR SvS SCAN' : 'PREVIOUSLY OUTSIDE CAPITAL';
   document.getElementById('powerCaptureNote').textContent = powerData?.captured_date ? `Leaderboards captured ${powerData.captured_date}` : 'No leaderboard capture has been published yet.';
   resetList();
 }
 
 function setZone(zone) {
   activeZone = zone;
-  if (zone === 'outside') activeView = 'hqs';
+  if (zone !== 'capital') activeView = 'hqs';
   updateView();
 }
 
@@ -520,11 +535,13 @@ document.getElementById('menuButton').addEventListener('click', () => sidebar.cl
 document.getElementById('loadMore').addEventListener('click', () => { displayLimit += 150; renderList(); });
 document.getElementById('outsideTab').addEventListener('click', () => setZone('outside'));
 document.getElementById('capitalTab').addEventListener('click', () => setZone('capital'));
+document.getElementById('unknownTab').addEventListener('click', () => setZone('unknown'));
 document.getElementById('hqViewTab').addEventListener('click', () => { activeView = 'hqs'; search.value = ''; updateView(); });
 document.getElementById('allianceViewTab').addEventListener('click', () => { activeView = 'alliances'; search.value = ''; updateView(); });
 document.getElementById('playerViewTab').addEventListener('click', () => { activeView = 'players'; search.value = ''; updateView(); });
 search.addEventListener('input', resetList);
 alliance.addEventListener('change', resetList);
+stateMembership.addEventListener('change', resetList);
 shield.addEventListener('change', () => {
   if (activeZone === 'outside' && shield.value && shield.value !== 'unscanned') setZone('capital');
   else resetList();
@@ -539,49 +556,68 @@ allianceSort.addEventListener('change', resetList);
 minParticipants.addEventListener('change', resetList);
 minShare.addEventListener('change', resetList);
 document.getElementById('clearFilters').addEventListener('click', () => {
-  search.value = ''; alliance.value = ''; shield.value = ''; terrain.value = ''; minHq.value = '0';
+  search.value = ''; alliance.value = ''; shield.value = ''; terrain.value = ''; stateMembership.value = ''; minHq.value = '0';
   sort.value = 'hq'; allianceSort.value = 'count'; minParticipants.value = '1'; minShare.value = '0'; resetList();
 });
 window.addEventListener('resize', resize);
 
 async function start() {
   try {
-    const [mapResponse, hqResponse, shieldResponse, powerResponse] = await Promise.all([
+    const [mapResponse, hqResponse, shieldResponse, powerResponse, participationResponse] = await Promise.all([
       fetch('data/map.json'), fetch('data/hqs.json'), fetch('data/shields.json'),
       // The daily board import is optional: a 404 (nothing published yet) must leave the atlas untouched.
-      fetch('data/power.json').catch(() => null)
+      fetch('data/power.json').catch(() => null),
+      fetch('data/participation.json').catch(() => null)
     ]);
     if (!mapResponse.ok || !hqResponse.ok || !shieldResponse.ok) throw new Error('Map data could not be loaded');
-    metadata = await mapResponse.json(); hqs = await hqResponse.json();
+    metadata = await mapResponse.json(); allHqs = await hqResponse.json();
+    hqs = allHqs.filter(hq => hq.current !== false);
+    if (participationResponse?.ok) participationData = await participationResponse.json().catch(() => null);
     const observations = await shieldResponse.json();
     if (powerResponse?.ok) powerData = await powerResponse.json().catch(() => null);
     const shieldById = new Map(observations.map(item => [item.id, item]));
-    for (const hq of hqs) hq.shield = shieldById.get(hq.id) || null;
+    const participationById = new Map((participationData?.records || []).map(item => [item.id, item]));
+    for (const hq of allHqs) {
+      hq.shield = shieldById.get(hq.id) || null;
+      hq.participation = participationById.get(hq.id) || null;
+    }
+    document.getElementById('mapCaptureNote').textContent = `Map captured ${metadata.captured_date || '2026-09-26'}`;
+    const progressNote=document.getElementById('refreshProgressNote');
+    if (metadata.refresh_progress) {
+      progressNote.hidden=false;
+      progressNote.textContent=metadata.refresh_progress;
+    }
+    document.getElementById('eventCaptureNote').textContent = `Shields and participation: previous SvS (${participationData?.captured_date || '2026-09-26'}).`;
     const playerRows = Object.values(powerData?.players || {});
     const powerById = new Map(playerRows.filter(item => item.atlas_id != null).map(item => [item.atlas_id, item]));
-    for (const hq of hqs) hq.power = powerById.get(hq.id) || null;
+    for (const hq of allHqs) hq.power = powerById.get(hq.id) || null;
     // Rows arrive top-down from the game; anyone missing a personal-power entry sinks below the ranked.
     playerStats = playerRows.sort((a, b) => (b.personal_power?.value || 0) - (a.personal_power?.value || 0)
       || String(a.display || a.name || '').localeCompare(String(b.display || b.name || '')));
     const plausibleHqs = hqs.filter(hq => shieldStatus(hq) !== 'not_hq');
     document.getElementById('visibleCount').textContent = `${plausibleHqs.length.toLocaleString()} HQ candidates`;
-    document.getElementById('outsideCount').textContent = plausibleHqs.filter(hq => hq.zone !== 'capital').length.toLocaleString();
+    document.getElementById('outsideCount').textContent = plausibleHqs.filter(hq => (hq.zone || 'outside') === 'outside').length.toLocaleString();
     document.getElementById('capitalCount').textContent = plausibleHqs.filter(hq => hq.zone === 'capital').length.toLocaleString();
+    const unknownCount = plausibleHqs.filter(hq => hq.zone === 'unknown').length;
+    document.getElementById('unknownCount').textContent = unknownCount.toLocaleString();
+    document.getElementById('unknownTab').hidden = !unknownCount;
     const totals = new Map(), inside = new Map();
-    for (const hq of plausibleHqs) {
+    const eventHqs = (participationData?.records || plausibleHqs).filter(hq => shieldById.get(hq.id)?.status !== 'not_hq');
+    for (const hq of eventHqs) {
       if (!hq.tag) continue;
       totals.set(hq.tag, (totals.get(hq.tag) || 0) + 1);
       if (hq.zone === 'capital') inside.set(hq.tag, (inside.get(hq.tag) || 0) + 1);
     }
     allianceStats = [...inside].map(([tag, count]) => ({ tag, inside: count, total: totals.get(tag) }));
-    const tags = [...new Set(plausibleHqs.map(hq => hq.tag).filter(Boolean))].sort((a,b) => a.localeCompare(b));
+    const tags = [...new Set([...plausibleHqs, ...eventHqs].map(hq => hq.tag).filter(Boolean))].sort((a,b) => a.localeCompare(b));
     const blank = document.createElement('option'); blank.value = '__blank__'; blank.textContent = 'No alliance tag';
     alliance.append(blank);
     for (const tag of tags) { const option = document.createElement('option'); option.value = tag; option.textContent = `[${tag}]`; alliance.append(option); }
     resetList(); resize(); refreshRadius();
     document.getElementById('loading').hidden = true;
     const deepLink = /^#hq-(\d+)$/.exec(location.hash);
-    if (deepLink && hqs[Number(deepLink[1])]) selectHQ(hqs[Number(deepLink[1])]);
+    const linkedHq = deepLink && allHqs.find(hq => hq.id === Number(deepLink[1]));
+    if (linkedHq) selectHQ(linkedHq);
   } catch (error) {
     document.getElementById('loading').textContent = `Unable to load the atlas: ${error.message}`;
   }

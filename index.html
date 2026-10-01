@@ -14,11 +14,14 @@
         <div class="eyebrow">LAST Z · STATE 798</div>
         <h1>Field Atlas</h1>
         <p>Explore the stitched map and jump to any recorded headquarters.</p>
-        <div class="totals"><span id="visibleCount">Loading HQs…</span><span>Map captured Sep 26, 2026</span></div>
+        <div class="totals"><span id="visibleCount">Loading HQs…</span><span id="mapCaptureNote">Map captured Sep 26, 2026</span></div>
+        <p class="participation-note" id="eventCaptureNote">Shield and participation data: previous SvS, Sep 26, 2026.</p>
+        <p class="participation-note" id="refreshProgressNote" hidden></p>
       </div>
       <div class="zone-tabs" role="tablist" aria-label="HQ area">
-        <button id="outsideTab" class="zone-tab active" role="tab" aria-selected="true" type="button">Outside capital <span id="outsideCount"></span></button>
-        <button id="capitalTab" class="zone-tab" role="tab" aria-selected="false" type="button">Capital · 100 tiles <span id="capitalCount"></span></button>
+        <button id="outsideTab" class="zone-tab active" role="tab" aria-selected="true" type="button">Previously outside <span id="outsideCount"></span></button>
+        <button id="capitalTab" class="zone-tab" role="tab" aria-selected="false" type="button">Previous capital <span id="capitalCount"></span></button>
+        <button id="unknownTab" class="zone-tab" role="tab" aria-selected="false" type="button" hidden>No prior scan <span id="unknownCount"></span></button>
       </div>
       <div class="view-tabs" role="tablist" aria-label="List view">
         <button id="hqViewTab" class="view-tab active" role="tab" aria-selected="true" type="button">Headquarters</button>
@@ -35,7 +38,7 @@
           </label>
         </div>
         <div class="filter-row">
-          <label class="filter-field" for="shield">Shield
+          <label class="filter-field" for="shield">Previous SvS shield
             <select id="shield">
               <option value="">Any status</option>
               <option value="shielded">Shielded</option>
@@ -46,13 +49,24 @@
               <option value="unscanned">Not scanned</option>
             </select>
           </label>
-          <label class="filter-field" for="terrain">Terrain
+          <label class="filter-field" for="terrain">Previous terrain
             <select id="terrain">
               <option value="">Any terrain</option>
               <option value="grass">Grass</option>
               <option value="mud">Mud</option>
               <option value="review">Needs review</option>
               <option value="unscanned">Not assessed</option>
+            </select>
+          </label>
+        </div>
+        <div class="filter-row">
+          <label class="filter-field" for="stateMembership">State alliance check
+            <select id="stateMembership">
+              <option value="">All readings</option>
+              <option value="listed_alliance">Alliance on State 798 leaderboard</option>
+              <option value="state_player_leaderboard">Unallied player on State 798 leaderboard</option>
+              <option value="likely_visitor">Likely visitor</option>
+              <option value="unconfirmed">Unconfirmed alliance</option>
             </select>
           </label>
         </div>
@@ -102,7 +116,7 @@
               </select>
             </label>
           </div>
-          <p class="participation-note">Inside count ÷ all HQs with that tag in this atlas. Tap an alliance to see its HQs.</p>
+          <p class="participation-note">Previous SvS inside count ÷ that snapshot’s tagged HQs. Counts remain frozen until the next SvS. Tap an alliance to see its recorded participants.</p>
         </div>
         <div id="playerFilters" hidden>
           <p class="participation-note" id="powerCaptureNote"></p>
