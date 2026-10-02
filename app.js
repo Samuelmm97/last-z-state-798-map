@@ -570,10 +570,10 @@ window.addEventListener('resize', resize);
 async function start() {
   try {
     const [mapResponse, hqResponse, shieldResponse, powerResponse, participationResponse] = await Promise.all([
-      fetch('data/map.json'), fetch('data/hqs.json'), fetch('data/shields.json'),
+      fetch('data/map.json', { cache: 'no-store' }), fetch('data/hqs.json', { cache: 'no-store' }), fetch('data/shields.json', { cache: 'no-store' }),
       // The daily board import is optional: a 404 (nothing published yet) must leave the atlas untouched.
-      fetch('data/power.json').catch(() => null),
-      fetch('data/participation.json').catch(() => null)
+      fetch('data/power.json', { cache: 'no-store' }).catch(() => null),
+      fetch('data/participation.json', { cache: 'no-store' }).catch(() => null)
     ]);
     if (!mapResponse.ok || !hqResponse.ok || !shieldResponse.ok) throw new Error('Map data could not be loaded');
     metadata = await mapResponse.json(); allHqs = await hqResponse.json();
