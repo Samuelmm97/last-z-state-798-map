@@ -225,7 +225,9 @@ function fillCardPower(player) {
     const cell = document.createElement('div');
     cell.className = 'power-metric';
     const caption = document.createElement('span');
-    caption.textContent = metric.rank ? `#${metric.rank} ${label}` : `${label} · roster reading`;
+    const reading = metric.source === 'alliance_member_roster' ? 'roster reading'
+      : metric.data_date ? `reading ${metric.data_date}` : 'reading';
+    caption.textContent = metric.rank ? `#${metric.rank} ${label}` : `${label} · ${reading}`;
     const value = document.createElement('strong');
     value.textContent = `${metric.approximate ? '≈ ' : ''}${compactPower(metric.value)}`;
     cell.append(caption, value);
@@ -234,7 +236,7 @@ function fillCardPower(player) {
   const alliancePower = player?.tag && powerData?.alliances?.[player.tag]?.alliance_power;
   const notes = [];
   if (player?.hero) notes.push(`Strongest hero: ${player.hero}`);
-  if (alliancePower) notes.push(`[${player.tag}] alliance power ${compactPower(alliancePower.value)} · #${alliancePower.rank}`);
+  if (alliancePower) notes.push(`[${player.tag}] alliance power ${compactPower(alliancePower.value)}${alliancePower.rank ? ` · #${alliancePower.rank}` : ''}`);
   const note = document.createElement('div');
   note.className = 'power-note';
   note.textContent = notes.join(' · ');
