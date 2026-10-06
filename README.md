@@ -1,5 +1,45 @@
 # Last Z State 798 Atlas
 
+The **All HQs** tab is the default list. It searches across all previous SvS
+cohorts and includes current map records plus verified roster members with
+older or unknown locations. Historical-only records stay available through
+their stable deep links. Selecting an HQ in All HQs keeps the combined list.
+
+## Google Sheets mirror
+
+`sync_google_sheet.py` mirrors all saved HQ records by stable Atlas ID into the
+managed **HQ Data** tab. Historical records are explicitly labeled; map/HQ,
+roster, power and shield dates remain separate. No observation is fabricated.
+The Atlas files remain the source of truth. Use other tabs for manual notes;
+HQ Data is replaced on each sync. Other tabs are untouched.
+
+One-time setup after creating/importing a Google Sheet:
+
+1. Install `requirements-sheets.txt` in the Python environment running the
+   update scripts: `python -m pip install -r requirements-sheets.txt`.
+2. Copy `google-sheets.example.json` to `.google-sheets.json` and set the Sheet
+   ID from its URL (the part after `/d/`). This local file is ignored by Git.
+   Alternatively set `LASTZ_SPREADSHEET_ID` or `LASTZ_SHEETS_CONFIG`.
+3. Enable the Google Sheets API in your Google Cloud project. Configure Google
+   Application Default Credentials with Sheets write scope. For unattended
+   scripts, set `GOOGLE_APPLICATION_CREDENTIALS` to a service-account JSON key
+   **outside this repository**, then share the Sheet with that account as editor.
+4. Run `python sync_google_sheet.py` for the first sync. It reads back the IDs
+   to verify row count and ordering. Repeating it replaces the same rows.
+
+The existing local `publish_verified_atlas.py`, `publish_progress_atlas.py`,
+`complete_roster_power.py`, `leaderboard_import.py`, `api_import.py` and
+`import_shields.py` invoke this sync after their data writes. Without Sheet
+configuration they report that sync is not configured. A configured failure
+stops the caller with an error while retaining the updated local Atlas files;
+retry `python sync_google_sheet.py` and the normal publication afterward.
+Staging/reconciliation scripts do not sync unreviewed intermediate data.
+
+For an offline export: `python sync_google_sheet.py --export hqs.csv`.
+The exporter needs no Google packages or credentials.
+
+API behavior: [Google Sheets batch updates](https://developers.google.com/workspace/sheets/api/reference/rest/v4/spreadsheets/batchUpdate).
+
 Static GitHub Pages atlas built from a complete 5,100-capture map sweep. Pan and zoom the stitched map, search current HQ candidates, and open an original in-game screenshot crop for each located HQ. Filter by alliance, previous SvS shield/terrain, and HQ level. The page shows separate map and event dates.
 
 The October 1 refresh updates map locations, names, alliance tags, HQ levels, and leaderboards. `data/participation.json` freezes the previous SvS's IDs, tags, locations, and attendance proxy; `data/shields.json` remains unchanged until the next SvS. List cohorts refer to that previous event. New identities have unknown attendance. Old records not located by the new scan remain available at their stable deep links, with an explicit old-location date; this does not confirm that they quit.

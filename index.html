@@ -19,7 +19,8 @@
         <p class="participation-note" id="refreshProgressNote" hidden></p>
       </div>
       <div class="zone-tabs" role="tablist" aria-label="HQ area">
-        <button id="outsideTab" class="zone-tab active" role="tab" aria-selected="true" type="button">Previously outside <span id="outsideCount"></span></button>
+        <button id="allTab" class="zone-tab active" role="tab" aria-selected="true" type="button">All HQs <span id="allCount"></span></button>
+        <button id="outsideTab" class="zone-tab" role="tab" aria-selected="false" type="button">Previously outside <span id="outsideCount"></span></button>
         <button id="capitalTab" class="zone-tab" role="tab" aria-selected="false" type="button">Previous capital <span id="capitalCount"></span></button>
         <button id="unknownTab" class="zone-tab" role="tab" aria-selected="false" type="button" hidden>No prior scan <span id="unknownCount"></span></button>
       </div>
@@ -124,10 +125,10 @@
         </div>
         <button class="clear-filters" id="clearFilters" type="button">Clear filters</button>
       </div>
-      <div class="list-head"><span id="listHeading">OUTSIDE HEADQUARTERS</span><span id="listCount"></span></div>
+      <div class="list-head"><span id="listHeading">ALL HQs</span><span id="listCount"></span></div>
       <div class="hq-list" id="hqList" role="list"></div>
       <button class="more" id="loadMore" type="button" hidden>Show more HQs</button>
-      <div class="sidebar-foot">Names and coordinates are estimates from map screenshots. Shield status is a Sep 26 capture-time reading near the capital; “needs review” marks uncertain readings. [Helm] is excluded from the outside list.</div>
+      <div class="sidebar-foot">Names and coordinates are estimates from screenshots. Shield status describes the previous SvS capture. Roster members may have older or unknown locations; “needs review” marks uncertain readings.</div>
     </aside>
 
     <main class="map-shell">

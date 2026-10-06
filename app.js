@@ -22,7 +22,7 @@ const pickRadiusPoint = document.getElementById('pickRadiusPoint');
 const cache = new Map();
 let metadata, hqs = [], filtered = [], selected = null;
 let radiusPoint = { x: 500, y: 500 }, radius = 100, pickingPoint = false;
-let activeZone = 'outside';
+let activeZone = 'all';
 let allHqs = [], participationData = null;
 let activeView = 'hqs', allianceStats = [], visibleAlliances = [], powerData = null, playerStats = [], visiblePlayers = [];
 let centerX = 8000, centerY = 5250, scale = .08, fitted = false;
@@ -49,7 +49,7 @@ const compactPower = value => {
   if (value >= 1e3) return `${(value / 1e3).toFixed(1)}K`;
   return value.toLocaleString();
 };
-const filtersActive = () => Boolean(search.value.trim() || alliance.value || shield.value || terrain.value || Number(minHq.value));
+const filtersActive = () => Boolean(search.value.trim() || alliance.value || shield.value || terrain.value || stateMembership.value || Number(minHq.value));
 const visiblePins = () => activeView === 'alliances' || activeView === 'players' || filtersActive() ? filtered : hqs;
 
 const clamp = (value, low, high) => Math.min(high, Math.max(low, value));
@@ -132,6 +132,7 @@ function drawOverlays() {
   if (document.getElementById('showPins').checked) {
     const radius = scale < .25 ? 1.4 : scale < .7 ? 2.3 : 3.1;
     for (const hq of visiblePins()) {
+      if (!hasLocation(hq)) continue;
       const x = screenX(mapX(hq.x)), y = screenY(mapY(hq.y));
       if (x < -10 || x > width + 10 || y < -10 || y > height + 10) continue;
       ctx.fillStyle = hq.zone === 'capital' ? 'rgba(130,222,211,.9)' : 'rgba(255,223,149,.84)';
@@ -247,7 +248,7 @@ function fillCardPower(player) {
 function selectHQ(hq, jump = true) {
   selected = hq;
   if (hasLocation(hq)) setRadiusPoint(hq.x, hq.y);
-  if ((hq.zone || 'outside') !== activeZone) setZone(hq.zone || 'outside');
+  if (activeZone !== 'all' && (hq.zone || 'outside') !== activeZone) setZone(hq.zone || 'outside');
   if (jump && hasLocation(hq)) { centerX = mapX(hq.x); centerY = mapY(hq.y); scale = Math.max(scale, .9); }
   document.getElementById('cardTag').textContent = hq.tag ? `[${hq.tag}]` : 'No alliance tag';
   document.getElementById('cardLevel').textContent = hq.hq ? `HQ ${hq.hq}` : 'HQ level unreadable';
@@ -318,7 +319,7 @@ function refreshList() {
   }
   const allianceValue = alliance.value;
   filtered = hqs.filter(hq => {
-    if ((hq.zone || 'outside') !== activeZone) return false;
+    if (activeZone !== 'all' && (hq.zone || 'outside') !== activeZone) return false;
     if (shieldStatus(hq) === 'not_hq' && shield.value !== 'not_hq') return false;
     const cohortTag = activeZone === 'capital' ? hq.participation?.tag || hq.tag : hq.tag;
     if (allianceValue === '__blank__' ? cohortTag : allianceValue && cohortTag !== allianceValue) return false;
@@ -430,7 +431,7 @@ function renderList() {
     const copy = document.createElement('span'); copy.className = 'copy';
     const name = document.createElement('span'); name.className = 'name'; name.textContent = hq.name;
     const sub = document.createElement('span'); sub.className = 'sub';
-    sub.textContent = `${hq.tag ? `[${hq.tag}] · ` : ''}X ${hq.x} · Y ${hq.y}`;
+    sub.textContent = `${hq.tag ? `[${hq.tag}] · ` : ''}${hasLocation(hq) ? `X ${hq.x} · Y ${hq.y}${hq.current === false ? ' · Older location' : ''}` : 'Location unknown'}`;
     copy.append(name, sub); button.append(badge, copy);
     if (hq.shield) {
       const state = document.createElement('span');
@@ -450,7 +451,7 @@ function resetList() { list.replaceChildren(); refreshList(); }
 
 function updateView() {
   if (activeView === 'alliances') activeZone = 'capital';
-  for (const [name, id] of [['outside', 'outsideTab'], ['capital', 'capitalTab'], ['unknown', 'unknownTab']]) {
+  for (const [name, id] of [['all', 'allTab'], ['outside', 'outsideTab'], ['capital', 'capitalTab'], ['unknown', 'unknownTab']]) {
     const tab = document.getElementById(id);
     tab.classList.toggle('active', name === activeZone);
     tab.setAttribute('aria-selected', String(name === activeZone));
@@ -465,7 +466,7 @@ function updateView() {
   document.getElementById('playerFilters').hidden = activeView !== 'players';
   document.getElementById('searchLabel').textContent = activeView === 'alliances' ? 'Find an alliance' : activeView === 'players' ? 'Find a player' : 'Find an HQ';
   search.placeholder = activeView === 'alliances' ? 'Alliance tag' : activeView === 'players' ? 'Player name or tag' : 'Name, alliance, or X,Y';
-  document.getElementById('listHeading').textContent = activeView === 'alliances' ? 'PREVIOUS SvS ALLIANCES' : activeView === 'players' ? 'POWER LEADERBOARDS' : activeZone === 'capital' ? 'PREVIOUS CAPITAL PARTICIPANTS' : activeZone === 'unknown' ? 'NO PRIOR SvS SCAN' : 'PREVIOUSLY OUTSIDE CAPITAL';
+  document.getElementById('listHeading').textContent = activeView === 'alliances' ? 'PREVIOUS SvS ALLIANCES' : activeView === 'players' ? 'POWER LEADERBOARDS' : activeZone === 'all' ? 'ALL HQs' : activeZone === 'capital' ? 'PREVIOUS CAPITAL PARTICIPANTS' : activeZone === 'unknown' ? 'NO PRIOR SvS SCAN' : 'PREVIOUSLY OUTSIDE CAPITAL';
   document.getElementById('powerCaptureNote').textContent = powerData?.captured_date ? `Leaderboards captured ${powerData.captured_date}` : 'No leaderboard capture has been published yet.';
   resetList();
 }
@@ -541,6 +542,7 @@ excludeNap.addEventListener('change', refreshRadius);
 document.getElementById('closeCard').addEventListener('click', () => { card.hidden = true; selected = null; scheduleDraw(); });
 document.getElementById('menuButton').addEventListener('click', () => sidebar.classList.toggle('open'));
 document.getElementById('loadMore').addEventListener('click', () => { displayLimit += 150; renderList(); });
+document.getElementById('allTab').addEventListener('click', () => setZone('all'));
 document.getElementById('outsideTab').addEventListener('click', () => setZone('outside'));
 document.getElementById('capitalTab').addEventListener('click', () => setZone('capital'));
 document.getElementById('unknownTab').addEventListener('click', () => setZone('unknown'));
@@ -579,7 +581,7 @@ async function start() {
     ]);
     if (!mapResponse.ok || !hqResponse.ok || !shieldResponse.ok) throw new Error('Map data could not be loaded');
     metadata = await mapResponse.json(); allHqs = await hqResponse.json();
-    hqs = allHqs.filter(hq => hq.current !== false);
+    hqs = allHqs.filter(hq => hq.current !== false || hq.roster_current);
     if (participationResponse?.ok) participationData = await participationResponse.json().catch(() => null);
     const observations = await shieldResponse.json();
     if (powerResponse?.ok) powerData = await powerResponse.json().catch(() => null);
@@ -604,6 +606,7 @@ async function start() {
       || String(a.display || a.name || '').localeCompare(String(b.display || b.name || '')));
     const plausibleHqs = hqs.filter(hq => shieldStatus(hq) !== 'not_hq');
     document.getElementById('visibleCount').textContent = `${plausibleHqs.length.toLocaleString()} HQ candidates`;
+    document.getElementById('allCount').textContent = plausibleHqs.length.toLocaleString();
     document.getElementById('outsideCount').textContent = plausibleHqs.filter(hq => (hq.zone || 'outside') === 'outside').length.toLocaleString();
     document.getElementById('capitalCount').textContent = plausibleHqs.filter(hq => hq.zone === 'capital').length.toLocaleString();
     const unknownCount = plausibleHqs.filter(hq => hq.zone === 'unknown').length;
@@ -621,7 +624,7 @@ async function start() {
     const blank = document.createElement('option'); blank.value = '__blank__'; blank.textContent = 'No alliance tag';
     alliance.append(blank);
     for (const tag of tags) { const option = document.createElement('option'); option.value = tag; option.textContent = `[${tag}]`; alliance.append(option); }
-    resetList(); resize(); refreshRadius();
+    updateView(); resize(); refreshRadius();
     document.getElementById('loading').hidden = true;
     const deepLink = /^#hq-(\d+)$/.exec(location.hash);
     const linkedHq = deepLink && allHqs.find(hq => hq.id === Number(deepLink[1]));

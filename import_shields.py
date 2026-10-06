@@ -61,6 +61,9 @@ def main():
     items.sort(key=lambda item: item['id'])
     args.out.write_text(json.dumps(items, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
     print(f'Imported {len(items)} shield observations to {args.out}')
+    from sync_google_sheet import sync_if_configured
+    if args.out.resolve() == args.atlas.resolve().parent / 'shields.json':
+        sync_if_configured(args.atlas.resolve().parent.parent)
 
 
 if __name__ == '__main__':
