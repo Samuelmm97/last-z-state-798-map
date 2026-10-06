@@ -89,11 +89,25 @@ def sync_if_configured(atlas=ROOT):
 
 
 def sync(atlas, config):
+    # Existing collectors use several Python environments. Run the Google-only
+    # step in the configured environment without changing their dependencies.
+    import subprocess
+    import sys
+    interpreter = config.get('python')
+    if interpreter and Path(interpreter).resolve() != Path(sys.executable).resolve():
+        subprocess.run([interpreter, str(ROOT/'sync_google_sheet.py'),
+                        '--atlas', str(atlas)], check=True,
+                       creationflags=getattr(subprocess, 'CREATE_NO_WINDOW', 0))
+        return
     # ADC supports either an authorized user refresh token or a service account.
     # Keep credentials outside the repository, e.g. GOOGLE_APPLICATION_CREDENTIALS.
     import google.auth
     from google.auth.transport.requests import AuthorizedSession
-    credentials, _ = google.auth.default(scopes=[SCOPE])
+    if config.get('oauth_token_file'):
+        from google.oauth2.credentials import Credentials
+        credentials = Credentials.from_authorized_user_file(config['oauth_token_file'], scopes=[SCOPE])
+    else:
+        credentials, _ = google.auth.default(scopes=[SCOPE])
     session = AuthorizedSession(credentials)
     spreadsheet_id = config['spreadsheet_id']
     title = config.get('tab', 'HQ Data')
@@ -142,7 +156,8 @@ def sync(atlas, config):
                   'textFormat': {'bold': True, 'foregroundColor': {'red': 1, 'green': 1, 'blue': 1}}}},
         'fields': 'userEnteredFormat'}})
     request('POST', base + ':batchUpdate', json={'requests': requests})
-    result = request('GET', base + "/values/'HQ%20Data'!A:A")
+    result = request('GET', base + "/values/'HQ%20Data'!A:A",
+                     params={'valueRenderOption': 'UNFORMATTED_VALUE'})
     ids = [str(row[0]) for row in result.get('values', [])[1:] if row]
     if ids != [str(row[0]) for row in rows[1:]]:
         raise RuntimeError('Sheet read-back IDs differ; retry sync before reporting success')

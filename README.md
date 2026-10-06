@@ -20,6 +20,10 @@ One-time setup after creating/importing a Google Sheet:
 2. Copy `google-sheets.example.json` to `.google-sheets.json` and set the Sheet
    ID from its URL (the part after `/d/`). This local file is ignored by Git.
    Alternatively set `LASTZ_SPREADSHEET_ID` or `LASTZ_SHEETS_CONFIG`.
+   To reuse existing Hermes Google authorization, set `oauth_token_file` to
+   its `google_token.json` path and `python` to the Hermes Python interpreter
+   containing Google libraries. No credentials are copied into the repository;
+   the refresh token is loaded directly from its existing external location.
 3. Enable the Google Sheets API in your Google Cloud project. Configure Google
    Application Default Credentials with Sheets write scope. For unattended
    scripts, set `GOOGLE_APPLICATION_CREDENTIALS` to a service-account JSON key
