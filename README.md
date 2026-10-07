@@ -5,6 +5,17 @@ cohorts and includes current map records plus verified roster members with
 older or unknown locations. Historical-only records stay available through
 their stable deep links. Selecting an HQ in All HQs keeps the combined list.
 
+## Farm name filter
+
+In **All HQs**, choose **Farm names** to list players whose alliance name/tag,
+player name, or either contains `farm` (case insensitive). Matching map pins
+follow the list. The alliance dropdown shows saved full names where available;
+select an alliance to see its members. Searching also recognizes full alliance
+names, including in Alliance participation. Names come from the saved alliance
+leaderboard; an alliance with no full name recorded can only match its tag.
+Existing zone and HQ filters still apply. Older locations and unknown locations
+retain their existing labels.
+
 ## Google Sheets mirror
 
 `sync_google_sheet.py` mirrors all saved HQ records by stable Atlas ID into the

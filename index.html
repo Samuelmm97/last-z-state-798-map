@@ -34,6 +34,17 @@
         <input id="search" type="search" placeholder="Name, alliance, or X,Y" autocomplete="off">
         <div id="hqFilters">
         <div class="filter-row">
+          <label class="filter-field" for="farmNames">Farm names
+            <select id="farmNames">
+              <option value="">All names</option>
+              <option value="either">Alliance or player contains “farm”</option>
+              <option value="alliance">Alliance contains “farm”</option>
+              <option value="player">Player contains “farm”</option>
+            </select>
+          </label>
+        </div>
+        <p class="participation-note">Farm matches ignore case and use saved player names and alliance names/tags. All HQs includes every current map record and verified roster member.</p>
+        <div class="filter-row">
           <label class="filter-field" for="alliance">Alliance
             <select id="alliance"><option value="">All alliances</option></select>
           </label>

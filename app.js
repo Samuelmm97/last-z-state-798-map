@@ -4,6 +4,7 @@ const shell = document.querySelector('.map-shell');
 const list = document.getElementById('hqList');
 const search = document.getElementById('search');
 const alliance = document.getElementById('alliance');
+const farmNames = document.getElementById('farmNames');
 const shield = document.getElementById('shield');
 const terrain = document.getElementById('terrain');
 const stateMembership = document.getElementById('stateMembership');
@@ -49,7 +50,14 @@ const compactPower = value => {
   if (value >= 1e3) return `${(value / 1e3).toFixed(1)}K`;
   return value.toLocaleString();
 };
-const filtersActive = () => Boolean(search.value.trim() || alliance.value || shield.value || terrain.value || stateMembership.value || Number(minHq.value));
+const allianceName = tag => powerData?.alliances?.[tag]?.display || tag || '';
+const matchesFarm = hq => {
+  const playerMatch = /farm/i.test(hq.name || '');
+  const allianceMatch = /farm/i.test(allianceName(hq.tag));
+  return !farmNames.value || (farmNames.value === 'player' ? playerMatch
+    : farmNames.value === 'alliance' ? allianceMatch : playerMatch || allianceMatch);
+};
+const filtersActive = () => Boolean(search.value.trim() || farmNames.value || alliance.value || shield.value || terrain.value || stateMembership.value || Number(minHq.value));
 const visiblePins = () => activeView === 'alliances' || activeView === 'players' || filtersActive() ? filtered : hqs;
 
 const clamp = (value, low, high) => Math.min(high, Math.max(low, value));
@@ -296,7 +304,7 @@ function selectHQ(hq, jump = true) {
 function refreshList() {
   const query = search.value.trim().toLocaleLowerCase();
   if (activeView === 'alliances') {
-    visibleAlliances = allianceStats.filter(item => item.tag.toLocaleLowerCase().includes(query)
+    visibleAlliances = allianceStats.filter(item => allianceName(item.tag).toLocaleLowerCase().includes(query)
       && item.inside >= Number(minParticipants.value)
       && item.inside / item.total * 100 >= Number(minShare.value));
     if (allianceSort.value === 'name') visibleAlliances.sort((a, b) => a.tag.localeCompare(b.tag));
@@ -325,9 +333,10 @@ function refreshList() {
     if (allianceValue === '__blank__' ? cohortTag : allianceValue && cohortTag !== allianceValue) return false;
     if (shield.value && shieldStatus(hq) !== shield.value) return false;
     if (terrain.value && terrainStatus(hq) !== terrain.value) return false;
+    if (!matchesFarm(hq)) return false;
     if (stateMembership.value && hq.state_membership !== stateMembership.value) return false;
     if ((hq.hq || 0) < Number(minHq.value)) return false;
-    return !query || `${hq.name} ${hq.tag} ${hq.x},${hq.y}`.toLocaleLowerCase().includes(query);
+    return !query || `${hq.name} ${allianceName(hq.tag)} ${hq.x},${hq.y}`.toLocaleLowerCase().includes(query);
   });
   if (sort.value === 'name') filtered.sort((a, b) => a.name.localeCompare(b.name));
   else if (sort.value === 'alliance') filtered.sort((a, b) => a.tag.localeCompare(b.tag) || a.name.localeCompare(b.name));
@@ -344,7 +353,7 @@ function renderAlliances() {
     button.className = 'alliance-row';
     button.type = 'button';
     const tag = document.createElement('strong');
-    tag.textContent = `[${item.tag}]`;
+    tag.textContent = allianceName(item.tag) === item.tag ? `[${item.tag}]` : allianceName(item.tag);
     const count = document.createElement('span');
     count.textContent = `${item.inside} / ${item.total}`;
     const share = document.createElement('span');
@@ -465,7 +474,7 @@ function updateView() {
   document.getElementById('allianceFilters').hidden = activeView !== 'alliances';
   document.getElementById('playerFilters').hidden = activeView !== 'players';
   document.getElementById('searchLabel').textContent = activeView === 'alliances' ? 'Find an alliance' : activeView === 'players' ? 'Find a player' : 'Find an HQ';
-  search.placeholder = activeView === 'alliances' ? 'Alliance tag' : activeView === 'players' ? 'Player name or tag' : 'Name, alliance, or X,Y';
+  search.placeholder = activeView === 'alliances' ? 'Alliance name or tag' : activeView === 'players' ? 'Player name or tag' : 'Name, alliance, or X,Y';
   document.getElementById('listHeading').textContent = activeView === 'alliances' ? 'PREVIOUS SvS ALLIANCES' : activeView === 'players' ? 'POWER LEADERBOARDS' : activeZone === 'all' ? 'ALL HQs' : activeZone === 'capital' ? 'PREVIOUS CAPITAL PARTICIPANTS' : activeZone === 'unknown' ? 'NO PRIOR SvS SCAN' : 'PREVIOUSLY OUTSIDE CAPITAL';
   document.getElementById('powerCaptureNote').textContent = powerData?.captured_date ? `Leaderboards captured ${powerData.captured_date}` : 'No leaderboard capture has been published yet.';
   resetList();
@@ -551,6 +560,7 @@ document.getElementById('allianceViewTab').addEventListener('click', () => { act
 document.getElementById('playerViewTab').addEventListener('click', () => { activeView = 'players'; search.value = ''; updateView(); });
 search.addEventListener('input', resetList);
 alliance.addEventListener('change', resetList);
+farmNames.addEventListener('change', resetList);
 stateMembership.addEventListener('change', resetList);
 shield.addEventListener('change', () => {
   if (activeZone === 'outside' && shield.value && shield.value !== 'unscanned') setZone('capital');
@@ -566,7 +576,7 @@ allianceSort.addEventListener('change', resetList);
 minParticipants.addEventListener('change', resetList);
 minShare.addEventListener('change', resetList);
 document.getElementById('clearFilters').addEventListener('click', () => {
-  search.value = ''; alliance.value = ''; shield.value = ''; terrain.value = ''; stateMembership.value = ''; minHq.value = '0';
+  search.value = ''; alliance.value = ''; farmNames.value = ''; shield.value = ''; terrain.value = ''; stateMembership.value = ''; minHq.value = '0';
   sort.value = 'hq'; allianceSort.value = 'count'; minParticipants.value = '1'; minShare.value = '0'; resetList();
 });
 window.addEventListener('resize', resize);
@@ -623,7 +633,7 @@ async function start() {
     const tags = [...new Set([...plausibleHqs, ...eventHqs].map(hq => hq.tag).filter(Boolean))].sort((a,b) => a.localeCompare(b));
     const blank = document.createElement('option'); blank.value = '__blank__'; blank.textContent = 'No alliance tag';
     alliance.append(blank);
-    for (const tag of tags) { const option = document.createElement('option'); option.value = tag; option.textContent = `[${tag}]`; alliance.append(option); }
+    for (const tag of tags) { const option = document.createElement('option'); option.value = tag; option.textContent = allianceName(tag) === tag ? `[${tag}]` : allianceName(tag); alliance.append(option); }
     updateView(); resize(); refreshRadius();
     document.getElementById('loading').hidden = true;
     const deepLink = /^#hq-(\d+)$/.exec(location.hash);
