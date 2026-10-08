@@ -43,8 +43,28 @@ class SheetSyncTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'Duplicate'):
             sync.table(self.atlas)
 
+    def test_farm_matches_use_full_names_and_exclude_historical_and_objects(self):
+        records = [
+            {'id': 1, 'name': 'Other', 'tag': 'ABC'},
+            {'id': 2, 'name': 'FaRm Player', 'tag': 'XYZ'},
+            {'id': 3, 'name': 'farm Both', 'tag': 'ABC', 'current': False, 'roster_current': True},
+            {'id': 4, 'name': 'farm Historical', 'current': False},
+            {'id': 5, 'name': 'farm Object'},
+            {'id': 6, 'name': 'Other', 'tag': 'FARM'},
+        ]
+        self.write('hqs.json', records)
+        self.write('power.json', {'alliances': {'ABC': {'display': '[ABC]Farm Alliance'}}})
+        self.write('shields.json', [{'id': 5, 'status': 'not_hq'}])
+        rows = sync.farm_table(self.atlas)
+        self.assertEqual([r[0] for r in rows[1:]], [1, 2, 3, 6])
+        self.assertEqual([r[4] for r in rows[1:]], ['Alliance', 'Player', 'Alliance and player', 'Alliance'])
+        self.assertEqual(rows[1][3], '[ABC]Farm Alliance')
+        self.assertTrue(all(len(row) == len(rows[0]) for row in rows))
+
     def test_atomic_replacement_literal_names_and_readback(self):
         requests = []
+        expected_hq = sync.table(self.atlas)
+        expected_farm = sync.farm_table(self.atlas)
         class Response:
             ok = True
             def __init__(self, value): self.value = value
@@ -55,7 +75,7 @@ class SheetSyncTests(unittest.TestCase):
                 requests.append((method, url, kwargs))
                 if method == 'POST': return Response({})
                 if '/values/' in url:
-                    return Response({'values': [['Atlas ID'], [2], [7]]})
+                    return Response({'values': expected_farm if 'Farm%20Matches' in url else expected_hq})
                 return Response({'sheets': [{'properties': {
                     'sheetId': 42, 'title': 'HQ Data',
                     'gridProperties': {'rowCount': 2000, 'columnCount': 30}}},
@@ -80,6 +100,8 @@ class SheetSyncTests(unittest.TestCase):
         self.assertEqual(values['rows'][2]['values'][1],
                          {'userEnteredValue': {'stringValue': '=1+1'}})
         self.assertNotIn('99', json.dumps(edits))
+        added = [r['addSheet']['properties'] for r in edits if 'addSheet' in r]
+        self.assertEqual([r['title'] for r in added], ['Farm Matches'])
 
 
 if __name__ == '__main__': unittest.main()

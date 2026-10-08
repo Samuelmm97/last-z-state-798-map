@@ -22,7 +22,11 @@ retain their existing labels.
 managed **HQ Data** tab. Historical records are explicitly labeled; map/HQ,
 roster, power and shield dates remain separate. No observation is fabricated.
 The Atlas files remain the source of truth. Use other tabs for manual notes;
-HQ Data is replaced on each sync. Other tabs are untouched.
+HQ Data is replaced on each sync. **Farm Matches** is also managed and refreshed
+on every sync: it contains the same case-insensitive alliance-or-player matches
+as All HQs in the Atlas, with full alliance names and a match reason. Historical-only
+records and non-HQ objects are excluded. Both tabs are read back to verify every
+value after writing. All other tabs are untouched.
 
 One-time setup after creating/importing a Google Sheet:
 

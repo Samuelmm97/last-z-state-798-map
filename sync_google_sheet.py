@@ -1,4 +1,4 @@
-"""Mirror Atlas records into one managed Google Sheets tab after data updates.
+"""Mirror Atlas records and farm matches into managed Google Sheets tabs.
 
 Configuration is local/ignored. No Google dependency is needed for --export or
 for update scripts until a spreadsheet_id has been configured.
@@ -71,6 +71,26 @@ def table(atlas=ROOT):
     return rows
 
 
+def farm_table(atlas=ROOT, source_rows=None):
+    """Use the same current/roster population and name matching as the Atlas."""
+    atlas = Path(atlas)
+    records = {p['id']: p for p in read(atlas / 'data/hqs.json')}
+    shields = {p['id']: p for p in read(atlas / 'data/shields.json', [])}
+    alliances = read(atlas / 'data/power.json', {}).get('alliances', {})
+    rows = [HEADERS[:3] + ['Alliance name', 'Farm match'] + HEADERS[3:]]
+    for row in (source_rows if source_rows is not None else table(atlas))[1:]:
+        p = records[row[0]]
+        if (p.get('current') is False and not p.get('roster_current')) or shields.get(p['id'], {}).get('status') == 'not_hq':
+            continue
+        alliance_name = alliances.get(p.get('tag'), {}).get('display') or p.get('tag') or ''
+        player_match = 'farm' in (p.get('name') or '').lower()
+        alliance_match = 'farm' in alliance_name.lower()
+        if player_match or alliance_match:
+            reason = 'Alliance and player' if player_match and alliance_match else 'Player' if player_match else 'Alliance'
+            rows.append(row[:3] + [alliance_name, reason] + row[3:])
+    return rows
+
+
 def configuration(atlas):
     path = Path(os.environ.get('LASTZ_SHEETS_CONFIG') or Path(atlas) / '.google-sheets.json')
     config = read(path, {})
@@ -121,47 +141,70 @@ def sync(atlas, config):
             raise RuntimeError(f'Google Sheets request failed ({response.status_code}); Atlas data retained. Retry sync after checking access.')
         return response.json()
     metadata = request('GET', base, params={'fields': 'sheets.properties'})
-    sheet = next((s['properties'] for s in metadata.get('sheets', [])
-                  if s['properties']['title'] == title), None)
+    tabs = [(title, rows), ('Farm Matches', farm_table(atlas, rows))]
     requests = []
-    if sheet:
-        sheet_id = sheet['sheetId']
-        old_grid = sheet.get('gridProperties', {})
-    else:
-        sheet_id = max([s['properties']['sheetId'] for s in metadata.get('sheets', [])] + [0]) + 1
-        old_grid = {}
-        requests.append({'addSheet': {'properties': {'sheetId': sheet_id, 'title': title}}})
-    row_count = max(len(rows), old_grid.get('rowCount', 1000))
-    column_count = max(len(HEADERS), old_grid.get('columnCount', 26))
-    requests.append({'updateSheetProperties': {
-        'properties': {'sheetId': sheet_id, 'gridProperties': {
-            'rowCount': row_count, 'columnCount': column_count, 'frozenRowCount': 1}},
-        'fields': 'gridProperties'}})
-    def cell(value):
-        kind = 'boolValue' if isinstance(value, bool) else 'numberValue' if isinstance(value, (int, float)) else 'stringValue'
-        return {'userEnteredValue': {kind: value}}
-    # Google clears the uncovered portion of this range in the same atomic batch.
-    # Names are literal strings, never formulas; old trailing rows cannot survive.
-    requests.append({'updateCells': {
-        'range': {'sheetId': sheet_id, 'startRowIndex': 0, 'endRowIndex': row_count,
-                  'startColumnIndex': 0, 'endColumnIndex': len(HEADERS)},
-        'rows': [{'values': [cell(value) for value in row]} for row in rows],
-        'fields': 'userEnteredValue'}})
-    requests.append({'setBasicFilter': {'filter': {'range': {
-        'sheetId': sheet_id, 'startRowIndex': 0, 'endRowIndex': len(rows),
-        'startColumnIndex': 0, 'endColumnIndex': len(HEADERS)}}}})
-    requests.append({'repeatCell': {
-        'range': {'sheetId': sheet_id, 'startRowIndex': 0, 'endRowIndex': 1},
-        'cell': {'userEnteredFormat': {'backgroundColor': {'red': .09, 'green': .15, 'blue': .12},
-                  'textFormat': {'bold': True, 'foregroundColor': {'red': 1, 'green': 1, 'blue': 1}}}},
-        'fields': 'userEnteredFormat'}})
+    next_sheet_id = max([s['properties']['sheetId'] for s in metadata.get('sheets', [])] + [0]) + 1
+    for title, rows in tabs:
+        sheet = next((s['properties'] for s in metadata.get('sheets', [])
+                      if s['properties']['title'] == title), None)
+        if sheet:
+            sheet_id = sheet['sheetId']
+            old_grid = sheet.get('gridProperties', {})
+        else:
+            sheet_id = next_sheet_id
+            next_sheet_id += 1
+            old_grid = {}
+            requests.append({'addSheet': {'properties': {'sheetId': sheet_id, 'title': title}}})
+        row_count = max(len(rows), old_grid.get('rowCount', 1000))
+        column_count = max(len(rows[0]), old_grid.get('columnCount', 26))
+        requests.append({'updateSheetProperties': {
+            'properties': {'sheetId': sheet_id, 'gridProperties': {
+                'rowCount': row_count, 'columnCount': column_count, 'frozenRowCount': 1}},
+            'fields': 'gridProperties'}})
+        def cell(value):
+            kind = 'boolValue' if isinstance(value, bool) else 'numberValue' if isinstance(value, (int, float)) else 'stringValue'
+            return {'userEnteredValue': {kind: value}}
+        # Google clears the uncovered portion of this range in the same atomic batch.
+        # Names are literal strings, never formulas; old trailing rows cannot survive.
+        requests.append({'updateCells': {
+            'range': {'sheetId': sheet_id, 'startRowIndex': 0, 'endRowIndex': row_count,
+                      'startColumnIndex': 0, 'endColumnIndex': len(rows[0])},
+            'rows': [{'values': [cell(value) for value in row]} for row in rows],
+            'fields': 'userEnteredValue'}})
+        requests.append({'setBasicFilter': {'filter': {'range': {
+            'sheetId': sheet_id, 'startRowIndex': 0, 'endRowIndex': len(rows),
+            'startColumnIndex': 0, 'endColumnIndex': len(rows[0])}}}})
+        requests.append({'repeatCell': {
+            'range': {'sheetId': sheet_id, 'startRowIndex': 0, 'endRowIndex': 1},
+            'cell': {'userEnteredFormat': {'backgroundColor': {'red': .09, 'green': .15, 'blue': .12},
+                      'textFormat': {'bold': True, 'foregroundColor': {'red': 1, 'green': 1, 'blue': 1}}}},
+            'fields': 'userEnteredFormat'}})
+        if title == 'Farm Matches':
+            requests.append({'updateDimensionProperties': {
+                'range': {'sheetId': sheet_id, 'dimension': 'COLUMNS', 'startIndex': 0, 'endIndex': len(rows[0])},
+                'properties': {'pixelSize': 150}, 'fields': 'pixelSize'}})
+            for start, end, size in [(1, 2, 200), (3, 5, 210), (11, 12, 320), (27, 28, 420)]:
+                requests.append({'updateDimensionProperties': {
+                    'range': {'sheetId': sheet_id, 'dimension': 'COLUMNS', 'startIndex': start, 'endIndex': end},
+                    'properties': {'pixelSize': size}, 'fields': 'pixelSize'}})
+            requests.append({'repeatCell': {
+                'range': {'sheetId': sheet_id, 'startRowIndex': 0, 'endRowIndex': len(rows), 'endColumnIndex': len(rows[0])},
+                'cell': {'userEnteredFormat': {'wrapStrategy': 'WRAP'}}, 'fields': 'userEnteredFormat.wrapStrategy'}})
     request('POST', base + ':batchUpdate', json={'requests': requests})
-    result = request('GET', base + "/values/'HQ%20Data'!A:A",
-                     params={'valueRenderOption': 'UNFORMATTED_VALUE'})
-    ids = [str(row[0]) for row in result.get('values', [])[1:] if row]
-    if ids != [str(row[0]) for row in rows[1:]]:
-        raise RuntimeError('Sheet read-back IDs differ; retry sync before reporting success')
-    print(f'Google Sheet synced and verified: {len(rows)-1} records. https://docs.google.com/spreadsheets/d/{spreadsheet_id}/edit')
+    from urllib.parse import quote
+    for title, rows in tabs:
+        end_column = 'Z' if title == 'HQ Data' else 'AB'
+        result = request('GET', base + '/values/' + quote("'" + title + "'!A:" + end_column, safe=''),
+                         params={'valueRenderOption': 'UNFORMATTED_VALUE'})
+        # Sheets omits trailing empty cells; normalize them before comparing.
+        actual = [row + [''] * (len(rows[0]) - len(row)) for row in result.get('values', [])]
+        if actual != rows:
+            raise RuntimeError(f'{title} read-back differs; retry sync before reporting success')
+        print(f'{title} synced and verified: {len(rows)-1} records.')
+    farm_sheet = next((s['properties']['sheetId'] for s in metadata.get('sheets', [])
+                       if s['properties']['title'] == 'Farm Matches'), next_sheet_id - 1)
+    print(f'https://docs.google.com/spreadsheets/d/{spreadsheet_id}/edit#gid={farm_sheet}')
+
 
 
 def main():
