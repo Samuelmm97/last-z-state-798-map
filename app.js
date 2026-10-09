@@ -210,7 +210,9 @@ function refreshRadius() {
   document.getElementById('radiusNote').textContent = `${unreadable ? `${unreadable} unreadable level${unreadable === 1 ? '' : 's'} omitted from level total · ` : ''}Circle includes HQs on its edge${excludeNap.checked ? ' · NAP 13 excluded' : ''}`;
   const order = document.getElementById('radiusSort').value;
   const level = hq => Number.isFinite(hq.hq) && hq.hq > 0 ? hq.hq : -Infinity;
-  matches.sort((a, b) => (order === 'distance' ? a.distance - b.distance
+  const power = hq => Number.isFinite(hq.power?.personal_power?.value) ? hq.power.personal_power.value : -Infinity;
+  matches.sort((a, b) => (order === 'power' ? power(b.hq) - power(a.hq)
+    : order === 'distance' ? a.distance - b.distance
     : order === 'name' ? (a.hq.name || '').localeCompare(b.hq.name || '')
     : level(b.hq) - level(a.hq)) || a.distance - b.distance || String(a.hq.id).localeCompare(String(b.hq.id)));
   const fragment = document.createDocumentFragment();
@@ -222,7 +224,15 @@ function refreshRadius() {
     name.textContent = `${hq.tag ? `[${hq.tag}] ` : ''}${hq.name || 'Unknown name'}`;
     const info = document.createElement('span');
     info.textContent = `${level(hq) > 0 ? `HQ ${hq.hq}` : 'HQ ?'} · X ${hq.x} · Y ${hq.y} · ${distance.toFixed(1)} tiles`;
-    button.append(name, info);
+    const powerInfo = document.createElement('span');
+    const reading = hq.power?.personal_power;
+    powerInfo.textContent = Number.isFinite(reading?.value)
+      ? `Power ${reading.approximate ? '≈ ' : ''}${compactPower(reading.value)}` : 'Power unknown';
+    if (Number.isFinite(reading?.value)) {
+      const source = reading.source === 'alliance_member_roster' ? 'Alliance member roster' : 'Personal power leaderboard';
+      powerInfo.title = `${source}${reading.data_date || reading.captured_date ? ` · ${reading.data_date || reading.captured_date}` : ''} · ${reading.value.toLocaleString()}`;
+    }
+    button.append(name, info, powerInfo);
     button.addEventListener('click', () => selectHQ(hq, true, false));
     fragment.append(button);
   }
