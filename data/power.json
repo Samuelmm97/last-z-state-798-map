@@ -1,329 +1,463 @@
 {
  "alliances": {
   "1BMP": {
+   "allianceId": "7b54056235d24315bad08435c4799e3d",
    "alliance_power": {
-    "rank": 72,
-    "value": 46760851
+    "data_date": "2026-10-08",
+    "rank": 70,
+    "source": "game_alliance_power_list",
+    "value": 48228649
    },
    "display": "[1BMP]PODEROSAS",
    "tag": "1BMP"
   },
   "1LEV": {
+   "allianceId": "9d398a16e767466ea3dbc34457a28656",
    "alliance_power": {
-    "rank": 33,
-    "value": 264457010
+    "data_date": "2026-10-08",
+    "rank": 32,
+    "source": "game_alliance_power_list",
+    "value": 267401321
    },
    "display": "[1LEV]Lions739",
    "tag": "1LEV"
   },
   "333z": {
+   "allianceId": "fc06c87f8268451b9cde5a6f18b7cabe",
    "alliance_power": {
-    "rank": 94,
+    "data_date": "2026-10-08",
+    "rank": 92,
+    "source": "game_alliance_power_list",
     "value": 3382498
    },
    "display": "[333z]zee",
    "tag": "333z"
   },
   "4NG": {
+   "allianceId": "73e18778d76f47b3904490dd20f27427",
    "alliance_power": {
+    "data_date": "2026-10-08",
     "rank": 5,
-    "value": 4285104204
+    "source": "game_alliance_power_list",
+    "value": 4883271131
    },
    "display": "[4NG]GOT4NG",
    "tag": "4NG"
   },
   "7815": {
+   "allianceId": "571690a76e1546e7b7d31c1e8061387f",
    "alliance_power": {
-    "rank": 21,
-    "value": 577074943
+    "data_date": "2026-10-08",
+    "rank": 24,
+    "source": "game_alliance_power_list",
+    "value": 517717552
    },
    "display": "[7815]les Templier",
    "tag": "7815"
   },
   "798F": {
+   "allianceId": "5a87fa191f1b4c119fb3147caae4b122",
    "alliance_power": {
+    "data_date": "2026-10-08",
     "rank": 84,
-    "value": 10173646
+    "source": "game_alliance_power_list",
+    "value": 12021455
    },
    "display": "[798F]State 798 farms",
    "tag": "798F"
   },
   "896": {
+   "allianceId": "515f0b6bb6a94d9395ed585ac2df0075",
    "alliance_power": {
-    "rank": 92,
-    "value": 3767843
+    "data_date": "2026-10-08",
+    "rank": 90,
+    "source": "game_alliance_power_list",
+    "value": 3627973
    },
    "display": "[896]896",
    "tag": "896"
   },
   "ADAF": {
+   "allianceId": "79b3a5eb9b784566a3d5fc61249ea628",
    "alliance_power": {
+    "data_date": "2026-10-08",
     "rank": 23,
-    "value": 527302932
+    "source": "game_alliance_power_list",
+    "value": 522550672
    },
    "display": "[ADAF]WASDFR",
    "tag": "ADAF"
   },
   "AGEB": {
+   "allianceId": "0cf7dd932e854893af59338974347e2b",
    "alliance_power": {
-    "rank": 64,
-    "value": 72221281
+    "data_date": "2026-10-08",
+    "rank": 62,
+    "source": "game_alliance_power_list",
+    "value": 68476831
    },
    "display": "[AGEB]Angel Club",
    "tag": "AGEB"
   },
   "AHM7": {
+   "allianceId": "a85c61499a9d4569a37618993f685319",
    "alliance_power": {
-    "rank": 62,
-    "value": 87761709
+    "data_date": "2026-10-08",
+    "rank": 50,
+    "source": "game_alliance_power_list",
+    "value": 118937815
    },
    "display": "[AHM7]Inhuman League",
    "tag": "AHM7"
   },
   "ARAE": {
+   "allianceId": "bae12fd5ee4f4b23bb6b02612bf9ef38",
    "alliance_power": {
-    "rank": 70,
-    "value": 47902742
+    "data_date": "2026-10-08",
+    "rank": 81,
+    "source": "game_alliance_power_list",
+    "value": 13453595
    },
-   "display": "[ARAE]بعض غ وبا",
+   "display": "[ARAE]ابو غضب",
    "tag": "ARAE"
   },
   "ASL1": {
+   "allianceId": "156df37246894b499b0d030a712dfdfb",
    "alliance_power": {
-    "rank": 28,
-    "value": 387848863
+    "data_date": "2026-10-08",
+    "rank": 29,
+    "source": "game_alliance_power_list",
+    "value": 383482417
    },
    "display": "[ASL1]AllStarLeague",
    "tag": "ASL1"
   },
   "Ayaa": {
+   "allianceId": "171e0a6173274028abdc19a9957dd5c3",
    "alliance_power": {
-    "rank": 8,
-    "value": 3643139248
+    "data_date": "2026-10-08",
+    "rank": 7,
+    "source": "game_alliance_power_list",
+    "value": 4195320597
    },
    "display": "[Ayaa]Ayaaa",
    "tag": "Ayaa"
   },
   "B4N": {
+   "allianceId": "5300c3ddcd01437d950f29c452134e89",
    "alliance_power": {
-    "rank": 73,
-    "value": 38685549
+    "data_date": "2026-10-08",
+    "rank": 74,
+    "source": "game_alliance_power_list",
+    "value": 30188417
    },
    "display": "[B4N]blood nation",
    "tag": "B4N"
   },
   "B69B": {
+   "allianceId": "5b4e8af5aea541b89e874cb2a0bafaa1",
    "alliance_power": {
-    "rank": 96,
+    "data_date": "2026-10-08",
+    "rank": 94,
+    "source": "game_alliance_power_list",
     "value": 2153456
    },
    "display": "[B69B]We Believers143",
    "tag": "B69B"
   },
   "BAD8": {
+   "allianceId": "fe806f2d779d4aeb88c95813249f4b60",
    "alliance_power": {
-    "rank": 17,
-    "value": 726421719
+    "data_date": "2026-10-08",
+    "rank": 21,
+    "source": "game_alliance_power_list",
+    "value": 548377791
    },
    "display": "[BAD8]L3g3nds",
    "tag": "BAD8"
   },
   "BTCQ": {
+   "allianceId": "b2bcfe768df74357b25cdd6fdfb51da6",
    "alliance_power": {
-    "rank": 58,
-    "value": 91882434
+    "data_date": "2026-10-08",
+    "rank": 56,
+    "source": "game_alliance_power_list",
+    "value": 91200272
    },
    "display": "[BTCQ]BTC",
    "tag": "BTCQ"
   },
   "CHIO": {
+   "allianceId": "81c423435180407a91621c4bc4ea8cea",
    "alliance_power": {
-    "rank": 68,
-    "value": 54496239
+    "data_date": "2026-10-08",
+    "rank": 69,
+    "source": "game_alliance_power_list",
+    "value": 49096980
    },
    "display": "[CHIO]Shelby Family",
    "tag": "CHIO"
   },
   "COYO": {
+   "allianceId": "d7d4f73409e84a09b0de46984e9038c1",
    "alliance_power": {
+    "data_date": "2026-10-08",
     "rank": 26,
-    "value": 441857818
+    "source": "game_alliance_power_list",
+    "value": 458793885
    },
    "display": "[COYO]COYOTES",
    "tag": "COYO"
   },
   "CRIC": {
+   "allianceId": "cc5fa7cf497244518842a2b8477b62c1",
    "alliance_power": {
-    "rank": 41,
-    "value": 187406938
+    "data_date": "2026-10-08",
+    "rank": 38,
+    "source": "game_alliance_power_list",
+    "value": 194776615
    },
    "display": "[CRIC]TheCircus",
    "tag": "CRIC"
   },
   "DMNI": {
+   "allianceId": "d89b109c68fd4302a5cde070e9c5a90b",
    "alliance_power": {
+    "data_date": "2026-10-08",
     "rank": 13,
-    "value": 1322235253
+    "source": "game_alliance_power_list",
+    "value": 1773202435
    },
    "display": "[DMNI]DOMIINION",
    "tag": "DMNI"
   },
   "DWX": {
+   "allianceId": "73cd477324d44351bc925dc7983b28a3",
    "alliance_power": {
-    "rank": 59,
-    "value": 90718829
+    "data_date": "2026-10-08",
+    "rank": 58,
+    "source": "game_alliance_power_list",
+    "value": 86807961
    },
    "display": "[DWX]Deathwish",
    "tag": "DWX"
   },
   "E45Y": {
+   "allianceId": "357dfdeaf5594629bea7c75c168da063",
    "alliance_power": {
-    "rank": 7,
-    "value": 3738597698
+    "data_date": "2026-10-08",
+    "rank": 9,
+    "source": "game_alliance_power_list",
+    "value": 3842764640
    },
    "display": "[E45Y]NoStress",
    "tag": "E45Y"
   },
   "EGLT": {
+   "allianceId": "6f0ed423d49e4a2199206f2ebc41fc67",
    "alliance_power": {
-    "rank": 39,
-    "value": 198304978
+    "data_date": "2026-10-08",
+    "rank": 34,
+    "source": "game_alliance_power_list",
+    "value": 227245375
    },
    "display": "[EGLT]Eagle Talon",
    "tag": "EGLT"
   },
   "ELVH": {
+   "allianceId": "5f801f6184a94405bb2a62d642a886e6",
    "alliance_power": {
-    "rank": 69,
-    "value": 49286169
+    "data_date": "2026-10-08",
+    "rank": 65,
+    "source": "game_alliance_power_list",
+    "value": 63742663
    },
    "display": "[ELVH]EL VÂHİD",
    "tag": "ELVH"
   },
   "EzE": {
+   "allianceId": "2fa5f6bd18f14f4eb3125a424452f6de",
    "alliance_power": {
-    "rank": 16,
-    "value": 760406467
+    "data_date": "2026-10-08",
+    "rank": 14,
+    "source": "game_alliance_power_list",
+    "value": 1065480007
    },
    "display": "[EzE]Endzeit Elite",
    "tag": "EzE"
   },
   "FF07": {
+   "allianceId": "87f864136e32431791ca9e1e28a08ffe",
    "alliance_power": {
-    "rank": 54,
-    "value": 101738274
+    "data_date": "2026-10-08",
+    "rank": 52,
+    "source": "game_alliance_power_list",
+    "value": 98780070
    },
    "display": "[FF07]Fatel Force",
    "tag": "FF07"
   },
   "FOD": {
+   "allianceId": "c773a175cbd849ccad3982e83dc3f503",
    "alliance_power": {
-    "rank": 82,
-    "value": 11423108
+    "data_date": "2026-10-08",
+    "rank": 83,
+    "source": "game_alliance_power_list",
+    "value": 12107317
    },
-   "display": "[FOD]FriendsOfTDeviI",
+   "display": "[FOD]FriendsOfTDevil",
    "tag": "FOD"
   },
   "FYL1": {
+   "allianceId": "32e796dc94e649838308b3f05848b0d6",
    "alliance_power": {
-    "rank": 76,
-    "value": 20040594
+    "data_date": "2026-10-08",
+    "rank": 79,
+    "source": "game_alliance_power_list",
+    "value": 14495514
    },
    "display": "[FYL1]FYL Bidness",
    "tag": "FYL1"
   },
   "GMA": {
+   "allianceId": "d3099def46a4446f8315061f2a723911",
    "alliance_power": {
-    "rank": 74,
-    "value": 34287432
+    "data_date": "2026-10-08",
+    "rank": 73,
+    "source": "game_alliance_power_list",
+    "value": 38475970
    },
    "display": "[GMA]grayman army",
    "tag": "GMA"
   },
   "GMi": {
+   "allianceId": "c7eaed78746149ad95e5b35763f95b42",
    "alliance_power": {
-    "rank": 95,
-    "value": 2929967
+    "data_date": "2026-10-08",
+    "rank": 93,
+    "source": "game_alliance_power_list",
+    "value": 2765887
    },
    "display": "[GMi]Great Marshal",
    "tag": "GMi"
   },
   "GiD": {
+   "allianceId": "8cb460c787514c81be31df5f463ea131",
    "alliance_power": {
-    "rank": 30,
-    "value": 370014360
+    "data_date": "2026-10-08",
+    "rank": 31,
+    "source": "game_alliance_power_list",
+    "value": 293809732
    },
    "display": "[GiD]garudahindonesia",
    "tag": "GiD"
   },
   "Gut": {
+   "allianceId": "8ec4d22d67334d758fd33cbedf399d8f",
    "alliance_power": {
-    "rank": 93,
+    "data_date": "2026-10-08",
+    "rank": 91,
+    "source": "game_alliance_power_list",
     "value": 3564979
    },
    "display": "[Gut]Deutschland1",
    "tag": "Gut"
   },
   "Helm": {
+   "allianceId": "cf6013529f664eb78df6ff2b527d840f",
    "alliance_power": {
+    "data_date": "2026-10-08",
     "rank": 1,
-    "value": 5919074855
+    "source": "game_alliance_power_list",
+    "value": 6915132318
    },
    "display": "[Helm]Helm",
    "tag": "Helm"
   },
-  "JKTN": {
+  "Itw": {
+   "allianceId": "8fb0609b1c96477aafbb4c9a699403a1",
    "alliance_power": {
-    "rank": 34,
-    "value": 248776586
+    "data_date": "2026-10-08",
+    "rank": 55,
+    "source": "game_alliance_power_list",
+    "value": 93636177
+   },
+   "display": "[Itw]Italiawar",
+   "tag": "Itw"
+  },
+  "JKTN": {
+   "allianceId": "79e428b4e1274732aeae0091af71f18e",
+   "alliance_power": {
+    "data_date": "2026-10-08",
+    "rank": 41,
+    "source": "game_alliance_power_list",
+    "value": 178332787
    },
    "display": "[JKTN]JAKARTANS",
    "tag": "JKTN"
   },
   "KYLE": {
+   "allianceId": "3598c327e16243759f81f67736d246e0",
    "alliance_power": {
-    "rank": 55,
-    "value": 100630655
+    "data_date": "2026-10-08",
+    "rank": 61,
+    "source": "game_alliance_power_list",
+    "value": 69338593
    },
    "display": "[KYLE]KYLIE",
    "tag": "KYLE"
   },
   "LKVX": {
+   "allianceId": "39dcc20da96649cea2fc5fdea84137df",
    "alliance_power": {
-    "rank": 44,
-    "value": 167230276
+    "data_date": "2026-10-08",
+    "rank": 40,
+    "source": "game_alliance_power_list",
+    "value": 183788461
    },
    "display": "[LKVX]djdjddk",
    "tag": "LKVX"
   },
   "LRDE": {
+   "allianceId": "0377288058454bcdbaccf16a8d612178",
    "alliance_power": {
-    "rank": 32,
-    "value": 310819799
+    "data_date": "2026-10-08",
+    "rank": 33,
+    "source": "game_alliance_power_list",
+    "value": 262863625
    },
    "display": "[LRDE]Laronde",
    "tag": "LRDE"
   },
   "MPS1": {
+   "allianceId": "2e402741955f4b1d84852c0b9b9370bc",
    "alliance_power": {
-    "rank": 25,
-    "value": 478403560
+    "data_date": "2026-10-08",
+    "rank": 16,
+    "source": "game_alliance_power_list",
+    "value": 967513272
    },
    "display": "[MPS1]Melding Pot",
    "tag": "MPS1"
   },
   "Mesi": {
+   "allianceId": "5e48360f981643be9502e558f6ac6d30",
    "alliance_power": {
+    "data_date": "2026-10-08",
     "rank": 20,
-    "value": 683230476
+    "source": "game_alliance_power_list",
+    "value": 626180538
    },
    "display": "[Mesi]FORCE",
    "tag": "Mesi"
   },
   "MsFd": {
+   "allianceId": "f584739a24334039899d3bbdb8cde331",
    "alliance_power": {
-    "rank": 36,
-    "value": 204037214
+    "data_date": "2026-10-08",
+    "rank": 35,
+    "source": "game_alliance_power_list",
+    "value": 216946321
    },
    "display": "[MsFd]MisfitDisciples",
    "tag": "MsFd"
@@ -337,169 +471,232 @@
    "tag": "NCHT"
   },
   "NLT": {
+   "allianceId": "1bddf2ef9398470893e568c10ebe8280",
    "alliance_power": {
-    "rank": 80,
-    "value": 13799255
+    "data_date": "2026-10-08",
+    "rank": 76,
+    "source": "game_alliance_power_list",
+    "value": 15476231
    },
-   "display": "[NLT]NL Cluppie",
+   "display": "[NLT]NL Power",
    "tag": "NLT"
   },
   "NOX1": {
+   "allianceId": "34445314c19840a39c24007085b9d157",
    "alliance_power": {
-    "rank": 85,
-    "value": 9324921
+    "data_date": "2026-10-08",
+    "rank": 86,
+    "source": "game_alliance_power_list",
+    "value": 7988949
    },
    "display": "[NOX1]Unit By One",
    "tag": "NOX1"
   },
   "Ogul": {
+   "allianceId": "6a5927e1e725415c9bf2dda22cf92209",
    "alliance_power": {
-    "rank": 45,
-    "value": 161405695
+    "data_date": "2026-10-08",
+    "rank": 43,
+    "source": "game_alliance_power_list",
+    "value": 158950067
    },
    "display": "[Ogul]ToprakOğul",
    "tag": "Ogul"
   },
   "POHS": {
+   "allianceId": "f24fd7a490b34bb2a7b507d02015d6c4",
    "alliance_power": {
-    "rank": 60,
-    "value": 89950999
+    "data_date": "2026-10-08",
+    "rank": 64,
+    "source": "game_alliance_power_list",
+    "value": 64796153
    },
    "display": "[POHS]Power of honesty",
    "tag": "POHS"
   },
   "Palz": {
+   "allianceId": "ffaf0533a90846b494a6d7dae341e152",
    "alliance_power": {
-    "rank": 91,
-    "value": 5071141
+    "data_date": "2026-10-08",
+    "rank": 89,
+    "source": "game_alliance_power_list",
+    "value": 5075041
    },
    "display": "[Palz]Pumpkin Pacth",
    "tag": "Palz"
   },
   "RE15": {
+   "allianceId": "0dfdb8ce25fc4f4cbc64050438bd232d",
    "alliance_power": {
+    "data_date": "2026-10-08",
     "rank": 22,
-    "value": 534035016
+    "source": "game_alliance_power_list",
+    "value": 524968977
    },
    "display": "[RE15]ROSILLO",
    "tag": "RE15"
   },
   "RRRS": {
+   "allianceId": "dafd04fd105f4ad99d4d4fa33ef0520d",
    "alliance_power": {
-    "rank": 27,
-    "value": 410039721
+    "data_date": "2026-10-08",
+    "rank": 28,
+    "source": "game_alliance_power_list",
+    "value": 422295347
    },
    "display": "[RRRS]RRSS",
    "tag": "RRRS"
   },
   "RZCL": {
+   "allianceId": "53c7c08b13b34da58d7a624888675f9a",
    "alliance_power": {
-    "rank": 38,
-    "value": 199941455
+    "data_date": "2026-10-08",
+    "rank": 39,
+    "source": "game_alliance_power_list",
+    "value": 189763602
    },
    "display": "[RZCL]CL Rage Z",
    "tag": "RZCL"
   },
   "Rwak": {
+   "allianceId": "f382e4404d194f21a51a58521fbf6b43",
    "alliance_power": {
-    "rank": 78,
-    "value": 15345662
+    "data_date": "2026-10-08",
+    "rank": 80,
+    "source": "game_alliance_power_list",
+    "value": 14422649
    },
-   "display": "[Rwak]قادر",
+   "display": "[Rwak]رواق",
    "tag": "Rwak"
   },
   "SFU": {
+   "allianceId": "172bfd878cf14aea9cb8d5a7b671e426",
    "alliance_power": {
+    "data_date": "2026-10-08",
     "rank": 49,
-    "value": 111052621
+    "source": "game_alliance_power_list",
+    "value": 121520420
    },
    "display": "[SFU]united war",
    "tag": "SFU"
   },
   "SHI": {
+   "allianceId": "36ab4872f9e84fe29d1ca82d2595a1e3",
    "alliance_power": {
-    "rank": 77,
-    "value": 17288829
+    "data_date": "2026-10-08",
+    "rank": 75,
+    "source": "game_alliance_power_list",
+    "value": 16490368
    },
    "display": "[SHI]HIROSHIMA",
    "tag": "SHI"
   },
   "SHSN": {
+   "allianceId": "6c71b26a0eca49af9fa4236ec92b63bf",
    "alliance_power": {
+    "data_date": "2026-10-08",
     "rank": 10,
-    "value": 3122776776
+    "source": "game_alliance_power_list",
+    "value": 3540940563
    },
    "display": "[SHSN]Shad0wSyndicate",
    "tag": "SHSN"
   },
   "STGs": {
+   "allianceId": "946ee640ef964740a7462be7423769bb",
    "alliance_power": {
+    "data_date": "2026-10-08",
     "rank": 48,
-    "value": 142904269
+    "source": "game_alliance_power_list",
+    "value": 131546079
    },
-   "display": "[STGs]StrongTogeth er",
+   "display": "[STGs]StrongTogether",
    "tag": "STGs"
   },
   "SWT": {
+   "allianceId": "2b00f399f2704b2bad8383538e075bad",
    "alliance_power": {
-    "rank": 4,
-    "value": 5085547344
+    "data_date": "2026-10-08",
+    "rank": 3,
+    "source": "game_alliance_power_list",
+    "value": 6048133576
    },
    "display": "[SWT]SHΛDØW TΞΛM",
    "tag": "SWT"
   },
   "Smbz": {
+   "allianceId": "5fef1e426c82469eb94a2453728f6718",
    "alliance_power": {
-    "rank": 43,
-    "value": 178548126
+    "data_date": "2026-10-08",
+    "rank": 46,
+    "source": "game_alliance_power_list",
+    "value": 138974928
    },
    "display": "[Smbz]Suk mi balz",
    "tag": "Smbz"
   },
   "Smsk": {
+   "allianceId": "1219fb3710f0417396146b9d29392236",
    "alliance_power": {
-    "rank": 81,
-    "value": 12304521
+    "data_date": "2026-10-08",
+    "rank": 77,
+    "source": "game_alliance_power_list",
+    "value": 15090375
    },
    "display": "[Smsk]Samoškiniai",
    "tag": "Smsk"
   },
   "THGC": {
+   "allianceId": "7c0c49bfa16c4918b6943dec1ced97f1",
    "alliance_power": {
-    "rank": 63,
-    "value": 81854147
+    "data_date": "2026-10-08",
+    "rank": 57,
+    "source": "game_alliance_power_list",
+    "value": 90530647
    },
    "display": "[THGC]The Gojo Clan",
    "tag": "THGC"
   },
   "TMJ": {
+   "allianceId": "32eac8bdaa4f48a9b31276766ab5c1b3",
    "alliance_power": {
-    "rank": 18,
-    "value": 697728964
+    "data_date": "2026-10-08",
+    "rank": 17,
+    "source": "game_alliance_power_list",
+    "value": 800470959
    },
    "display": "[TMJ]Na paz de Deus",
    "tag": "TMJ"
   },
   "TTYC": {
+   "allianceId": "dd78561cedf34baebb7523e9d022038a",
    "alliance_power": {
-    "rank": 31,
-    "value": 315327532
+    "data_date": "2026-10-08",
+    "rank": 30,
+    "source": "game_alliance_power_list",
+    "value": 307982220
    },
    "display": "[TTYC]schifxu",
    "tag": "TTYC"
   },
   "TWLB": {
+   "allianceId": "cea5c0435c5f4e60ad8628d576859da4",
    "alliance_power": {
-    "rank": 67,
-    "value": 57228397
+    "data_date": "2026-10-08",
+    "rank": 66,
+    "source": "game_alliance_power_list",
+    "value": 57671426
    },
    "display": "[TWLB]CreepyZombies",
    "tag": "TWLB"
   },
   "Tr1": {
+   "allianceId": "a1a974d873ae4512819d8f6762b9c2e3",
    "alliance_power": {
-    "rank": 52,
-    "value": 103514954
+    "data_date": "2026-10-08",
+    "rank": 51,
+    "source": "game_alliance_power_list",
+    "value": 105379501
    },
    "display": "[Tr1]Boz1",
    "tag": "Tr1"
@@ -513,49 +710,67 @@
    "tag": "Trkr"
   },
   "Tsra": {
+   "allianceId": "d04347c4bec744d2b6cf9248d2480213",
    "alliance_power": {
-    "rank": 56,
-    "value": 100593282
+    "data_date": "2026-10-08",
+    "rank": 54,
+    "source": "game_alliance_power_list",
+    "value": 96089238
    },
    "display": "[Tsra]Cositas",
    "tag": "Tsra"
   },
   "ULD": {
+   "allianceId": "b0ecaa3004b944ca9b50edbf97790c15",
    "alliance_power": {
+    "data_date": "2026-10-08",
     "rank": 12,
-    "value": 2348991871
+    "source": "game_alliance_power_list",
+    "value": 2146989975
    },
    "display": "[ULD]UNYIELDING",
    "tag": "ULD"
   },
   "UQV": {
+   "allianceId": "5b09a2b6489d43ec9fa42cb9b919ad37",
    "alliance_power": {
-    "rank": 71,
-    "value": 47630006
+    "data_date": "2026-10-08",
+    "rank": 68,
+    "source": "game_alliance_power_list",
+    "value": 49654252
    },
    "display": "[UQV]Unquenchable Vy",
    "tag": "UQV"
   },
   "UpS": {
+   "allianceId": "f9bb1fd51f704715a857eae0e989c8e4",
    "alliance_power": {
+    "data_date": "2026-10-08",
     "rank": 6,
-    "value": 3758592789
+    "source": "game_alliance_power_list",
+    "value": 4391177724
    },
    "display": "[UpS]UrPainService",
    "tag": "UpS"
   },
   "UpS2": {
+   "allianceId": "08a96cd8580849379a4edc7826bb783d",
    "alliance_power": {
-    "rank": 29,
-    "value": 375772864
+    "data_date": "2026-10-08",
+    "rank": 25,
+    "source": "game_alliance_power_list",
+    "value": 458913546
    },
-   "display": "[UpS2]UrPainService 2",
+   "display": "[UpS2]UrPainService2",
    "tag": "UpS2"
   },
   "WA1N": {
+   "allianceId": "d9943346a2614d47b70062f4da2067ab",
    "alliance_power": {
-    "rank": 90,
-    "value": 6704950
+    "data_date": "2026-10-08",
+    "rank": 88,
+    "source": "game_alliance_power_list",
+    "value": 6269693
    },
    "display": "[WA1N]We Are 1 Nation",
    "tag": "WA1N"
@@ -569,129 +784,177 @@
    "tag": "WARp"
   },
   "WEEQ": {
+   "allianceId": "be407013e54047599618a3b66a458ba1",
    "alliance_power": {
-    "rank": 37,
-    "value": 201121716
+    "data_date": "2026-10-08",
+    "rank": 36,
+    "source": "game_alliance_power_list",
+    "value": 204929514
    },
-   "display": "[WEEQ]jxjdk",
+   "display": "[WEEQ]jxjxjdks",
    "tag": "WEEQ"
   },
   "WHAN": {
+   "allianceId": "bb65ea2c7aae4a6ebec4752a300579a6",
    "alliance_power": {
-    "rank": 14,
-    "value": 955181495
+    "data_date": "2026-10-08",
+    "rank": 15,
+    "source": "game_alliance_power_list",
+    "value": 983970559
    },
    "display": "[WHAN]White Angels",
    "tag": "WHAN"
   },
   "WRtH": {
+   "allianceId": "6e473c4e7716473694eb64c13af3d478",
    "alliance_power": {
-    "rank": 3,
-    "value": 5184192725
+    "data_date": "2026-10-08",
+    "rank": 4,
+    "source": "game_alliance_power_list",
+    "value": 5979903605
    },
    "display": "[WRtH]WRĀTH",
    "tag": "WRtH"
   },
   "Yukz": {
+   "allianceId": "fa7b6dd2aef04fab9b0344de2b78439d",
    "alliance_power": {
+    "data_date": "2026-10-08",
     "rank": 53,
-    "value": 102770801
+    "source": "game_alliance_power_list",
+    "value": 98505752
    },
    "display": "[Yukz]Zabers clan",
    "tag": "Yukz"
   },
   "ZDW": {
+   "allianceId": "cf63ab10a21f4662813fe009a382d7bf",
    "alliance_power": {
-    "rank": 65,
-    "value": 64910707
+    "data_date": "2026-10-08",
+    "rank": 67,
+    "source": "game_alliance_power_list",
+    "value": 57220184
    },
    "display": "[ZDW]Dire Wolf",
    "tag": "ZDW"
   },
   "ZOAT": {
+   "allianceId": "6dc05ca2acb548faa9b51280ef4a02ff",
    "alliance_power": {
-    "rank": 24,
-    "value": 522981348
+    "data_date": "2026-10-08",
+    "rank": 27,
+    "source": "game_alliance_power_list",
+    "value": 454419909
    },
    "display": "[ZOAT]Zombie Attack",
    "tag": "ZOAT"
   },
   "aTam": {
+   "allianceId": "8938b24c5e2c4bebb9f593af49b6ac9f",
    "alliance_power": {
-    "rank": 9,
-    "value": 3454043857
+    "data_date": "2026-10-08",
+    "rank": 8,
+    "source": "game_alliance_power_list",
+    "value": 4130892237
    },
-   "display": "[aTam]TÜRK HUN",
+   "display": "[aTam]TÜRK  HUN",
    "tag": "aTam"
   },
   "attd": {
+   "allianceId": "33e034d272384674beedd18394c56949",
    "alliance_power": {
-    "rank": 57,
-    "value": 92447991
+    "data_date": "2026-10-08",
+    "rank": 59,
+    "source": "game_alliance_power_list",
+    "value": 77793834
    },
    "display": "[attd]attackdogs",
    "tag": "attd"
   },
   "be36": {
+   "allianceId": "1de4a6574dc949be80e680d533486d36",
    "alliance_power": {
-    "rank": 79,
-    "value": 14106917
+    "data_date": "2026-10-08",
+    "rank": 82,
+    "source": "game_alliance_power_list",
+    "value": 13215128
    },
    "display": "[be36]Sea",
    "tag": "be36"
   },
   "delu": {
+   "allianceId": "79fed29b47fd4462ac1644bc95709fd0",
    "alliance_power": {
-    "rank": 40,
-    "value": 197587910
+    "data_date": "2026-10-08",
+    "rank": 37,
+    "source": "game_alliance_power_list",
+    "value": 199330093
    },
    "display": "[delu]deluler",
    "tag": "delu"
   },
   "dls": {
+   "allianceId": "9a61d98994954f71bd7b21e8009c151b",
    "alliance_power": {
+    "data_date": "2026-10-08",
     "rank": 47,
-    "value": 147980940
+    "source": "game_alliance_power_list",
+    "value": 133700434
    },
    "display": "[dls]diriliş34",
    "tag": "dls"
   },
   "ffox": {
+   "allianceId": "10f878af4e88464d9138d120b3c36fae",
    "alliance_power": {
-    "rank": 35,
-    "value": 205748640
+    "data_date": "2026-10-08",
+    "rank": 71,
+    "source": "game_alliance_power_list",
+    "value": 46018423
    },
    "display": "[ffox]firefox",
    "tag": "ffox"
   },
   "for1": {
+   "allianceId": "09b28cd53ecc430c8936f14e46c6385d",
    "alliance_power": {
-    "rank": 15,
-    "value": 774412779
+    "data_date": "2026-10-08",
+    "rank": 19,
+    "source": "game_alliance_power_list",
+    "value": 630893266
    },
    "display": "[for1]FOR",
    "tag": "for1"
   },
   "hae": {
+   "allianceId": "daca98ab989a452880d9cab7f3e18e2c",
    "alliance_power": {
-    "rank": 89,
+    "data_date": "2026-10-08",
+    "rank": 87,
+    "source": "game_alliance_power_list",
     "value": 7376826
    },
    "display": "[hae]haedar",
    "tag": "hae"
   },
   "ibom": {
+   "allianceId": "0bf98abfb40b49dd999f467bc4c58adf",
    "alliance_power": {
-    "rank": 87,
-    "value": 9183487
+    "data_date": "2026-10-08",
+    "rank": 85,
+    "source": "game_alliance_power_list",
+    "value": 9210073
    },
    "display": "[ibom]Italia boom",
    "tag": "ibom"
   },
   "lino": {
+   "allianceId": "cce5f0640a2240cc99d07d1fe681acac",
    "alliance_power": {
-    "rank": 66,
-    "value": 64124834
+    "data_date": "2026-10-08",
+    "rank": 63,
+    "source": "game_alliance_power_list",
+    "value": 65806418
    },
    "display": "[lino]Migiwara",
    "tag": "lino"
@@ -705,65 +968,100 @@
    "tag": "ltw"
   },
   "mERC": {
+   "allianceId": "080876503ffe4c63b4797b0f9d434a10",
    "alliance_power": {
+    "data_date": "2026-10-08",
     "rank": 2,
-    "value": 5194422797
+    "source": "game_alliance_power_list",
+    "value": 6102879305
    },
    "display": "[mERC]Mercenary",
    "tag": "mERC"
   },
   "mERF": {
+   "allianceId": "af714b7dff2a4238bb36253af8b8c24e",
    "alliance_power": {
-    "rank": 50,
-    "value": 104767202
+    "data_date": "2026-10-08",
+    "rank": 45,
+    "source": "game_alliance_power_list",
+    "value": 140578152
    },
    "display": "[mERF]mERC Farm",
    "tag": "mERF"
   },
-  "mo7": {
+  "mine": {
+   "allianceId": "920773333b1643f3aeba4f0946822990",
    "alliance_power": {
-    "rank": 19,
-    "value": 695348557
+    "data_date": "2026-10-08",
+    "rank": 72,
+    "source": "game_alliance_power_list",
+    "value": 43633480
    },
-   "display": "[mo7]اربوك",
+   "display": "[mine]new1234",
+   "tag": "mine"
+  },
+  "mo7": {
+   "allianceId": "df245a6c9f9841c993a4ae459d8c7ebc",
+   "alliance_power": {
+    "data_date": "2026-10-08",
+    "rank": 18,
+    "source": "game_alliance_power_list",
+    "value": 748395192
+   },
+   "display": "[mo7]كوبرا",
    "tag": "mo7"
   },
   "movR": {
+   "allianceId": "b44946755a574fea9d97256b063c7336",
    "alliance_power": {
+    "data_date": "2026-10-08",
     "rank": 11,
-    "value": 2903665674
+    "source": "game_alliance_power_list",
+    "value": 3256065144
    },
    "display": "[movR]Moving Slowly",
    "tag": "movR"
   },
   "oray": {
+   "allianceId": "2c50fa9312564840b8804af3c85fa4e1",
    "alliance_power": {
+    "data_date": "2026-10-08",
     "rank": 42,
-    "value": 180380351
+    "source": "game_alliance_power_list",
+    "value": 171243068
    },
    "display": "[oray]oray22",
    "tag": "oray"
   },
   "pEsT": {
+   "allianceId": "a3598f9346a84ae1baf7b71194255ca3",
    "alliance_power": {
-    "rank": 46,
-    "value": 153139419
+    "data_date": "2026-10-08",
+    "rank": 44,
+    "source": "game_alliance_power_list",
+    "value": 149833213
    },
    "display": "[pEsT]pNeUmOn pLaQuE",
    "tag": "pEsT"
   },
   "prox": {
+   "allianceId": "00fc48636e0b4f0781a102289b2c23e4",
    "alliance_power": {
-    "rank": 61,
-    "value": 88352882
+    "data_date": "2026-10-08",
+    "rank": 60,
+    "source": "game_alliance_power_list",
+    "value": 76262467
    },
    "display": "[prox]proxusss",
    "tag": "prox"
   },
   "s71": {
+   "allianceId": "eb879c3826854e2b98a06b162bb78f50",
    "alliance_power": {
-    "rank": 88,
-    "value": 8713478
+    "data_date": "2026-10-08",
+    "rank": 78,
+    "source": "game_alliance_power_list",
+    "value": 14949129
    },
    "display": "[s71]sly 71",
    "tag": "s71"
@@ -836,6 +1134,8 @@
  "captured_date": "2026-10-04",
  "imported_at": "2026-10-09T05:31:02",
  "native_roster_import": {
+  "alliance_rankings": 94,
+  "alliance_source_sha256": "4e535a511f40e020a078a8c24566b0c710a418e18130b8e153b57af3ab054813",
   "alliances": 94,
   "data_date": "2026-10-08",
   "matches": {

@@ -211,7 +211,15 @@ function refreshRadius() {
   const order = document.getElementById('radiusSort').value;
   const level = hq => Number.isFinite(hq.hq) && hq.hq > 0 ? hq.hq : -Infinity;
   const power = hq => Number.isFinite(hq.power?.personal_power?.value) ? hq.power.personal_power.value : -Infinity;
-  matches.sort((a, b) => (order === 'power' ? power(b.hq) - power(a.hq)
+  const allianceRank = hq => {
+    const reading = powerData?.alliances?.[hq.tag]?.alliance_power;
+    if (powerData?.native_roster_import?.alliance_rankings &&
+        reading?.data_date !== powerData.native_roster_import.data_date) return Infinity;
+    const rank = reading?.rank;
+    return Number.isFinite(rank) && rank > 0 ? rank : Infinity;
+  };
+  matches.sort((a, b) => (order === 'alliance' ? allianceRank(a.hq) - allianceRank(b.hq) || power(b.hq) - power(a.hq)
+    : order === 'power' ? power(b.hq) - power(a.hq)
     : order === 'distance' ? a.distance - b.distance
     : order === 'name' ? (a.hq.name || '').localeCompare(b.hq.name || '')
     : level(b.hq) - level(a.hq)) || a.distance - b.distance || String(a.hq.id).localeCompare(String(b.hq.id)));
@@ -232,7 +240,10 @@ function refreshRadius() {
       const source = reading.source === 'alliance_member_roster' ? 'Alliance member roster' : 'Personal power leaderboard';
       powerInfo.title = `${source}${reading.data_date || reading.captured_date ? ` · ${reading.data_date || reading.captured_date}` : ''} · ${reading.value.toLocaleString()}`;
     }
-    button.append(name, info, powerInfo);
+    const allianceInfo = document.createElement('span');
+    allianceInfo.textContent = Number.isFinite(allianceRank(hq))
+      ? `Alliance rank #${allianceRank(hq)}` : hq.tag ? 'Alliance unranked' : 'No alliance';
+    button.append(name, info, powerInfo, allianceInfo);
     button.addEventListener('click', () => selectHQ(hq, true, false));
     fragment.append(button);
   }

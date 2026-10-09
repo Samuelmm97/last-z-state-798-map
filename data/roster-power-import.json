@@ -11,5 +11,7 @@
     "unmatched": 34,
     "unique_name_and_tag": 4
   },
-  "scope": "All collected listed alliances; unlisted alliances and unaffiliated players are not covered."
+  "scope": "All collected listed alliances; unlisted alliances and unaffiliated players are not covered.",
+  "alliance_rankings": 94,
+  "alliance_source_sha256": "4e535a511f40e020a078a8c24566b0c710a418e18130b8e153b57af3ab054813"
 }

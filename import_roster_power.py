@@ -84,6 +84,21 @@ def main():
               "players": len(rows), "alliances": len({r["allianceId"] for r in rows}),
               "matches": dict(matched),
               "scope": "All collected listed alliances; unlisted alliances and unaffiliated players are not covered."}
+    alliance_path = args.source.with_name("state-798-alliances.csv")
+    if alliance_path.exists():
+        alliances = list(csv.DictReader(alliance_path.open(encoding="utf-8-sig", newline="")))
+        assert all(r["serverId"] == "798" for r in alliances)
+        assert len({r["abbr"] for r in alliances}) == len(alliances), "Ambiguous alliance tags"
+        for r in alliances:
+            entry = data.setdefault("alliances", {}).setdefault(r["abbr"], {})
+            previous = entry.get("alliance_power", {})
+            previous_date = previous.get("data_date") or data.get("captured_date", "")
+            if previous_date <= args.date:
+                entry.update(tag=r["abbr"], display=f"[{r['abbr']}]{r['alliancename']}", allianceId=r["uid"])
+                entry["alliance_power"] = {"rank": int(r["rank"]), "value": int(r["fightpower"]),
+                                           "data_date": args.date, "source": "game_alliance_power_list"}
+        report["alliance_rankings"] = len(alliances)
+        report["alliance_source_sha256"] = hashlib.sha256(alliance_path.read_bytes()).hexdigest()
     data["native_roster_import"] = report
     path.write_text(json.dumps(data, ensure_ascii=False, indent=1, sort_keys=True) + "\n", encoding="utf-8")
     Path("data/roster-power-import.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
