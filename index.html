@@ -167,6 +167,15 @@
         <label class="radius-toggle"><input id="excludeNap" type="checkbox"> Exclude NAP 13 alliances</label>
         <div id="radiusResults" class="radius-results" aria-live="polite">Loading HQs…</div>
         <div id="radiusNote" class="radius-note"></div>
+        <details class="radius-list-panel">
+          <summary id="radiusListSummary">View HQ list</summary>
+          <label class="radius-sort">Sort by <select id="radiusSort">
+            <option value="level">HQ level (highest first)</option>
+            <option value="distance">Distance (nearest first)</option>
+            <option value="name">Name (A–Z)</option>
+          </select></label>
+          <div id="radiusList" class="radius-list" aria-label="HQs within radius"></div>
+        </details>
       </section>
       <div class="map-hint">Drag to pan · scroll to zoom · select a name to jump to its HQ</div>
       <section class="hq-card" id="hqCard" hidden aria-live="polite">
@@ -183,7 +192,7 @@
       <div class="loading" id="loading">Preparing map…</div>
     </main>
   </div>
-  <script src="app.js?v=20261007-farm-names" defer></script>
+  <script src="app.js?v=20261009-radius-list" defer></script>
 </body>
 </html>
 

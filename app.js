@@ -194,19 +194,45 @@ function zoomTo(next, sx = width / 2, sy = height / 2) {
 }
 
 function refreshRadius() {
-  if (!hqs.length) return;
   const radiusSquared = radius * radius;
   let count = 0, levelSum = 0, unreadable = 0;
+  const matches = [];
   for (const hq of hqs) {
-    if (shieldStatus(hq) === 'not_hq' || (excludeNap.checked && isNap13(hq.tag))) continue;
+    if (!hasLocation(hq) || shieldStatus(hq) === 'not_hq' || (excludeNap.checked && isNap13(hq.tag))) continue;
     const dx = hq.x - radiusPoint.x, dy = hq.y - radiusPoint.y;
     if (dx * dx + dy * dy > radiusSquared) continue;
     count++;
+    matches.push({ hq, distance: Math.hypot(dx, dy) });
     if (Number.isFinite(hq.hq) && hq.hq > 0) levelSum += hq.hq;
     else unreadable++;
   }
   document.getElementById('radiusResults').textContent = `${count.toLocaleString()} HQs · ${levelSum.toLocaleString()} total HQ levels`;
   document.getElementById('radiusNote').textContent = `${unreadable ? `${unreadable} unreadable level${unreadable === 1 ? '' : 's'} omitted from level total · ` : ''}Circle includes HQs on its edge${excludeNap.checked ? ' · NAP 13 excluded' : ''}`;
+  const order = document.getElementById('radiusSort').value;
+  const level = hq => Number.isFinite(hq.hq) && hq.hq > 0 ? hq.hq : -Infinity;
+  matches.sort((a, b) => (order === 'distance' ? a.distance - b.distance
+    : order === 'name' ? (a.hq.name || '').localeCompare(b.hq.name || '')
+    : level(b.hq) - level(a.hq)) || a.distance - b.distance || String(a.hq.id).localeCompare(String(b.hq.id)));
+  const fragment = document.createDocumentFragment();
+  for (const { hq, distance } of matches) {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'radius-hq';
+    const name = document.createElement('strong');
+    name.textContent = `${hq.tag ? `[${hq.tag}] ` : ''}${hq.name || 'Unknown name'}`;
+    const info = document.createElement('span');
+    info.textContent = `${level(hq) > 0 ? `HQ ${hq.hq}` : 'HQ ?'} · X ${hq.x} · Y ${hq.y} · ${distance.toFixed(1)} tiles`;
+    button.append(name, info);
+    button.addEventListener('click', () => selectHQ(hq, true, false));
+    fragment.append(button);
+  }
+  if (!matches.length) {
+    const empty = document.createElement('p');
+    empty.textContent = 'No HQs within this radius.';
+    fragment.append(empty);
+  }
+  document.getElementById('radiusList').replaceChildren(fragment);
+  document.getElementById('radiusListSummary').textContent = `View HQ list (${count.toLocaleString()})`;
   scheduleDraw();
 }
 
@@ -253,9 +279,9 @@ function fillCardPower(player) {
   box.hidden = !grid.childElementCount && !notes.length;
 }
 
-function selectHQ(hq, jump = true) {
+function selectHQ(hq, jump = true, moveRadius = true) {
   selected = hq;
-  if (hasLocation(hq)) setRadiusPoint(hq.x, hq.y);
+  if (moveRadius && hasLocation(hq)) setRadiusPoint(hq.x, hq.y);
   if (activeZone !== 'all' && (hq.zone || 'outside') !== activeZone) setZone(hq.zone || 'outside');
   if (jump && hasLocation(hq)) { centerX = mapX(hq.x); centerY = mapY(hq.y); scale = Math.max(scale, .9); }
   document.getElementById('cardTag').textContent = hq.tag ? `[${hq.tag}]` : 'No alliance tag';
@@ -646,3 +672,5 @@ async function start() {
   }
 }
 start();
+
+document.getElementById('radiusSort').addEventListener('change', refreshRadius);

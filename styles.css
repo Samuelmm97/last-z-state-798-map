@@ -15,3 +15,13 @@
 
 /* Keep filtered results reachable on shorter screens. */
 .sidebar{overflow-y:auto}.sidebar>*{flex-shrink:0}.hq-list{flex:1 0 180px}
+
+.radius-tool{max-height:calc(100% - 135px);overflow-y:auto}
+.radius-list-panel{margin-top:10px;border-top:1px solid #566257;padding-top:9px;font-size:14px}
+.radius-list-panel summary{cursor:pointer;color:#f8dfab}
+.radius-sort{display:block;margin:10px 0;color:var(--muted)}
+.radius-sort select{display:block;width:100%;margin-top:5px;padding:6px;background:#111917;color:var(--text);border:1px solid #647061;border-radius:5px;font:inherit}
+.radius-list{max-height:260px;overflow-y:auto;overscroll-behavior:contain}
+.radius-hq{display:block;width:100%;padding:9px 4px;text-align:left;background:transparent;color:var(--text);border:0;border-bottom:1px solid #566257;cursor:pointer;font:inherit}
+.radius-hq:hover{background:#3d3927}.radius-hq strong,.radius-hq span{display:block;overflow-wrap:anywhere}.radius-hq span{margin-top:4px;color:var(--muted);font-size:12px}
+.radius-hq:focus-visible,.radius-list-panel summary:focus-visible{outline:2px solid #f8dfab;outline-offset:-2px}
