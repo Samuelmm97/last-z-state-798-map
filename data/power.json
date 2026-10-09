@@ -769,7 +769,7 @@
    "tag": "s71"
   }
  },
- "atlas_records": 5359,
+ "atlas_records": 7361,
  "board_rows": {
   "alliance_power": 96,
   "hq_level": 150,
@@ -777,8 +777,64 @@
   "strongest_hero_power": 150,
   "total_hero_power": 150
  },
+ "boards": {
+  "alliance_power": {
+   "api_data_date": "2026-10-02",
+   "api_rows_offered": 50,
+   "api_snapshot_at": "2026-10-03T01:04:57.100Z",
+   "data_date": "2026-10-04",
+   "reason": "the community API snapshot (2026-10-02) is older than the published 2026-10-04 reading",
+   "rows": null,
+   "snapshot_at": null,
+   "source": "in-game Rankings (Profile > Rankings)",
+   "source_url": null,
+   "status": "held"
+  },
+  "hq_level": {
+   "data_date": "2026-10-04",
+   "reason": "the community API has no HQ-level board",
+   "rows": null,
+   "snapshot_at": null,
+   "source": "in-game Rankings (Profile > Rankings)",
+   "source_url": null,
+   "status": "carried"
+  },
+  "personal_power": {
+   "api_data_date": "2026-10-02",
+   "api_rows_offered": 100,
+   "api_snapshot_at": "2026-10-03T01:04:57.100Z",
+   "data_date": "2026-10-04",
+   "reason": "the community API snapshot (2026-10-02) is older than the published 2026-10-04 reading",
+   "rows": null,
+   "snapshot_at": null,
+   "source": "in-game Rankings (Profile > Rankings)",
+   "source_url": null,
+   "status": "held"
+  },
+  "strongest_hero_power": {
+   "data_date": "2026-10-04",
+   "reason": "the community API has no strongest-hero board (its hero board is total hero power)",
+   "rows": null,
+   "snapshot_at": null,
+   "source": "in-game Rankings (Profile > Rankings)",
+   "source_url": null,
+   "status": "carried"
+  },
+  "total_hero_power": {
+   "api_data_date": "2026-10-02",
+   "api_rows_offered": 150,
+   "api_snapshot_at": "2026-10-03T01:04:57.100Z",
+   "data_date": "2026-10-04",
+   "reason": "the community API snapshot (2026-10-02) is older than the published 2026-10-04 reading",
+   "rows": null,
+   "snapshot_at": null,
+   "source": "in-game Rankings (Profile > Rankings)",
+   "source_url": null,
+   "status": "held"
+  }
+ },
  "captured_date": "2026-10-04",
- "imported_at": "2026-10-04T07:45:34",
+ "imported_at": "2026-10-09T05:31:02",
  "players": {
   "176648485": {
    "display": "176648485",
@@ -35803,11 +35859,11 @@
  "roster_metrics_carried_from": {
   "as_of": "2026-10-01",
   "metrics": 2044,
-  "note": "Roster-sourced HQ levels from the 2026-10-01 refresh are carried over unchanged and stay labelled by their source; leaderboard rows captured 2026-10-04 always take precedence.",
+  "note": "Roster-sourced metrics from the 2026-10-01 refresh are carried over unchanged and stay labelled by their source; API and leaderboard readings always take precedence.",
   "players": 1088,
   "source": "alliance_member_roster"
  },
- "source": "in-game Rankings (Profile > Rankings)",
+ "source": "community API (last-z.us) for the boards it serves; in-game Rankings capture for the rest",
  "sources": {
   "alliance_power": {
    "date": "2026-10-04",
@@ -36236,6 +36292,11 @@
  },
  "state": "798",
  "warnings": [
-  "alliance_power: The alliance board ends at rank 96 in today's game. Four separate capture attempts (07:08, 07:21, 07:32 and 07:34) each stalled with ranks 89-96 on the final panel, and a vision read of the final frame (page30.png) found no partial next row above the pinned #1 row. Only the available ranks 1-96 are included."
+  "alliance_power: the API snapshot is 2026-10-02, older than the published 2026-10-04 reading, so the board was left as published -- it will switch to the API by itself once the snapshot passes that date.",
+  "hq_level: still the 2026-10-04 reading from the last in-game capture -- the community API has no HQ-level board.",
+  "personal_power: the API snapshot is 2026-10-02, older than the published 2026-10-04 reading, so the board was left as published -- it will switch to the API by itself once the snapshot passes that date.",
+  "strongest_hero_power: still the 2026-10-04 reading from the last in-game capture -- the community API has no strongest-hero board (its hero board is total hero power).",
+  "total_hero_power: the API snapshot is 2026-10-02, older than the published 2026-10-04 reading, so the board was left as published -- it will switch to the API by itself once the snapshot passes that date.",
+  "the community API snapshot is 7 days old (2026-10-02): the site has not rebuilt it, so the atlas is not gaining new readings from it."
  ]
 }
