@@ -85,3 +85,13 @@ The website is plain HTML/CSS/JavaScript. `build_assets.py`, `add_capital_assets
 `data/shields.json` contains the September 26 shield scan for 664 map records near the capital terrain edge, plus 163 HQs well inside the mud hexagon. The review of 117 uncertain records used overlapping captures and a target-centered blue rim check. Among the 664 edge records, 471 show a shield, 63 appear unshielded, 125 are on mud, four are map objects or troop/overlapping labels rather than HQs, and one remains unresolved because its visible nameplate is clipped and another capture does not align with its estimated coordinate. These are screenshot-time classifications, not a verified count of every player or their status throughout the SvS event. HQs outside the capital, where the shield scan was not run, show `Not scanned`.
 
 To refresh the static data after a future sweep, run the archived `svs_shield_scan.py` against the saved captures. It compares overlapping screenshots and uses a bilateral blue rim check to reduce confusion from neighboring shields. Optional `--reviewed-csv` applies a documented visual audit to known ambiguous cases. Then run `python import_shields.py --csv path/to/svs_shield_status.csv` with a scan made from this atlas's HQ IDs and coordinates. A new event needs a fresh audit because HQ locations and shields can change.
+
+### Native alliance roster power import
+
+`python import_roster_power.py <state-798-members.csv> --date YYYY-MM-DD`
+imports a completed State 798 native roster export. Player IDs take priority;
+name/alliance matching requires an unambiguous identity and no conflicting player ID.
+Players without a map match remain available in the power list without an invented location.
+Newer personal-power readings are preserved. Hero metrics and historical leaderboard
+capture dates remain unchanged. `data/roster-power-import.json` records source coverage
+and a checksum. The October 8 import contains 2,656 players across 94 listed alliances.

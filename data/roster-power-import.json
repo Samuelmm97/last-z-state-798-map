@@ -1,0 +1,15 @@
+{
+  "state": "798",
+  "data_date": "2026-10-08",
+  "source": "game alliance member roster API",
+  "source_file": "state-798-members.csv",
+  "source_sha256": "2c7df72627d3021e74a6c04d516b55b1b80ae3ef8c351a56b96ae6d47622be98",
+  "players": 2656,
+  "alliances": 94,
+  "matches": {
+    "player_id": 2618,
+    "unmatched": 34,
+    "unique_name_and_tag": 4
+  },
+  "scope": "All collected listed alliances; unlisted alliances and unaffiliated players are not covered."
+}

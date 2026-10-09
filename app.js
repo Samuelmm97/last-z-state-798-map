@@ -514,7 +514,11 @@ function updateView() {
   document.getElementById('searchLabel').textContent = activeView === 'alliances' ? 'Find an alliance' : activeView === 'players' ? 'Find a player' : 'Find an HQ';
   search.placeholder = activeView === 'alliances' ? 'Alliance name or tag' : activeView === 'players' ? 'Player name or tag' : 'Name, alliance, or X,Y';
   document.getElementById('listHeading').textContent = activeView === 'alliances' ? 'PREVIOUS SvS ALLIANCES' : activeView === 'players' ? 'POWER LEADERBOARDS' : activeZone === 'all' ? 'ALL HQs' : activeZone === 'capital' ? 'PREVIOUS CAPITAL PARTICIPANTS' : activeZone === 'unknown' ? 'NO PRIOR SvS SCAN' : 'PREVIOUSLY OUTSIDE CAPITAL';
-  document.getElementById('powerCaptureNote').textContent = powerData?.captured_date ? `Leaderboards captured ${powerData.captured_date}` : 'No leaderboard capture has been published yet.';
+  const rosterImport = powerData?.native_roster_import;
+  document.getElementById('powerCaptureNote').textContent = [
+    powerData?.captured_date ? `Leaderboards captured ${powerData.captured_date}` : 'No leaderboard capture has been published yet.',
+    rosterImport ? `Alliance roster power: ${rosterImport.data_date} · ${rosterImport.alliances} alliances · ${rosterImport.players.toLocaleString()} players` : ''
+  ].filter(Boolean).join(' · ');
   resetList();
 }
 
