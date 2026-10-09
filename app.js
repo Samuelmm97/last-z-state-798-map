@@ -280,14 +280,16 @@ function selectHQ(hq, jump = true) {
   const stateLabels = {listed_alliance:'Alliance appears on State 798 leaderboard',
     state_player_leaderboard:'State 798 player leaderboard confirms this player; current alliance is blank',
     likely_visitor:'Likely visitor: alliance absent from State 798 leaderboard; excluded from automatic placement',
-    unconfirmed:'State alliance unconfirmed; excluded from automatic placement until reviewed'};
+    unconfirmed:'State alliance unconfirmed; excluded from automatic placement until reviewed',
+    map_api:'Observed on the State 798 map via API'};
   if(hq.state_membership) observed.textContent += ` · ${stateLabels[hq.state_membership]} (${hq.state_checked_date})`;
   fillCardPower(hq.power);
   const image = document.getElementById('cardImage');
   const imageLink = document.getElementById('cardImageLink'); imageLink.hidden = !hq.photo;
   if (hq.photo) { image.src = hq.photo; imageLink.href = hq.photo; }
   image.alt = `In-game screenshot of ${hq.name}, HQ ${hq.hq}`;
-  document.getElementById('cardSource').textContent = hq.source || (hq.leaderboard_rank ? `HQ leaderboard rank ${hq.leaderboard_rank}` : 'Verified alliance member roster');
+  document.getElementById('cardSource').textContent = (hq.source || (hq.leaderboard_rank ? `HQ leaderboard rank ${hq.leaderboard_rank}` : 'Verified alliance member roster'))
+    + (hq.api_capture && hq.photo ? ` · Historical screenshot (${hq.photo_observed_date || 'earlier capture'}); location may differ` : '');
   if (hq.roster_photo) {
     const link=document.createElement('a');link.href=hq.roster_photo;link.target='_blank';link.rel='noopener';link.textContent='View saved roster card';
     document.getElementById('cardSource').append(' · ',link);

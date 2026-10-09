@@ -1,5 +1,12 @@
 # Last Z State 798 Atlas
 
+## October 8–9 API map import
+
+The current map pins include 4,283 HQs from 2,604 State 798/world 0 API region requests. Ten dominant alliance hive centers were compared with the older Atlas and all were within 10 tiles; see `data/api-map-validation.json`. Three HQ coordinates and exact power values also match user screenshots. This verifies the coordinate conversion for these HQs, not exhaustive visibility or an exact match to every historical position.
+
+2,281 API identities retained existing Atlas IDs through unique name/tag or unique name matching; 2,002 received new IDs, including 57 ambiguous historical matches retained separately for review. Player IDs support exact future matching. Earlier positions are retained in `location_history`, unobserved records remain historical, and screenshot dates/locations are separate from API locations. Background imagery, previous SvS participation/shields and power snapshots remain unchanged. The import tooling and backups are in the local Last Z API workspace (`import_api_hqs.py` and its runbook).
+
+
 The **All HQs** tab is the default list. It searches across all previous SvS
 cohorts and includes current map records plus verified roster members with
 older or unknown locations. Historical-only records stay available through

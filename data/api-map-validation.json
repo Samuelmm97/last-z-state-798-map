@@ -1,0 +1,197 @@
+{
+  "source": "State 798 map API scan, Oct 8-9, 2026",
+  "method": "Dominant hive: largest 35-tile-radius neighborhood; center is median X/Y. Compare against older current Atlas records. Name matches are exact after case/space normalization; player movement and OCR differences remain possible.",
+  "alliances": [
+    {
+      "alliance": "SWT",
+      "apiMembers": 100,
+      "oldLocatedMembers": 92,
+      "matchedNames": 72,
+      "within3Tiles": 5,
+      "medianPlayerDistance": 21.62,
+      "oldHive": {
+        "x": 565,
+        "y": 536,
+        "members": 91
+      },
+      "apiHive": {
+        "x": 558.0,
+        "y": 536.5,
+        "members": 94
+      },
+      "hiveCenterDistance": 7.02
+    },
+    {
+      "alliance": "mERC",
+      "apiMembers": 99,
+      "oldLocatedMembers": 98,
+      "matchedNames": 75,
+      "within3Tiles": 1,
+      "medianPlayerDistance": 20.02,
+      "oldHive": {
+        "x": 519,
+        "y": 619,
+        "members": 97
+      },
+      "apiHive": {
+        "x": 518,
+        "y": 618,
+        "members": 99
+      },
+      "hiveCenterDistance": 1.41
+    },
+    {
+      "alliance": "WRtH",
+      "apiMembers": 98,
+      "oldLocatedMembers": 93,
+      "matchedNames": 61,
+      "within3Tiles": 3,
+      "medianPlayerDistance": 19.1,
+      "oldHive": {
+        "x": 421.0,
+        "y": 490.5,
+        "members": 88
+      },
+      "apiHive": {
+        "x": 424.0,
+        "y": 495.5,
+        "members": 96
+      },
+      "hiveCenterDistance": 5.83
+    },
+    {
+      "alliance": "aTam",
+      "apiMembers": 97,
+      "oldLocatedMembers": 92,
+      "matchedNames": 60,
+      "within3Tiles": 14,
+      "medianPlayerDistance": 14.34,
+      "oldHive": {
+        "x": 587.5,
+        "y": 337.0,
+        "members": 88
+      },
+      "apiHive": {
+        "x": 587.0,
+        "y": 338.0,
+        "members": 94
+      },
+      "hiveCenterDistance": 1.12
+    },
+    {
+      "alliance": "4NG",
+      "apiMembers": 97,
+      "oldLocatedMembers": 95,
+      "matchedNames": 76,
+      "within3Tiles": 1,
+      "medianPlayerDistance": 23.89,
+      "oldHive": {
+        "x": 704.0,
+        "y": 400.0,
+        "members": 78
+      },
+      "apiHive": {
+        "x": 706,
+        "y": 398,
+        "members": 97
+      },
+      "hiveCenterDistance": 2.83
+    },
+    {
+      "alliance": "Ayaa",
+      "apiMembers": 96,
+      "oldLocatedMembers": 91,
+      "matchedNames": 70,
+      "within3Tiles": 13,
+      "medianPlayerDistance": 14.23,
+      "oldHive": {
+        "x": 415.5,
+        "y": 233.0,
+        "members": 88
+      },
+      "apiHive": {
+        "x": 418,
+        "y": 232,
+        "members": 91
+      },
+      "hiveCenterDistance": 2.69
+    },
+    {
+      "alliance": "Helm",
+      "apiMembers": 95,
+      "oldLocatedMembers": 96,
+      "matchedNames": 78,
+      "within3Tiles": 4,
+      "medianPlayerDistance": 18.79,
+      "oldHive": {
+        "x": 478,
+        "y": 449,
+        "members": 93
+      },
+      "apiHive": {
+        "x": 477,
+        "y": 451,
+        "members": 85
+      },
+      "hiveCenterDistance": 2.24
+    },
+    {
+      "alliance": "UpS",
+      "apiMembers": 95,
+      "oldLocatedMembers": 91,
+      "matchedNames": 67,
+      "within3Tiles": 6,
+      "medianPlayerDistance": 19.42,
+      "oldHive": {
+        "x": 227.5,
+        "y": 525.0,
+        "members": 88
+      },
+      "apiHive": {
+        "x": 232,
+        "y": 526,
+        "members": 95
+      },
+      "hiveCenterDistance": 4.61
+    },
+    {
+      "alliance": "MPS1",
+      "apiMembers": 90,
+      "oldLocatedMembers": 39,
+      "matchedNames": 18,
+      "within3Tiles": 12,
+      "medianPlayerDistance": 1.0,
+      "oldHive": {
+        "x": 631.0,
+        "y": 879.0,
+        "members": 28
+      },
+      "apiHive": {
+        "x": 630.0,
+        "y": 882.0,
+        "members": 68
+      },
+      "hiveCenterDistance": 3.16
+    },
+    {
+      "alliance": "SHSN",
+      "apiMembers": 87,
+      "oldLocatedMembers": 91,
+      "matchedNames": 68,
+      "within3Tiles": 3,
+      "medianPlayerDistance": 21.16,
+      "oldHive": {
+        "x": 412,
+        "y": 613,
+        "members": 89
+      },
+      "apiHive": {
+        "x": 414,
+        "y": 604,
+        "members": 85
+      },
+      "hiveCenterDistance": 9.22
+    }
+  ],
+  "conclusion": "All 10 dominant hive centers within 10 tiles; individual player positions often differ. Not a full census or proof of every identity match."
+}
