@@ -74,6 +74,12 @@ class SheetSyncTests(unittest.TestCase):
         self.assertTrue(all(len(row) == len(rows[0]) for row in rows))
 
     def test_atomic_replacement_literal_names_and_readback(self):
+        self.assert_atomic_replacement(False)
+
+    def test_native_table_filters_are_preserved(self):
+        self.assert_atomic_replacement(True)
+
+    def assert_atomic_replacement(self,native_table):
         requests = []
         expected_hq = sync.table(self.atlas)
         expected_farm = sync.farm_table(self.atlas)
@@ -90,7 +96,8 @@ class SheetSyncTests(unittest.TestCase):
                     return Response({'values': expected_farm if 'Farm%20Matches' in url else expected_hq})
                 return Response({'sheets': [{'properties': {
                     'sheetId': 42, 'title': 'HQ Data',
-                    'gridProperties': {'rowCount': 2000, 'columnCount': 30}}},
+                    'gridProperties': {'rowCount': 2000, 'columnCount': 30}},
+                    'tables':[{'tableId':'existing','range':{'sheetId':42,'endColumnIndex':26}}] if native_table else []},
                     {'properties': {'sheetId': 99, 'title': 'Manual Notes'}}]})
         google = types.ModuleType('google')
         auth = types.ModuleType('google.auth')
@@ -114,6 +121,7 @@ class SheetSyncTests(unittest.TestCase):
         self.assertNotIn('99', json.dumps(edits))
         added = [r['addSheet']['properties'] for r in edits if 'addSheet' in r]
         self.assertEqual([r['title'] for r in added], ['Farm Matches'])
+        self.assertEqual(any(r.get('setBasicFilter',{}).get('filter',{}).get('range',{}).get('sheetId')==42 for r in edits),not native_table)
 
 
 if __name__ == '__main__': unittest.main()

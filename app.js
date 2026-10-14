@@ -719,7 +719,7 @@ setInterval(async()=>{
     sharedFingerprint=source.fingerprint;
     updateView();resize();refreshRadius();if(selected)selectHQ(selected,false,false);
   }catch {
-    document.getElementById('powerCaptureNote').textContent+=' · Refresh unavailable; retaining dated observations.';
+    const note=document.getElementById('powerCaptureNote');if(!note.textContent.includes('Refresh unavailable'))note.textContent+=' · Refresh unavailable; retaining dated observations.';
   }finally{refreshingShared=false;}
 },60000);
 

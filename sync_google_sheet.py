@@ -151,7 +151,7 @@ def sync(atlas, config):
         if not response.ok:
             raise RuntimeError(f'Google Sheets request failed ({response.status_code}); Atlas data retained. Retry sync after checking access.')
         return response.json()
-    metadata = request('GET', base, params={'fields': 'sheets.properties'})
+    metadata = request('GET', base, params={'fields': 'sheets(properties,tables(tableId,range))'})
     tabs = [(title, rows), ('Farm Matches', farm_table(atlas, rows))]
     requests = []
     next_sheet_id = max([s['properties']['sheetId'] for s in metadata.get('sheets', [])] + [0]) + 1
@@ -182,9 +182,14 @@ def sync(atlas, config):
                       'startColumnIndex': 0, 'endColumnIndex': len(rows[0])},
             'rows': [{'values': [cell(value) for value in row]} for row in rows],
             'fields': 'userEnteredValue'}})
-        requests.append({'setBasicFilter': {'filter': {'range': {
-            'sheetId': sheet_id, 'startRowIndex': 0, 'endRowIndex': len(rows),
-            'startColumnIndex': 0, 'endColumnIndex': len(rows[0])}}}})
+        native_tables=next((s.get('tables',[]) for s in metadata.get('sheets',[])
+                            if s['properties']['sheetId']==sheet_id),[])
+        # Native tables already supply filters. A separate basic filter cannot
+        # partially intersect one when the mirrored columns/row count change.
+        if not native_tables:
+            requests.append({'setBasicFilter': {'filter': {'range': {
+                'sheetId': sheet_id, 'startRowIndex': 0, 'endRowIndex': len(rows),
+                'startColumnIndex': 0, 'endColumnIndex': len(rows[0])}}}})
         requests.append({'repeatCell': {
             'range': {'sheetId': sheet_id, 'startRowIndex': 0, 'endRowIndex': 1},
             'cell': {'userEnteredFormat': {'backgroundColor': {'red': .09, 'green': .15, 'blue': .12},
