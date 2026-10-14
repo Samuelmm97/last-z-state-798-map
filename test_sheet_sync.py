@@ -43,6 +43,18 @@ class SheetSyncTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'Duplicate'):
             sync.table(self.atlas)
 
+    def test_current_workbook_owns_personal_power_and_keeps_hero_component_distinct(self):
+        self.records[0]['playerId']='123'
+        self.write('hqs.json',self.records)
+        self.write('power-current.json',{'source':{'url':'source-workbook'},'players':[
+            {'uid':'123','personalPower':{'value':60000000,'observedAt':'2026-10-14T00:00:00Z'},
+             'components':{'hero':{'value':12000000,'observedAt':'2026-10-09T00:00:00Z'}}}]})
+        rows=sync.table(self.atlas);p=dict(zip(rows[0],rows[2]))
+        self.assertEqual(p['Personal power'],60000000)
+        self.assertEqual(p['Hero component power'],12000000)
+        self.assertEqual(p['Total hero power'],'')
+        self.assertEqual(p['Current power source'],'source-workbook')
+
     def test_farm_matches_use_full_names_and_exclude_historical_and_objects(self):
         records = [
             {'id': 1, 'name': 'Other', 'tag': 'ABC'},

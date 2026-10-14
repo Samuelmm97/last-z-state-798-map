@@ -18,7 +18,8 @@ HEADERS = ['Atlas ID', 'Player', 'Alliance', 'HQ level', 'HQ reading date',
            'Previous SvS cohort', 'Roster confirmed', 'Roster date',
            'State membership', 'Personal power', 'Personal power date', 'Power approximate',
            'Strongest hero power', 'Strongest hero date', 'Total hero power', 'Total hero date', 'Previous SvS shield',
-           'Shield date', 'Previous terrain', 'Participation date', 'Atlas link']
+           'Shield date', 'Previous terrain', 'Participation date', 'Atlas link',
+           'Hero component power', 'Hero component date', 'Current power source']
 
 
 def read(path, default=None):
@@ -37,6 +38,8 @@ def table(atlas=ROOT):
     power = read(atlas / 'data/power.json', {})
     players = {p['atlas_id']: p for p in power.get('players', {}).values()
                if p.get('atlas_id') is not None}
+    current=read(atlas/'data/power-current.json',{})
+    by_uid={p['uid']:p for p in current.get('players',[])}
     rows = [HEADERS]
     for p in sorted(records, key=lambda p: p['id']):
         s = shields.get(p['id'], {})
@@ -68,6 +71,14 @@ def table(atlas=ROOT):
                s.get('terrain', 'unscanned'), p.get('attendance_date'),
                f'https://samuelmm97.github.io/last-z-state-798-map/#hq-{p["id"]}']
         rows.append(['' if value is None else value for value in row])
+        if current:
+            member=by_uid.get(str(p.get('playerId','')))
+            personal=(member or {}).get('personalPower',{})
+            hero=(member or {}).get('components',{}).get('hero',{})
+            rows[-1][14:21]=[personal.get('value',''),personal.get('observedAt',''),False,'','','','']
+            rows[-1].extend([hero.get('value',''),hero.get('observedAt',''),current['source']['url']])
+        else:
+            rows[-1].extend(['','',''])
     return rows
 
 
@@ -193,7 +204,12 @@ def sync(atlas, config):
     request('POST', base + ':batchUpdate', json={'requests': requests})
     from urllib.parse import quote
     for title, rows in tabs:
-        end_column = 'Z' if title == 'HQ Data' else 'AB'
+        def column_name(number):
+            text=''
+            while number:
+                number,rem=divmod(number-1,26);text=chr(65+rem)+text
+            return text
+        end_column = column_name(len(rows[0]))
         result = request('GET', base + '/values/' + quote("'" + title + "'!A:" + end_column, safe=''),
                          params={'valueRenderOption': 'UNFORMATTED_VALUE'})
         # Sheets omits trailing empty cells; normalize them before comparing.

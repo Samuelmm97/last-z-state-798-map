@@ -1,5 +1,26 @@
 # Last Z State 798 Atlas
 
+## Shared power and observed positions
+
+The authoritative power workbook is **Last Z States 792–815 — Alliances and Player Power**
+(`11RVzmSmrhbz2nmmMyztuSS0HUkB7ZNpE8rvZUIzXSvE`). `shared_power.py` reads it without
+changing it and publishes `data/power-current.json`, joined by player UID. Personal
+power comes from Players; hero component power comes from Power Breakdown and retains
+its own observation date. It is a different metric from the older total-hero leaderboard.
+The State 798 HQ sheet is a mirror, never a competing current power source.
+
+`data/hqs.json` owns observed positions for the Atlas and capital planner. Companion
+map scans merge positively observed UIDs only; absence never moves or deletes an HQ.
+The October 14 capital survey and verification are included. Proposed placements stay
+in the separate shared planner draft and cannot overwrite observations.
+
+The companion Atlas sync worker checks the workbook every five minutes while running,
+using the existing local Google configuration. Both sites refresh their shared feed every
+minute while visible. Failed refreshes retain dated snapshots. Run `shared_power.py
+--config <local-config>` to refresh manually; credentials stay local and ignored.
+
+Validation: `node shared-state.test.cjs` and `python -m unittest test_shared_power test_sheet_sync`.
+
 ## October 8–9 API map import
 
 The current map pins include 4,283 HQs from 2,604 State 798/world 0 API region requests. Ten dominant alliance hive centers were compared with the older Atlas and all were within 10 tiles; see `data/api-map-validation.json`. Three HQ coordinates and exact power values also match user screenshots. This verifies the coordinate conversion for these HQs, not exhaustive visibility or an exact match to every historical position.

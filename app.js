@@ -41,7 +41,7 @@ const nap13 = new Set(['Helm', 'SWT', 'WRtH', 'mERC', 'aTam', '4NG', 'UpS', 'Aya
 const napTagAliases = { HeIm: 'Helm', '7cle': '7cie', '7cIe': '7cie' };
 const isNap13 = tag => nap13.has(napTagAliases[tag] || tag);
 // The three survivor boards share one {rank, value} shape, so a single loop renders all of them.
-const powerMetrics = [['personal_power', 'personal power'], ['strongest_hero_power', 'strongest hero power'], ['total_hero_power', 'total hero power']];
+const powerMetrics = [['personal_power', 'personal power'], ['hero_component_power','hero component power'], ['strongest_hero_power', 'historical strongest hero power'], ['total_hero_power', 'historical total hero power']];
 // Board totals run into the hundreds of millions, so units keep the card and list rows readable.
 const compactPower = value => {
   if (!Number.isFinite(value)) return '—';
@@ -527,7 +527,7 @@ function updateView() {
   document.getElementById('listHeading').textContent = activeView === 'alliances' ? 'PREVIOUS SvS ALLIANCES' : activeView === 'players' ? 'POWER LEADERBOARDS' : activeZone === 'all' ? 'ALL HQs' : activeZone === 'capital' ? 'PREVIOUS CAPITAL PARTICIPANTS' : activeZone === 'unknown' ? 'NO PRIOR SvS SCAN' : 'PREVIOUSLY OUTSIDE CAPITAL';
   const rosterImport = powerData?.native_roster_import;
   document.getElementById('powerCaptureNote').textContent = [
-    powerData?.captured_date ? `Leaderboards captured ${powerData.captured_date}` : 'No leaderboard capture has been published yet.',
+    powerData?.source?.observedAt?`Power workbook observed ${new Date(powerData.source.observedAt).toLocaleString()} · hero components retain their separate observation dates`:powerData?.captured_date ? `Historical leaderboards captured ${powerData.captured_date}` : 'No leaderboard capture has been published yet.',
     rosterImport ? `Alliance roster power: ${rosterImport.data_date} · ${rosterImport.alliances} alliances · ${rosterImport.players.toLocaleString()} players` : ''
   ].filter(Boolean).join(' · ');
   resetList();
@@ -636,11 +636,12 @@ window.addEventListener('resize', resize);
 
 async function start() {
   try {
-    const [mapResponse, hqResponse, shieldResponse, powerResponse, participationResponse] = await Promise.all([
+    const [mapResponse, hqResponse, shieldResponse, powerResponse, participationResponse, currentPowerResponse] = await Promise.all([
       fetch('data/map.json', { cache: 'no-store' }), fetch('data/hqs.json', { cache: 'no-store' }), fetch('data/shields.json', { cache: 'no-store' }),
       // The daily board import is optional: a 404 (nothing published yet) must leave the atlas untouched.
       fetch('data/power.json', { cache: 'no-store' }).catch(() => null),
-      fetch('data/participation.json', { cache: 'no-store' }).catch(() => null)
+      fetch('data/participation.json', { cache: 'no-store' }).catch(() => null),
+      fetch('data/power-current.json',{cache:'no-store'}).catch(()=>null)
     ]);
     if (!mapResponse.ok || !hqResponse.ok || !shieldResponse.ok) throw new Error('Map data could not be loaded');
     metadata = await mapResponse.json(); allHqs = await hqResponse.json();
@@ -648,13 +649,14 @@ async function start() {
     if (participationResponse?.ok) participationData = await participationResponse.json().catch(() => null);
     const observations = await shieldResponse.json();
     if (powerResponse?.ok) powerData = await powerResponse.json().catch(() => null);
+    if(currentPowerResponse?.ok){const current=await currentPowerResponse.json();powerData=LastZSharedState.applyAtlas(allHqs,LastZSharedState.index(current,allHqs));hqs=allHqs.filter(hq=>hq.current!==false||hq.roster_current);}
     const shieldById = new Map(observations.map(item => [item.id, item]));
     const participationById = new Map((participationData?.records || []).map(item => [item.id, item]));
     for (const hq of allHqs) {
       hq.shield = shieldById.get(hq.id) || null;
       hq.participation = participationById.get(hq.id) || null;
     }
-    document.getElementById('mapCaptureNote').textContent = `Map captured ${metadata.captured_date || '2026-09-26'}`;
+    document.getElementById('mapCaptureNote').textContent = metadata.companion_scan?`Latest partial map observations ${metadata.companion_scan.observedAtUtc.slice(0,10)}`:`Map captured ${metadata.captured_date || '2026-09-26'}`;
     const progressNote=document.getElementById('refreshProgressNote');
     if (metadata.refresh_progress) {
       progressNote.hidden=false;
@@ -697,5 +699,28 @@ async function start() {
   }
 }
 start();
+
+let sharedFingerprint=null,refreshingShared=false;
+setInterval(async()=>{
+  if(document.hidden||!metadata||refreshingShared)return;
+  refreshingShared=true;
+  try {
+    const source=await LastZSharedState.load('');
+    if(source.fingerprint&&source.fingerprint===sharedFingerprint)return;
+    const prior=new Map(allHqs.map(p=>[p.id,p]));
+    allHqs=source.positions;
+    for(const p of allHqs){p.shield=prior.get(p.id)?.shield||null;p.participation=prior.get(p.id)?.participation||null;}
+    powerData=LastZSharedState.applyAtlas(allHqs,source);
+    hqs=allHqs.filter(p=>p.current!==false||p.roster_current);
+    playerStats=Object.values(powerData.players).sort((a,b)=>(b.personal_power?.value||0)-(a.personal_power?.value||0));
+    if(selected)selected=allHqs.find(p=>p.id===selected.id)||selected;
+    const plausible=hqs.filter(p=>shieldStatus(p)!=='not_hq');
+    for(const [id,value]of [['allCount',plausible.length],['outsideCount',plausible.filter(p=>(p.zone||'outside')==='outside').length],['capitalCount',plausible.filter(p=>p.zone==='capital').length]])document.getElementById(id).textContent=value.toLocaleString();
+    sharedFingerprint=source.fingerprint;
+    updateView();resize();refreshRadius();if(selected)selectHQ(selected,false,false);
+  }catch {
+    document.getElementById('powerCaptureNote').textContent+=' · Refresh unavailable; retaining dated observations.';
+  }finally{refreshingShared=false;}
+},60000);
 
 document.getElementById('radiusSort').addEventListener('change', refreshRadius);
